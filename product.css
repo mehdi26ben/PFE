@@ -1,0 +1,36 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+body{ 
+    padding-left: 3%;
+    padding-right: 3%;
+}
+header{
+    background-color: #FFCC66;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+header nav ul {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+header nav ul li{
+    display: inline;
+}
+header nav ul li a{
+   font-size: 18px;
+}
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+  
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }

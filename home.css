@@ -1,0 +1,66 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+body{ 
+    padding-left: 3%;
+    padding-right: 3%;
+}
+header{
+    background-color: #FFCC66;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+header nav ul {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+header nav ul li{
+    display: inline;
+}
+header nav ul li a{
+   font-size: 18px;
+   color: blue;
+}
+#scroll-bar::-webkit-scrollbar {
+    width: 12%;
+    height: 6px;
+}
+#scroll-bar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    background-color: lightgray;
+}
+#hr-scroll{
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+footer{
+    background-color:#302d2e;
+}
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
+    .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+    .MultiCarousel .leftLst { left:0; }
+    .MultiCarousel .rightLst { right:0; }
+    
+        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+
+.display-6{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: capitalize;
+}
+
+.newproducts img:hover{
+    transition-duration: 2s;
+    transform: scale(1.1);
+}
+.newproducts span{
+    font-size: 18px;
+    margin-top: 2%;
+}
