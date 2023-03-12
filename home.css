@@ -64,3 +64,10 @@ footer{
     font-size: 18px;
     margin-top: 2%;
 }
+#span-container span{
+    color: #282d32;
+    text-decoration: none;
+}
+#span-container{
+    text-decoration: none;
+}

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,7 +171,7 @@
         <div class="row mt-2 g-4">
 
             <div class="col-lg-3">
-                <a href="#">
+                <a href="#" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>téléphones & </span><span>accessoires</span>
@@ -186,7 +187,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="#">
+                    <a href="#" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>Sport &</span><span>Loisirs</span></div>
                             <div> <img src="pages_images/categories_images/sport&loisir.jpg" height="100" width="100" />
@@ -200,7 +201,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="#">
+                    <a href="#" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>vetements & </span><span>chaussure</span>
                             </div>
@@ -214,7 +215,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="#">
+                    <a href="#" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>make-up &</span><span>Santé</span> </div>
                             <div> <img src="pages_images/categories_images/makeup&health.jpg" height="100"
@@ -228,7 +229,7 @@
             <div class="col-lg-3">
 
                 <div class="card pt-2">
-                    <a href="#">
+                    <a href="#" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>maison et </span><span>fourniture</span>
                             </div>
@@ -242,7 +243,7 @@
             </div>
 
             <div class="col-lg-3">
-                <a href="#">
+                <a href="#" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>cuisine </div>
@@ -254,7 +255,7 @@
 
             </div>
             <div class="col-lg-3">
-                <a href="#">
+                <a href="#" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>Télévision & </span><span>Hi tec</span>
@@ -266,7 +267,7 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <a href="#">
+                <a href="#" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>informatique</span> </div>
