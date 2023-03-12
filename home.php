@@ -313,14 +313,15 @@
                     </div>
                     <div class="item">
                         <div class="pad15">
-                            <div class="pad15"><a href="#">
+                            <div class="pad15">
+                                <a href="#">
                                     <div class="card">
-
                                         <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
                                                 alt=""></div>
                                     </div>
+                                </a>
                             </div>
-                            </a>
+
                         </div>
                     </div>
                     <div class="item">
