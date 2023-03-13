@@ -1,12 +1,3 @@
-<?php
-    $nom="bentoufile";
-    if($nom=="bentofile"){
-        $user_icon="<i class='fa-solid fa-user'></i>";
-    }
-    else{
-        $user_icon="<i class='fa-solid fa-cart-shopping'></i>";
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
