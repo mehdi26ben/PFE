@@ -1,4 +1,12 @@
-
+<?php
+    $nom="bentoufile";
+    if($nom=="bentofile"){
+        $user_icon="<i class='fa-solid fa-user'></i>";
+    }
+    else{
+        $user_icon="<i class='fa-solid fa-cart-shopping'></i>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +31,7 @@
                 <!--modal ativation-->
                 <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
                         data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
-                        data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+                        data-target="#modalLoginForm"><?php echo $user_icon; ?></a></li>
                 <li><a class="text-light" href="#" type="button" data-toggle="tooltip" data-placement="top"
                         title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
                 <li><a class="text-light" href="cart.php" type="button" data-toggle="tooltip" data-placement="top"
@@ -31,7 +39,6 @@
             </ul>
         </nav>
     </header>
-
     <!--modal-->
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
