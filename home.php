@@ -14,23 +14,26 @@
 </head>
 
 <body style=" background-color:#DDDDDD;">
-    <header class="container-fluid bg-dark">
-        <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid"
-                width="100px"></a>
-        <nav>
-            <ul>
-                <!--modal ativation-->
-                <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
-                        data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
-                        data-target="#modalLoginForm"><?php echo $user_icon; ?></a></li>
-                <li><a class="text-light" href="#" type="button" data-toggle="tooltip" data-placement="top"
-                        title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
-                <li><a class="text-light" href="cart.php" type="button" data-toggle="tooltip" data-placement="top"
-                        title="Add To Cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </nav>
-    </header>
-    <!--modal-->
+    <nav class="navbar sticky-top navbar-light" style="border-radius: 5px; background-color:#3B3B3B;">
+        <div class="container-fluid" id="header">
+            <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png"
+                    class="img-fluid" width="100px"></a>
+            <nav>
+                <ul>
+                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
+                            data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
+                            data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+
+                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal"  data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top"
+                            title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                    <li><a class="text-light"  target="_blank" data-toggle="modal"  data-toggle="tooltip" data-placement="top"
+                            title="Add To Cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+    
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -66,7 +69,7 @@
     </div>
     <!--/modal-->
 
-    <div class="container-fluid d-flex justify-content-between mt-2 align-items-lg-center"
+   <div class="container-fluid d-flex justify-content-between mt-2 align-items-lg-center"
         style="background-color:#3B3B3B; border-radius:5px;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -107,7 +110,7 @@
 
     <!--carousel-->
     <div class="container-fluid">
-        <div id="carouselExampleDark" class="carousel carousel-dark carousel-slide  mt-1">
+        <div id="carouselExampleDark"  class="carousel slide carousel-dark mt-1" data-bs-ride="carousel">
 
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -278,12 +281,13 @@
         </div>
     </div>
 
-    <!--Multi img Carousel-->
+    
+    
     <div class="container-fluid bg-light mt-2">
         <div class="display-6">tandence</div>
         <div class="row">
             <div class="MultiCarousel" data-items="3,4,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-                <!--1,2,3,4 represnts sizes xs,md,lg-->
+               
                 <div class="MultiCarousel-inner">
                     <div class="item">
                         <div class="pad15">
@@ -480,17 +484,7 @@
             </div>
         </div>
     </div>
-    <!--<div class="row">
-            <div class="col-md-12 text-center">
-                <br /><br /><br />
-                <hr />
-                <p>Settings</p>
-                <p>Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6"</p>
-                <p>Change data slide for slides per click Ex:data-slide="1"</p>
-            </div>
-        </div>
-    </div>-->
-
+                
     <!-- new products-->
     <div class="container-fluid bg-light mt-2 pb-1">
         <h3>nouveaux produits</h3>
@@ -560,6 +554,10 @@
                         <li>
                             <a href="#!" class="text-white"><i class="fa-brands fa-twitter"></i></a>
                         </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-discord"></i></a>
+                        </li>
+                        
                     </ul>
                 </div>
                 <!--Grid column-->
@@ -570,13 +568,13 @@
 
                     <ul class="list-unstyled  h-75 d-flex flex-column justify-content-around pt-2">
                         <li>
-                            <i class="fa-solid fa-phone"></i><span>+212 627169632</span>
+                            <i class="fa-solid fa-phone"></i> <span>+212 627169632</span>
                         </li>
                         <li>
-                            <i class="fa-solid fa-envelope"></i><span>mehdi.bentoufile@hotmail.fr</span>
+                            <i class="fa-solid fa-envelope"></i> <span>mehdi.bentoufile@hotmail.fr</span>
                         </li>
                         <li>
-                            <i class="fa-solid fa-fax"></i><span>+212 507845128</span>
+                            <i class="fa-solid fa-fax"></i> <span>+212 507845128</span>
                         </li>
                     </ul>
                 </div>
