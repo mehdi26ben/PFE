@@ -23,9 +23,9 @@
                 <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
                         data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
                         data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
-                <li><a class="text-light" href="#" type="button" data-toggle="tooltip" data-placement="top"
+                <li><a class="text-light" href="#"  target="_blank" data-toggle="modal" data-target="#modalLoginForm" type="button" data-toggle="tooltip" data-placement="top"
                         title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
-                <li><a class="text-light" href="cart.php" type="button" data-toggle="tooltip" data-placement="top"
+                <li><a class="text-light" target="_blank" data-toggle="modal" data-target="#modalLoginForm"  type="button" data-toggle="tooltip" data-placement="top"
                         title="Add To Cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
             </ul>
         </nav>
@@ -150,7 +150,6 @@
         </div>
     </div>
 
-
     <!-- Footer -->
     <footer class="text-white text-center mt-2">
         <!-- Grid container -->
@@ -176,18 +175,23 @@
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase">social media</h5>
 
-                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2">
+                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2" id="socials">
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook" id="facebook"></i></a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram" id="instagram"></i></a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#!" class="text-white" id="twitter"><i class="fa-brands fa-twitter"></i></a>
                         </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-discord" id="discord"></i></a>
+                        </li>
+
                     </ul>
                 </div>
+
                 <!--Grid column-->
 
                 <!--Grid column-->
@@ -196,13 +200,13 @@
 
                     <ul class="list-unstyled  h-75 d-flex flex-column justify-content-around pt-2">
                         <li>
-                            <i class="fa-solid fa-phone"></i><span>+212 627169632</span>
+                            <i class="fa-solid fa-phone"></i> <span>+212 627169632</span>
                         </li>
                         <li>
-                            <i class="fa-solid fa-envelope"></i><span>mehdi.bentoufile@hotmail.fr</span>
+                            <i class="fa-solid fa-envelope"></i> <span>mehdi.bentoufile@hotmail.fr</span>
                         </li>
                         <li>
-                            <i class="fa-solid fa-fax"></i><span>+212 507845128</span>
+                            <i class="fa-solid fa-fax"></i> <span>+212 507845128</span>
                         </li>
                     </ul>
                 </div>

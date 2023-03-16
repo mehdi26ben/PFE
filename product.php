@@ -23,9 +23,9 @@
                 <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
                         data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
                         data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
-                <li><a class="text-light" href="#" type="button" data-toggle="tooltip" data-placement="top"
+                <li><a class="text-light" target="_blank" data-toggle="modal" data-target="#modalLoginForm" type="button" data-toggle="tooltip" data-placement="top"
                         title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
-                <li><a class="text-light" href="cart.php" type="button" data-toggle="tooltip" data-placement="top"
+                <li><a class="text-light" href="cart.php" target="_blank" data-toggle="modal" data-target="#modalLoginForm"s type="button" data-toggle="tooltip" data-placement="top"
                         title="Add To Cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
             </ul>
         </nav>

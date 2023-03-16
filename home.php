@@ -172,7 +172,7 @@
     <button type="button" class="btn btn-warning btn-floating btn-lg" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
-    
+
     <!--categories-->
     <div class="container-fluid">
         <div class="row mt-2 g-4">
@@ -301,119 +301,123 @@
         </div>
     </section>
 
-
-    <section class="container-fluid pt-1">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="font-weight-light">Nouvelle Arrivage</h1>
-            </div>
-        </div>
-    </section>
-    <section class="carousel slide py-2" data-ride="carousel" id="postsCarousel">
-        <div class="container pt-0 mt-1 carousel-inner">
-            <div class="row ">
-                <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
-                    <a class="btn btn-outline-secondary prev" href="" title="go back"><i
-                            class="fa fa-lg fa-chevron-left"></i></a>
-                    <a class="btn btn-outline-secondary next" href="" title="more"><i
-                            class="fa fa-lg fa-chevron-right"></i></a>
+    <div class="container-fluid">
+        <section class="container-fluid pt-1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="font-weight-light">Nouvelle Arrivage</h1>
                 </div>
             </div>
-            <div class="carousel-item active">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-img-top card-img-top-200">
-                                <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png"
-                                    alt="Carousel 1">
-                            </div>
-                            <div class="card-body p-t-2">
-                                <h6 class="small text-wide p-b-2">Insight</h6>
-                                <h2>
-                                    <a href>Why Stuff Happens Every Year.</a>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-img-top card-img-top-200">
-                                <img class="img-fluid" src="pages_images/product_iamges/airpuds.png" alt="Carousel 2">
-                            </div>
-                            <div class="card-body p-t-2">
-                                <h6 class="small text-wide p-b-2">Development</h6>
-                                <h2>
-                                    <a href>How to Make Every Line Count.</a>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-img-top card-img-top-200">
-                                <img class="img-fluid" src="pages_images/product_iamges/h1.png" alt="Carousel 3">
-                            </div>
-                            <div class="card-body p-t-2">
-                                <h6 class="small text-wide p-b-2">Design</h6>
-                                <h2>
-                                    <a href>Responsive is Essential.</a>
-                                </h2>
-                            </div>
-                        </div>
+        </section>
+        <section class="carousel slide py-2" data-ride="carousel" id="postsCarousel">
+            <div class="container pt-0 mt-1 carousel-inner">
+                <div class="row ">
+                    <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
+                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i
+                                class="fa fa-lg fa-chevron-left"></i></a>
+                        <a class="btn btn-outline-secondary next" href="" title="more"><i
+                                class="fa fa-lg fa-chevron-right"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-img-top card-img-top-200">
-                                <img class="img-fluid" src="pages_images/product_iamges/pr3.png" alt="Carousel 4">
-                            </div>
-                            <div class="card-body pt-2">
-                                <h6 class="small text-wide pb-2">Another</h6>
-                                <h2>
-                                    <a href>Tagline or Call-to-action.</a>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-img-top card-img-top-200">
-                                <img class="img-fluid" src="pages_images/product_iamges/pr4.png" alt="Carousel 5">
-                            </div>
-                            <div class="card-body p-t-2">
-                                <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category 1
-                                </h6>
-                                <h2>
-                                    <a href>This is a Blog Title.</a>
-                                </h2>
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png"
+                                        alt="Carousel 1">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Insight</h6>
+                                    <h2>
+                                        <a href>Why Stuff Happens Every Year.</a>
+                                    </h2>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-img-top card-img-top-200">
-                                <img class="img-fluid" src="pages_images/product_iamges/pr5.png" alt="Carousel 6">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png"
+                                        alt="Carousel 2">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Development</h6>
+                                    <h2>
+                                        <a href>How to Make Every Line Count.</a>
+                                    </h2>
+                                </div>
                             </div>
-                            <div class="card-body p-t-2">
-                                <h6 class="small text-wide p-b-2">Category 3</h6>
-                                <h2>
-                                    <a href>Catchy Title of a Blog Post.</a>
-                                </h2>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/h1.png" alt="Carousel 3">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Design</h6>
+                                    <h2>
+                                        <a href>Responsive is Essential.</a>
+                                    </h2>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/pr3.png" alt="Carousel 4">
+                                </div>
+                                <div class="card-body pt-2">
+                                    <h6 class="small text-wide pb-2">Another</h6>
+                                    <h2>
+                                        <a href>Tagline or Call-to-action.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/pr4.png" alt="Carousel 5">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category
+                                        1
+                                    </h6>
+                                    <h2>
+                                        <a href>This is a Blog Title.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/pr5.png" alt="Carousel 6">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Category 3</h6>
+                                    <h2>
+                                        <a href>Catchy Title of a Blog Post.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <section class="banner">
+
+    <section class="banner" id="banner2" style="background-color: #221EF9 ;">
         <div class="img">
-            <img src="pages_images/product_iamges/image1.png" alt="">
+            <img src="pages_images/product_iamges/image1.png" class="img-fluid" alt="">
         </div>
         <div class="content">
             <h1> <span>Profiter Des Soldes</span>
@@ -426,6 +430,119 @@
             <div class="btn"><button>Shop Now</button></div>
         </div>
     </section>
+    <div class="container-fluid">
+        <section class="container-fluid pt-1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="font-weight-light">tendance</h1>
+                </div>
+            </div>
+        </section>
+        <section class="carousel slide py-2" data-ride="carousel" id="postsCarousel">
+            <div class="container pt-0 mt-1 carousel-inner">
+                <div class="row ">
+                    <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
+                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i
+                                class="fa fa-lg fa-chevron-left"></i></a>
+                        <a class="btn btn-outline-secondary next" href="" title="more"><i
+                                class="fa fa-lg fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png"
+                                        alt="Carousel 1">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Insight</h6>
+                                    <h2>
+                                        <a href>Why Stuff Happens Every Year.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png"
+                                        alt="Carousel 2">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Development</h6>
+                                    <h2>
+                                        <a href>How to Make Every Line Count.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/h1.png" alt="Carousel 3">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Design</h6>
+                                    <h2>
+                                        <a href>Responsive is Essential.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/pr3.png" alt="Carousel 4">
+                                </div>
+                                <div class="card-body pt-2">
+                                    <h6 class="small text-wide pb-2">Another</h6>
+                                    <h2>
+                                        <a href>Tagline or Call-to-action.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/pr4.png" alt="Carousel 5">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category
+                                        1
+                                    </h6>
+                                    <h2>
+                                        <a href>This is a Blog Title.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid" src="pages_images/product_iamges/pr5.png" alt="Carousel 6">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2">Category 3</h6>
+                                    <h2>
+                                        <a href>Catchy Title of a Blog Post.</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Footer -->
     <footer class="text-white text-center mt-2">
         <!-- Grid container -->
