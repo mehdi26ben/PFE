@@ -77,7 +77,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
                 <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="#">Vétement Et Chaussure</a>
+                <a class="dropdown-item" href="#">Gaming</a>
                 <a class="dropdown-item" href="#">Make-up & Santé</a>
                 <a class="dropdown-item" href="#">Maison & Fourniture</a>
                 <a class="dropdown-item" href="#">Cuisine</a>

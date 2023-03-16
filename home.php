@@ -14,7 +14,7 @@
 </head>
 
 <body style=" background-color:#DDDDDD;">
-    <nav class="navbar sticky-top" style="border-radius: 5px; background-color:#263238;">
+    <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png"
                     class="img-fluid" width="100px"></a>
@@ -71,8 +71,8 @@
     </div>
     <!--/modal-->
 
-    <div class="container-fluid d-flex justify-content-between mt-1 align-items-lg-center"
-        style="background-color:#455A64; border-radius:5px;align-items:center;">
+    <div class="container-fluid d-flex justify-content-between align-items-lg-center"
+        style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +81,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
                 <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php">Vétement & Chaussures</a>
+                <a class="dropdown-item" href="categories.php">Gaming</a>
                 <a class="dropdown-item" href="#">Make-up & Santé</a>
                 <a class="dropdown-item" href="#">Maison & Fourniture</a>
                 <a class="dropdown-item" href="#">Cuisine</a>
@@ -175,7 +175,7 @@
 
     <!--categories-->
     <div class="container-fluid">
-        <div class="row mt-2 g-4">
+        <div class="row mt-1 g-4">
 
             <div class="col-lg-3">
                 <a href="#" id="span-container">
@@ -210,9 +210,9 @@
                 <div class="card pt-2">
                     <a href="#" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
-                            <div class="flex-column lh-1 imagename"> <span>vetements & </span><span>chaussure</span>
+                            <div class="flex-column lh-1 imagename"> <span>Gaming</span>
                             </div>
-                            <div> <img src="pages_images/categories_images/vetements&chaussures.jpg" height="100"
+                            <div> <img src="pages_images/product_iamges/pr12.png" height="100"
                                     width="100" /> </div>
                         </div>
                     </a>
@@ -289,7 +289,7 @@
 
     <section class="banner">
         <div class="content">
-            <h3>profiter des meilleur fournture des haute qualiter avec des bonne prix</h3>
+            <h1>profiter des meilleur fournture des haute qualiter avec des bonne prix</h1>
             <p>Télévisions,machine-a-laver,micro-hande,guyg bhsy. et d'autres produit des marec internationalles
                 <br>ne manque pas cette opportunite
             </p>
