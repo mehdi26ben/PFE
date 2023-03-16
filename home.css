@@ -37,8 +37,9 @@ body{
     box-sizing: border-box;
 }
 footer{
-    background-color:#302d2e;
+    background-color:#263238;
 }
+
 .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
     .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
         .MultiCarousel .MultiCarousel-inner .item { float: left;}
@@ -69,3 +70,114 @@ footer{
 #span-container{
     text-decoration: none;
 }
+
+.banner{
+    margin-top: 20px;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    background-color: #f5e8e82b;
+    z-index: 0;
+}
+.banner .img{
+    flex: 1 1 300px;
+}
+.banner .img img{
+    margin-top: 30px;
+    width: 100%;
+}
+.banner .content{
+    flex: 1 1 400px;
+    margin-top: 20px;
+}
+.banner .content h1{
+    color: #263238;
+    font-weight: bold;
+    margin-left: 23px;
+    font-size: 55px;
+    text-shadow: -1px 1px 1px black;
+}
+.banner .content h1 span{
+    color: #263238;
+    text-shadow: 1px 1px 1px black;
+}
+#span2{
+    color: #ffc800;
+}
+.banner .content p{
+    margin-left: 23px;
+}
+.btn{
+    margin-left: 13px;
+}
+.btn button{
+    width: 150px;
+    height: 32px;
+    letter-spacing: 3px;
+    background-color: rgb(34, 35, 50);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.btn button:hover{
+    background-color: rgb(121, 125, 181);
+    color: black;
+    border: none;
+}
+@media screen and (max-width:1200px){
+    .banner{
+        height: 90vh;
+    }
+}
+@media screen and (max-width:799px){
+    .banner{
+        height: 140vh;
+    }
+}
+@media screen and (max-width:550px){
+    .banner{
+        height: 110vh;
+    }
+}
+@media screen and (max-width:420px){
+   .banner .content h1{
+    font-size: 45px;
+   }
+}
+@media screen and (max-width:320px){
+   .banner .content h1{
+    font-size: 36px;
+   }
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/*1*/
+.card-img-top-200 {
+    overflow: hidden;
+    max-height: 200px;
+}
+
+#btn-back-to-top {
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  z-index: 1;
+
+}
+
+
+
+
+
+

@@ -14,7 +14,7 @@
 </head>
 
 <body style=" background-color:#DDDDDD;">
-    <nav class="navbar sticky-top navbar-light" style="border-radius: 5px; background-color:#3B3B3B;">
+    <nav class="navbar sticky-top" style="border-radius: 5px; background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png"
                     class="img-fluid" width="100px"></a>
@@ -24,16 +24,18 @@
                             data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
                             data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
 
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal"  data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top"
+                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal"
+                            data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top"
                             title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
 
-                    <li><a class="text-light"  target="_blank" data-toggle="modal"  data-toggle="tooltip" data-placement="top"
-                            title="Add To Cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip"
+                            data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i
+                                class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </nav>
         </div>
     </nav>
-    
+
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -69,8 +71,8 @@
     </div>
     <!--/modal-->
 
-   <div class="container-fluid d-flex justify-content-between mt-2 align-items-lg-center"
-        style="background-color:#3B3B3B; border-radius:5px;align-items:center;">
+    <div class="container-fluid d-flex justify-content-between mt-1 align-items-lg-center"
+        style="background-color:#455A64; border-radius:5px;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,7 +112,7 @@
 
     <!--carousel-->
     <div class="container-fluid">
-        <div id="carouselExampleDark"  class="carousel slide carousel-dark mt-1" data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel slide carousel-dark mt-1" data-bs-ride="carousel">
 
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -167,6 +169,10 @@
         </div>
     </div>
 
+    <button type="button" class="btn btn-warning btn-floating btn-lg" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
     <!--categories-->
     <div class="container-fluid">
         <div class="row mt-2 g-4">
@@ -281,244 +287,145 @@
         </div>
     </div>
 
-    
-    
-    <div class="container-fluid bg-light mt-2">
-        <div class="display-6">tandence</div>
+    <section class="banner">
+        <div class="content">
+            <h3>profiter des meilleur fournture des haute qualiter avec des bonne prix</h3>
+            <p>Télévisions,machine-a-laver,micro-hande,guyg bhsy. et d'autres produit des marec internationalles
+                <br>ne manque pas cette opportunite
+            </p>
+            <div class="btn"><button>Shop Now</button></div>
+
+        </div>
+        <div class="img">
+            <img src="pages_images/login/image1.png" alt="">
+        </div>
+    </section>
+
+
+    <section class="container-fluid pt-1">
         <div class="row">
-            <div class="MultiCarousel" data-items="3,4,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-               
-                <div class="MultiCarousel-inner">
-                    <div class="item">
-                        <div class="pad15">
-                            <a href="#">
-                                <div class="card">
-                                    <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                            alt="">
-                                    </div>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
+            <div class="col-lg-12">
+                <h1 class="font-weight-light">Nouvelle Arrivage</h1>
+            </div>
+        </div>
+    </section>
+    <section class="carousel slide py-2" data-ride="carousel" id="postsCarousel">
+        <div class="container pt-0 mt-1 carousel-inner">
+            <div class="row ">
+                <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
+                    <a class="btn btn-outline-secondary prev" href="" title="go back"><i
+                            class="fa fa-lg fa-chevron-left"></i></a>
+                    <a class="btn btn-outline-secondary next" href="" title="more"><i
+                            class="fa fa-lg fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-img-top card-img-top-200">
+                                <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png"
+                                    alt="Carousel 1">
+                            </div>
+                            <div class="card-body p-t-2">
+                                <h6 class="small text-wide p-b-2">Insight</h6>
+                                <h2>
+                                    <a href>Why Stuff Happens Every Year.</a>
+                                </h2>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-img-top card-img-top-200">
+                                <img class="img-fluid" src="pages_images/product_iamges/airpuds.png" alt="Carousel 2">
                             </div>
-
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
+                            <div class="card-body p-t-2">
+                                <h6 class="small text-wide p-b-2">Development</h6>
+                                <h2>
+                                    <a href>How to Make Every Line Count.</a>
+                                </h2>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-img-top card-img-top-200">
+                                <img class="img-fluid" src="pages_images/product_iamges/h1.png" alt="Carousel 3">
                             </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <div class="card">
-                                    <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                            alt=""></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <a href="#">
-                                    <div class="card">
-                                        <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                                alt=""></div>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="pad15">
-                                <div class="card">
-                                    <div class="card-img"><img src="pages_images/login/test2.jpg" class="img-fluid"
-                                            alt=""></div>
-                                </div>
+                            <div class="card-body p-t-2">
+                                <h6 class="small text-wide p-b-2">Design</h6>
+                                <h2>
+                                    <a href>Responsive is Essential.</a>
+                                </h2>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-secondary leftLst"><i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="btn btn-secondary rightLst"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-img-top card-img-top-200">
+                                <img class="img-fluid" src="pages_images/product_iamges/pr3.png" alt="Carousel 4">
+                            </div>
+                            <div class="card-body pt-2">
+                                <h6 class="small text-wide pb-2">Another</h6>
+                                <h2>
+                                    <a href>Tagline or Call-to-action.</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-img-top card-img-top-200">
+                                <img class="img-fluid" src="pages_images/product_iamges/pr4.png" alt="Carousel 5">
+                            </div>
+                            <div class="card-body p-t-2">
+                                <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category 1
+                                </h6>
+                                <h2>
+                                    <a href>This is a Blog Title.</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-img-top card-img-top-200">
+                                <img class="img-fluid" src="pages_images/product_iamges/pr5.png" alt="Carousel 6">
+                            </div>
+                            <div class="card-body p-t-2">
+                                <h6 class="small text-wide p-b-2">Category 3</h6>
+                                <h2>
+                                    <a href>Catchy Title of a Blog Post.</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-                
-    <!-- new products-->
-    <div class="container-fluid bg-light mt-2 pb-1">
-        <h3>nouveaux produits</h3>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <a href="#" class="newproducts">
-                    <div>
-                        <img src="pages_images/login/electro_device2.jpg" class="img-fluid" alt="">
-                        <span>voir plus</span>
-                    </div>
-                </a>
-            </div>
+    </section>
 
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <a href="#" class="newproducts">
-                    <div>
-                        <img src="pages_images/login/electro_device2.jpg" class="img-fluid" alt="">
-                        <span>voir plus</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <a href="#" class="newproducts">
-                    <div>
-                        <img src="pages_images/login/electro_device2.jpg" class="img-fluid" alt="">
-                        <span>voir plus</span>
-                    </div>
-                </a>
-            </div>
+    <section class="banner">
+        <div class="img">
+            <img src="pages_images/product_iamges/image1.png" alt="">
         </div>
-    </div>
-
-
+        <div class="content">
+            <h1> <span>Profiter Des Soldes</span>
+                <br>
+                jusqu'a <span id="span2">50%</span> Off
+            </h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, saepe.
+                <br>Lorem ipsum dolor sit amet consectetur.
+            </p>
+            <div class="btn"><button>Shop Now</button></div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="text-white text-center mt-2">
         <!-- Grid container -->
@@ -544,22 +451,23 @@
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase">social media</h5>
 
-                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2">
+                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2" id="socials">
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook" id="facebook"></i></a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram" id="instagram"></i></a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#!" class="text-white" id="twitter"><i class="fa-brands fa-twitter"></i></a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white"><i class="fa-brands fa-discord"></i></a>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-discord" id="discord"></i></a>
                         </li>
-                        
+
                     </ul>
                 </div>
+
                 <!--Grid column-->
 
                 <!--Grid column-->
