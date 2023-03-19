@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="jquery-3.6.3.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="product.css">
-    <script src="product.js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="checkout.css">
     <title>Document</title>
 </head>
 
-<body style=" background-color:#DDDDDD;">
+<body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
@@ -61,8 +59,6 @@
 
         </div>
     </div>
-    <!--/modal-->
-
     <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,83 +92,6 @@
             </div>
         </nav>
     </div>
-
-    <div class="container-fluid mt-1 mb-1">
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-md-6 border-end">
-                    <div class="d-flex flex-column justify-content-center">
-                        <div class="main_image"> <img src="https://i.imgur.com/TAzli1U.jpg" id="main_product_image" width="350"> </div>
-                        <div class="thumbnail_images">
-                            <ul id="thumbnail">
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/TAzli1U.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 right-side">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3>IIlana</h3> <span class="heart"><i class='bx bx-heart'></i></span>
-                        </div>
-                        <div class="mt-2 pr-3 content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                        </div>
-                        <h3>$430.99</h3>
-                        <div class="ratings d-flex flex-row align-items-center">
-                            <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
-                        </div>
-                        <div class="mt-5"> <span class="fw-bold">Color</span>
-                            <div class="colors">
-                                <ul id="marker">
-                                    <li id="marker-1"></li>
-                                    <li id="marker-2"></li>
-                                    <li id="marker-3"></li>
-                                    <li id="marker-4"></li>
-                                    <li id="marker-5"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <h2>Bootstrap Counter Field</h2>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number btn-primary" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                -
-                                            </button>
-                                        </span>
-                                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number btn-primary" data-type="plus" data-field="quant[1]">
-                                                +
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="buttons d-flex flex-row mt-5 gap-3"> <button class="btn btn-outline-dark">check out</button></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-
-    <script src="propper.min.js"></script>
-    <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
 </body>
 
 </html>

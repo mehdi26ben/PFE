@@ -16,28 +16,20 @@
 <body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png"
-                    class="img-fluid" width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
             <nav>
                 <ul>
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
-                            data-placement="top" title="Login" style="color: rgb(11, 63, 207);"
-                            data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
 
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal"
-                            data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top"
-                            title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
 
-                    <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip"
-                            data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i
-                                class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
             </nav>
         </div>
     </nav>
 
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form action="" method="post">
                 <div class="modal-content">
@@ -71,11 +63,9 @@
     </div>
     <!--/modal-->
 
-    <div class="container-fluid d-flex justify-content-between align-items-lg-center"
-        style="background-color:#455A64;align-items:center;">
+    <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
-            <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -88,23 +78,20 @@
                 <a class="dropdown-item" href="#">Télévision & Hi Tec</a>
                 <a class="dropdown-item" href="#">Informatique</a>
                 <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip"
-                    data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
+                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
                     Login</a>
                 <style>
-                .dropdown-item:hover {
-                    background-color: lightgray;
-                }
+                    .dropdown-item:hover {
+                        background-color: lightgray;
+                    }
                 </style>
             </div>
         </div>
         <nav class="navbar">
             <div class="container-fluid">
                 <form class="d-flex" role="search" method="post" action="">
-                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search"
-                        aria-label="Search">
-                    <button type="button" class="btn btn-outline-light"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
+                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </nav>
@@ -115,18 +102,15 @@
         <div id="carouselExampleDark" class="carousel slide carousel-dark mt-1" data-bs-ride="carousel">
 
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div id="carousel-link" class="carousel-inner">
 
                 <a class="carousel-link" href="#">
                     <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="pages_images/login/home_slide.jpg" class="d-block w-100" alt="...">
+                        <img src="pages_images/login/home_slide5.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>First slide label</h1>
                             <h5>Some representative placeholder content for the first slide.</h5>
@@ -135,9 +119,8 @@
                 </a>
 
                 <a class="carousel-link" href="#">
-
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img src="pages_images/login/electro_device2.jpg" class="d-block w-100" alt="...">
+                        <img src="pages_images/login/electro_devicesbg.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Second slide label</h1>
                             <h5>Some representative placeholder content for the second slide.</h5>
@@ -147,7 +130,7 @@
 
                 <a class="carousel-link" href="#">
                     <div class="carousel-item">
-                        <img src="pages_images/login/make_up.jpg" class="d-block w-100" alt="...">
+                        <img src="pages_images/login/make_up4.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Third slide label</h1>
                             <h5>Some representative placeholder content for the third slide.</h5>
@@ -156,13 +139,11 @@
                 </a>
 
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -183,8 +164,7 @@
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>téléphones & </span><span>accessoires</span>
                             </div>
-                            <div> <img src="pages_images/categories_images/telephones&accessoires.jpg" height="100"
-                                    width="100" /> </div>
+                            <div> <img src="pages_images/categories_images/telephones&accessoires.jpg" height="100" width="100" /> </div>
                         </div>
                     </div>
                 </a>
@@ -212,8 +192,7 @@
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>Gaming</span>
                             </div>
-                            <div> <img src="pages_images/product_iamges/pr12.png" height="100"
-                                    width="100" /> </div>
+                            <div> <img src="pages_images/product_iamges/pr12.png" height="100" width="100" /> </div>
                         </div>
                     </a>
 
@@ -225,8 +204,7 @@
                     <a href="#" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>make-up &</span><span>Santé</span> </div>
-                            <div> <img src="pages_images/categories_images/makeup&health.jpg" height="100"
-                                    width="100" /> </div>
+                            <div> <img src="pages_images/categories_images/makeup&health.jpg" height="100" width="100" /> </div>
                         </div>
                     </a>
 
@@ -240,8 +218,7 @@
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>maison et </span><span>fourniture</span>
                             </div>
-                            <div> <img src="pages_images/categories_images/maison&founiture.jpg" height="100"
-                                    width="100" /> </div>
+                            <div> <img src="pages_images/categories_images/maison&founiture.jpg" height="100" width="100" /> </div>
                         </div>
                     </a>
 
@@ -313,10 +290,8 @@
             <div class="container pt-0 mt-1 carousel-inner">
                 <div class="row ">
                     <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
-                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i
-                                class="fa fa-lg fa-chevron-left"></i></a>
-                        <a class="btn btn-outline-secondary next" href="" title="more"><i
-                                class="fa fa-lg fa-chevron-right"></i></a>
+                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                        <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="carousel-item active">
@@ -324,8 +299,7 @@
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png"
-                                        alt="Carousel 1">
+                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png" alt="Carousel 1">
                                 </div>
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2">Insight</h6>
@@ -338,8 +312,7 @@
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png"
-                                        alt="Carousel 2">
+                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png" alt="Carousel 2">
                                 </div>
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2">Development</h6>
@@ -442,10 +415,8 @@
             <div class="container pt-0 mt-1 carousel-inner">
                 <div class="row ">
                     <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
-                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i
-                                class="fa fa-lg fa-chevron-left"></i></a>
-                        <a class="btn btn-outline-secondary next" href="" title="more"><i
-                                class="fa fa-lg fa-chevron-right"></i></a>
+                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                        <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="carousel-item active">
@@ -453,8 +424,7 @@
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png"
-                                        alt="Carousel 1">
+                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png" alt="Carousel 1">
                                 </div>
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2">Insight</h6>
@@ -467,8 +437,7 @@
                         <div class="col-md-4">
                             <div class="card h-100">
                                 <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png"
-                                        alt="Carousel 2">
+                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png" alt="Carousel 2">
                                 </div>
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2">Development</h6>
@@ -543,6 +512,30 @@
         </section>
     </div>
 
+    <div class="container" id="offer">
+        <div class="row">
+            <div class="col-md-3 py-3 py-md-0">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h3>Free Shipping</h3>
+                <p>On order over $1000</p>
+            </div>
+            <div class="col-md-3 py-3 py-md-0">
+                <i class="fa-solid fa-rotate-left"></i>
+                <h3>Free Returns</h3>
+                <p>Within 30 days</p>
+            </div>
+            <div class="col-md-3 py-3 py-md-0">
+                <i class="fa-solid fa-truck"></i>
+                <h3>Fast Delivery</h3>
+                <p>World Wide</p>
+            </div>
+            <div class="col-md-3 py-3 py-md-0">
+                <i class="fa-solid fa-thumbs-up"></i>
+                <h3>Big choice</h3>
+                <p>Of products</p>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
     <footer class="text-white text-center mt-2">
         <!-- Grid container -->
@@ -619,14 +612,11 @@
     <!-- Footer -->
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
     <script src="propper.min.js"></script>

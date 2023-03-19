@@ -24,18 +24,7 @@ body{
    font-size: 18px;
    color: blue;
 }
-#scroll-bar::-webkit-scrollbar {
-    width: 12%;
-    height: 6px;
-}
-#scroll-bar::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    background-color: lightgray;
-}
-#hr-scroll{
-    border-radius: 8px;
-    box-sizing: border-box;
-}
+
 footer{
     background-color:#263238;
 }
@@ -207,8 +196,21 @@ html{
     font-size: 36px;
    }
 }
+#offer{
+    margin-top: 100px;
+}
+#offer i{
+    font-size: 32px;
+    color: black;
+}
 
-
+#offer{
+    margin-top: 50px;
+}
+#offer i{
+    font-size: 32px;
+    color: black;
+}
 /*1*/
 
 
