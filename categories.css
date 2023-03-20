@@ -27,3 +27,23 @@ body{
 footer{
     background-color:#302d2e;
 }
+#card img:hover{
+    transform: scale(1.1);
+}
+#card img{
+   display: block;
+}
+@media only screen  and (max-width:767px){
+    #card{
+        width: 100%;
+       /* background-color: #302d2e;*/
+    }
+    
+}
+@media only screen and (min-width:767px){
+    #card{
+        width: 16rem;
+        /*background-color: #ac1b4b;*/
+    }
+    
+}

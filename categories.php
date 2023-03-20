@@ -1,3 +1,15 @@
+<?php
+include 'connection.php';
+$nomcate = $_GET['nomcate'];
+$lister = $con->query("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate='" . $nomcate . "'");
+
+    if(isset($_POST['ajpanier'])){
+        $idclient=1;
+        $idproduit=1;
+        $ajouter="INSERT INTO panier (Id_Client,Id_Produit,Quantite) VALUES ($idclient,$idproduit,1)";
+        $con->exec($ajouter);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +21,7 @@
     <link rel="stylesheet" href="categories.css">
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <script src="categories.js"></script>
     <title>Document</title>
 </head>
 
@@ -97,51 +110,41 @@
     </div>
 
     <div class="container-fluid mt-2">
-        <div class="row">
-            <div class="col-lg-4 col-md-4">
-                <div class="card">
-                    <div class="card-body">
+        <form method="POST" action="addToCart.php">
+            <div class="row g-1">
+            <?php
+            if ($lister->rowCount() > 0) {
+                while ($row = $lister->fetch()) {
+                    $id=$row['Id_Produit'];
+                    echo  "<div class='col-lg-3 col-md-4' >";
+                    echo  "<div class='card' id='card'>";
+                    echo    "<a href=#><div class='card-body'>
+                                        <img src=pages_images/product_iamges/" . $row['Image'] . " class='img-fluid'>
+                                        <input type=hidden value=".$row['Id_Produit'].">
+                                        <input name=nomproduit type=text value=" . $row['NomProduit'] . ">
+                                         <p>" . $row['Prix'] . ".00DH</p>
+                                    </div>";
+                    echo "<div class='card-footer d-flex justify-content-around'>
+                                            <button id='ajouterp' type='submit' class='btn btn-warning btn-sm' name='ajpanier'>consulter produit</button>
+                                     </div></a>";
+                    echo "</div>";
+                    echo  "</div>";
+                }
+            } else {
+                echo "<h1>categorie vide!!</h1>";
+            }
 
-                        <img src="pages_images/product_iamges/airmax.png" class="img-fluid">
-                        <p><?php echo ""; ?>1455.00 DH</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-around">
-                        <button class="btn btn-warning btn-sm">ajouter au panier</button>
-                        <button class="btn btn-danger btn-sm">acheter maintenant</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="card">
-                    <div class="card-body">
+            ?>
 
-                        <img src="pages_images/product_iamges/airmax.png" class="img-fluid">
-                        <p><?php echo ""; ?>1455.00 DH</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-around">
-                        <button class="btn btn-warning">ajouter au panier</button>
-                        <button class="btn btn-danger btn-sm">acheter maintenant</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="card">
-                    <div class="card-body">
-
-                        <img src="pages_images/product_iamges/airmax.png" class="img-fluid">
-                        <p><?php echo ""; ?>1455.00 DH</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-around">
-                        <button class="btn btn-warning btn-sm">ajouter au panier</button>
-                        <button class="btn btn-danger btn-sm">acheter maintenant</button>
-                    </div>
-                </div>
-            </div>
         </div>
+        </form>
+        
     </div>
 
+    
+
     <!-- Footer -->
-    <footer class="text-white text-center mt-2">
+    <footer class="text-white text-center mt-5">
         <!-- Grid container -->
         <div class="container p-4">
             <!--Grid row-->

@@ -1,0 +1,18 @@
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+#header nav ul {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+#header nav ul li{
+    display: inline;
+}
+#header nav ul li a{
+   font-size: 18px;
+   color: blue;
+}

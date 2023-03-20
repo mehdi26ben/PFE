@@ -1,3 +1,22 @@
+<?php session_start();
+    if(isset($_SESSION['client'])){
+       
+        $logicon= "<div class='dropdown'>
+        <button class='btn btn-primary btn-floating dropdown-toggle hidden-arrow bg-dark' type='button' id='dropdownMenuButton2' data-mdb-toggle='dropdown' aria-expanded='false>
+          <i class='fas fa-ellipsis-v fa-lg'></i>
+        </button>
+        <ul class='dropdown-menu' aria-labelledby=dropdownMenuButton2>
+          <li><a class='dropdown-item' href=#> <i class='fas fa-user-alt pe-2'></i>My Profile</a></li>
+          <li><a class='dropdown-item' href=#> <i class=fas fa-cog pe-2></i>Settings</a></li>
+        </ul>
+      </div>";
+    }
+    else{
+        $logicon="<a class='text-light' type=button target=_blank data-toggle=modal data-toggle=tooltip data-placement=top title=Login style='color: rgb(11, 63, 207);' data-target='#modalLoginForm'><i class='fa-solid fa-user'></i></a>";
+    }
+    /*<a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a>*/
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,25 +61,48 @@
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="defaultForm-email" class="form-control validate" required>
+                            <input type="email" id="defaultForm-email" class="form-control validate" name="email" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
                         </div>
 
                         <div class="md-form mb-4">
                             <i class="fas fa-lock prefix grey-text"></i>
-                            <input type="password" id="defaultForm-pass" class="form-control validate" required>
+                            <input type="password" id="defaultForm-pass" class="form-control validate" name="pwd" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                         </div>
                         <a href="signup.html">create new account</a>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit">Login</button>
+                        <button class="btn btn-primary" type="submit" name="login">Login</button>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
+    <?php
+        require "connection.php";
+        if(isset($_POST['login'])){
+            $email=$_POST['email'];
+            $pwd=$_POST['pwd'];
+            if(!empty($email) && !empty($pwd)){
+                $log=$con->prepare("SELECT * FROM client WHERE email=? && pwd=?");
+                $log->execute([$email,$pwd]);
+                echo "hi";
+                if($log->rowCount()>0){
+                    
+                    $_SESSION['client']=$log->fetch();
+                    header("location:test.php");
+                    var_dump($_SESSION['client']);
+                }else{
+              echo  "<div class='alert alert-warning' role='alert'>
+                This is a warning alert—check it out!
+                </div>";
+                }
+            
+            }
+        }
+        
+    ?>
     <!--/modal-->
 
     <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
@@ -69,7 +111,7 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
                 <a class="dropdown-item" href="#">Sports Et Loisir</a>
                 <a class="dropdown-item" href="categories.php">Gaming</a>
                 <a class="dropdown-item" href="#">Make-up & Santé</a>
