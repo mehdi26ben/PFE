@@ -1,14 +1,13 @@
-<?php
+<?php session_start();
 include 'connection.php';
+if(!isset($_GET['nomcate'])){
+    header("location:home.php");
+}
 $nomcate = $_GET['nomcate'];
-$lister = $con->query("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate='" . $nomcate . "'");
+$lister = $con->prepare("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=?");
+$lister->execute([$nomcate]);
 
-    if(isset($_POST['ajpanier'])){
-        $idclient=1;
-        $idproduit=1;
-        $ajouter="INSERT INTO panier (Id_Client,Id_Produit,Quantite) VALUES ($idclient,$idproduit,1)";
-        $con->exec($ajouter);
-    }
+//var_dump($produit);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,23 +26,58 @@ $lister = $con->query("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNE
 
 <body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
+        <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>--> 
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
-            <nav>
-                <ul>
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+            <?php if (isset($_SESSION['client'])) { ?>
+                <nav>
+                    <ul style="width: 200px;">
 
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                        <li>
+                            <div class="dropdown">
 
-                    <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                </ul>
-            </nav>
+                                <button class="btn btn-outline-light dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $_SESSION['client']['Prenom'] ?>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
+                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+
+                                    <hr>
+                                    <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
+                                    <style>
+                                        .dropdown-item:hover {
+                                            background-color: lightgray;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                        <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    </ul>
+
+                </nav>
+
+            <?php } else {
+            ?>
+                <nav>
+                    <ul>
+                        <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+
+                        <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                        <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    </ul>
+                </nav>
+            <?php } ?>
         </div>
     </nav>
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="" method="post">
+            <form action="check_login.php" method="post">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
@@ -51,26 +85,26 @@ $lister = $con->query("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNE
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <input type="hidden" name="page_name" value="categories.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="defaultForm-email" class="form-control validate" required>
+                            <input type="email" id="defaultForm-email" class="form-control validate" name="email" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
                         </div>
 
                         <div class="md-form mb-4">
                             <i class="fas fa-lock prefix grey-text"></i>
-                            <input type="password" id="defaultForm-pass" class="form-control validate" required>
+                            <input type="password" id="defaultForm-pass" class="form-control validate" name="pwd" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                         </div>
                         <a href="signup.html">create new account</a>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit">Login</button>
+                        <button class="btn btn-primary" type="submit" name="login">Login</button>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
     <!--/modal-->
@@ -110,38 +144,41 @@ $lister = $con->query("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNE
     </div>
 
     <div class="container-fluid mt-2">
-        <form method="POST" action="addToCart.php">
+        <form method="POST" action="">
             <div class="row g-1">
-            <?php
-            if ($lister->rowCount() > 0) {
-                while ($row = $lister->fetch()) {
-                    $id=$row['Id_Produit'];
-                    echo  "<div class='col-lg-3 col-md-4' >";
-                    echo  "<div class='card' id='card'>";
-                    echo    "<a href=#><div class='card-body'>
-                                        <img src=pages_images/product_iamges/" . $row['Image'] . " class='img-fluid'>
-                                        <input type=hidden value=".$row['Id_Produit'].">
-                                        <input name=nomproduit type=text value=" . $row['NomProduit'] . ">
-                                         <p>" . $row['Prix'] . ".00DH</p>
-                                    </div>";
-                    echo "<div class='card-footer d-flex justify-content-around'>
-                                            <button id='ajouterp' type='submit' class='btn btn-warning btn-sm' name='ajpanier'>consulter produit</button>
-                                     </div></a>";
-                    echo "</div>";
-                    echo  "</div>";
+                <?php
+                if ($lister->rowCount() > 0) {
+                    $produit = $lister->fetchAll();
+                    foreach ($produit as $prod) {
+                        //$id = $val['Id_Produit']; ?>
+                        <div class="col-lg-3 col-md-4">
+                            <div class="card" id="card">
+                                <a href="#">
+                                    <div class='card-body'>
+                                        <img src="<?php echo "pages_images/product_iamges/".$prod['Image']?>" class=" img-fluid">
+                                        <input type=text value="<?php $prod['Id_Produit']?>"> 
+                                        <input name="nomproduit" type="text" value="<?php echo $prod['NomProduit']?>">
+                                        <input type="text" value="<?php echo$prod['Prix'] ?>">
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-around">
+                                        <button id="ajouter-panier" type="button" class="btn btn-warning btn-sm" name="ajpanier">consulter produit</button>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                <?php }
+                } else {
+                    echo "<h1>categorie vide!!</h1>";
                 }
-            } else {
-                echo "<h1>categorie vide!!</h1>";
-            }
 
-            ?>
-
-        </div>
+                ?>
+            
+            </div>
         </form>
-        
+
     </div>
 
-    
+
 
     <!-- Footer -->
     <footer class="text-white text-center mt-5">

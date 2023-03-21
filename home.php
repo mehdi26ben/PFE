@@ -1,21 +1,4 @@
 <?php session_start();
-    if(isset($_SESSION['client'])){
-       
-        $logicon= "<div class='dropdown'>
-        <button class='btn btn-primary btn-floating dropdown-toggle hidden-arrow bg-dark' type='button' id='dropdownMenuButton2' data-mdb-toggle='dropdown' aria-expanded='false>
-          <i class='fas fa-ellipsis-v fa-lg'></i>
-        </button>
-        <ul class='dropdown-menu' aria-labelledby=dropdownMenuButton2>
-          <li><a class='dropdown-item' href=#> <i class='fas fa-user-alt pe-2'></i>My Profile</a></li>
-          <li><a class='dropdown-item' href=#> <i class=fas fa-cog pe-2></i>Settings</a></li>
-        </ul>
-      </div>";
-    }
-    else{
-        $logicon="<a class='text-light' type=button target=_blank data-toggle=modal data-toggle=tooltip data-placement=top title=Login style='color: rgb(11, 63, 207);' data-target='#modalLoginForm'><i class='fa-solid fa-user'></i></a>";
-    }
-    /*<a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a>*/
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,21 +19,55 @@
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
-            <nav>
-                <ul>
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+            <?php if (isset($_SESSION['client'])) { ?>
+                <nav>
+                    <ul style="width: 200px;">
 
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                        <li>
+                            <div class="dropdown">
 
-                    <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                </ul>
-            </nav>
+                                <button class="btn btn-outline-light dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $_SESSION['client']['Prenom'] ?>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
+                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+
+                                    <hr>
+                                    <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
+                                    <style>
+                                        .dropdown-item:hover {
+                                            background-color: lightgray;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                        <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    </ul>
+
+                </nav>
+
+            <?php } else {
+            ?>
+                <nav>
+                    <ul>
+                        <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+
+                        <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                        <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    </ul>
+                </nav>
+            <?php } ?>
         </div>
     </nav>
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="" method="post">
+            <form id="modalform" action="check_login.php" method="post">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
@@ -58,6 +75,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <input type="hidden" name="page_name" value="home.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
@@ -79,30 +97,6 @@
             </form>
         </div>
     </div>
-    <?php
-        require "connection.php";
-        if(isset($_POST['login'])){
-            $email=$_POST['email'];
-            $pwd=$_POST['pwd'];
-            if(!empty($email) && !empty($pwd)){
-                $log=$con->prepare("SELECT * FROM client WHERE email=? && pwd=?");
-                $log->execute([$email,$pwd]);
-                echo "hi";
-                if($log->rowCount()>0){
-                    
-                    $_SESSION['client']=$log->fetch();
-                    header("location:test.php");
-                    var_dump($_SESSION['client']);
-                }else{
-              echo  "<div class='alert alert-warning' role='alert'>
-                This is a warning alert—check it out!
-                </div>";
-                }
-            
-            }
-        }
-        
-    ?>
     <!--/modal-->
 
     <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
@@ -112,16 +106,13 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php">Gaming</a>
-                <a class="dropdown-item" href="#">Make-up & Santé</a>
-                <a class="dropdown-item" href="#">Maison & Fourniture</a>
-                <a class="dropdown-item" href="#">Cuisine</a>
-                <a class="dropdown-item" href="#">Télévision & Hi Tec</a>
-                <a class="dropdown-item" href="#">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Fournitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
                 <style>
                     .dropdown-item:hover {
                         background-color: lightgray;
@@ -131,9 +122,9 @@
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="">
-                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form class="d-flex" role="search" method="post" action="search.php">
+                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </nav>
@@ -201,7 +192,7 @@
         <div class="row mt-1 g-4">
 
             <div class="col-lg-3">
-                <a href="#" id="span-container">
+                <a href="categories.php?nomcate=Telephones_Et_Accessoires" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>téléphones & </span><span>accessoires</span>
@@ -216,7 +207,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="#" id="span-container">
+                    <a href="categories.php?nomcate=Sporst-_Et_Loisir" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>Sport &</span><span>Loisirs</span></div>
                             <div> <img src="pages_images/categories_images/sport&loisir.jpg" height="100" width="100" />
@@ -230,7 +221,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="#" id="span-container">
+                    <a href="categories.php?nomcate=Gaming" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>Gaming</span>
                             </div>
@@ -243,7 +234,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="#" id="span-container">
+                    <a href="categories.php?nomcate=Makeup_Et_Sante" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>make-up &</span><span>Santé</span> </div>
                             <div> <img src="pages_images/categories_images/makeup&health.jpg" height="100" width="100" /> </div>
@@ -256,7 +247,7 @@
             <div class="col-lg-3">
 
                 <div class="card pt-2">
-                    <a href="#" id="span-container">
+                    <a href="categories.php?nomcate=Maison_Et_Fournitures" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>maison et </span><span>fourniture</span>
                             </div>
@@ -269,7 +260,7 @@
             </div>
 
             <div class="col-lg-3">
-                <a href="#" id="span-container">
+                <a href="categories.php?nomcate=Cuisine" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>cuisine </div>
@@ -281,7 +272,7 @@
 
             </div>
             <div class="col-lg-3">
-                <a href="#" id="span-container">
+                <a href="categories.php?nomcate=Television_Et_Hitec" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>Télévision & </span><span>Hi tec</span>
@@ -293,7 +284,7 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <a href="#" id="span-container">
+                <a href="categories.php?nomcate=Informatique" id="span-container">
                     <div class="card pt-2">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>informatique</span> </div>
@@ -328,105 +319,40 @@
                 </div>
             </div>
         </section>
-        <section class="carousel slide py-2" data-ride="carousel" id="postsCarousel">
-            <div class="container pt-0 mt-1 carousel-inner">
-                <div class="row ">
-                    <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
-                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
-                        <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
-                    </div>
-                </div>
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png" alt="Carousel 1">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Insight</h6>
-                                    <h2>
-                                        <a href>Why Stuff Happens Every Year.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png" alt="Carousel 2">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Development</h6>
-                                    <h2>
-                                        <a href>How to Make Every Line Count.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/h1.png" alt="Carousel 3">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Design</h6>
-                                    <h2>
-                                        <a href>Responsive is Essential.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/pr3.png" alt="Carousel 4">
-                                </div>
-                                <div class="card-body pt-2">
-                                    <h6 class="small text-wide pb-2">Another</h6>
-                                    <h2>
-                                        <a href>Tagline or Call-to-action.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/pr4.png" alt="Carousel 5">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category
-                                        1
-                                    </h6>
-                                    <h2>
-                                        <a href>This is a Blog Title.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/pr5.png" alt="Carousel 6">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Category 3</h6>
-                                    <h2>
-                                        <a href>Catchy Title of a Blog Post.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
+        <div class="container-fluid pt-0 mt-1">
+
+            <div class="row">
+                <?php include "connection.php";
+                $Nouv = $con->prepare("SELECT * FROM produit inner join Categorie on produit.Id_Cate=Categorie.Id_Cate and MONTH(Date_Arrivage)=month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) LIMIT 6");
+                $Nouv->execute();
+                ?>
+                <?php if ($Nouv->rowCount() > 0) {
+                    $ResultatNouv = $Nouv->fetchAll();
+                    foreach ($ResultatNouv as $val) {
+                ?>
+
+                        <div class="col-md-4 mt-1">
+                            <div class="card h-100">
+                                <div class="card-img-top card-img-top-200">
+                                    <img class="img-fluid w-75" src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>">
+                                </div>
+                                <div class="card-body p-t-2">
+                                    <h6 class="small text-wide p-b-2"><?php echo $val['Nom_Cate'] ?></h6>
+                                    <h2>
+                                        <?php echo "<a href=product.php?nomprod=".$val['NomProduit'].">";echo$val['NomProduit']."</a>"; ?>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                <?php }
+                } else {
+                    echo "vide";
+                }
+                ?>
             </div>
-        </section>
+        </div>
     </div>
 
 

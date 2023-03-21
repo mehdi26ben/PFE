@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $(".alert").alert('close');
-    $("#ajouterp").click(function () { 
-        alert("produit ajouter avec success!")
+    $("#alert-panier").hide();
+    $("#ajouter-panier").click(function () { 
+        $("#alert-panier").show();
     });
 });

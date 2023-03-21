@@ -1,5 +1,12 @@
-<?php session_start(); 
-    echo $_GET['nomprod'];
+<?php
+session_start();
+if (!isset($_POST['prod_cat'])) {
+    header("location:home.php");
+}
+include "connection.php";
+$prod_cat=$_POST['prod_cat'];
+$search=$con->prepare("SELECT * FROM produit INNER JOIN categorie ON produit.Id_Produit=Categorie.Id_Cate and NomProduit like %?% or Nom_Cate LIKE %?%");
+$search->execute([$prod_cat,$prod_cat]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +16,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="jquery-3.6.3.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="product.css">
-    <script src="product.js"></script>
+    <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <title>Document</title>
 </head>
 
-<body style=" background-color:#DDDDDD;">
+<body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
@@ -76,7 +82,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="hidden" name="page_name" value="product.php">
+                    <input type="hidden" name="page_name" value="home.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
@@ -106,17 +112,14 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php">Gaming</a>
-                <a class="dropdown-item" href="#">Make-up & Santé</a>
-                <a class="dropdown-item" href="#">Maison & Fourniture</a>
-                <a class="dropdown-item" href="#">Cuisine</a>
-                <a class="dropdown-item" href="#">Télévision & Hi Tec</a>
-                <a class="dropdown-item" href="#">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Fournitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
                 <style>
                     .dropdown-item:hover {
                         background-color: lightgray;
@@ -133,72 +136,80 @@
             </div>
         </nav>
     </div>
+    <!-- Footer -->
+    <footer class="text-white text-center mt-2">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Footer Content</h5>
 
-    <div class="container-fluid mt-1 mb-1">
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-md-6 border-end">
-                    <div class="d-flex flex-column justify-content-center">
-                        <div class="main_image"> <img src="https://i.imgur.com/TAzli1U.jpg" id="main_product_image" width="350"> </div>
-                        <div class="thumbnail_images">
-                            <ul id="thumbnail">
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/TAzli1U.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70"></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <p>
+                        Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous
+                        efforçons de vous offrir une expérience de shopping fluide en proposant une large gamme de
+                        produits de haute qualité, des prix compétitifs et un service client exceptionnel. Nous
+                        apprécions votre confiance en nous et sommes engagés à assurer votre satisfaction à chaque
+                        achat. Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Nous
+                        apprécions votre entreprise et sommes impatients de vous servir à nouveau à l'avenir.
+                    </p>
                 </div>
-                <div class="col-md-6">
-                    <div class="p-3 right-side">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3>IIlana</h3> <span class="heart"><i class='bx bx-heart'></i></span>
-                        </div>
-                        <div class="mt-2 pr-3 content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                        </div>
-                        <h3>$430.99</h3>
-                        <div class="ratings d-flex flex-row align-items-center">
-                            <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
-                        </div>
-                        <div class="mt-5"> <span class="fw-bold">Color</span>
-                            <div class="colors">
-                                <ul id="marker">
-                                    <li id="marker-1"></li>
-                                    <li id="marker-2"></li>
-                                    <li id="marker-3"></li>
-                                    <li id="marker-4"></li>
-                                    <li id="marker-5"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <h2>Bootstrap Counter Field</h2>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number btn-primary" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                -
-                                            </button>
-                                        </span>
-                                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number btn-primary" data-type="plus" data-field="quant[1]">
-                                                +
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="buttons d-flex flex-row mt-5 gap-3"> <button class="btn btn-outline-dark">acheter</button></div>
-                    </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">social media</h5>
+
+                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2" id="socials">
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook" id="facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram" id="instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white" id="twitter"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-discord" id="discord"></i></a>
+                        </li>
+
+                    </ul>
                 </div>
+
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">contacter-nous</h5>
+
+                    <ul class="list-unstyled  h-75 d-flex flex-column justify-content-around pt-2">
+                        <li>
+                            <i class="fa-solid fa-phone"></i> <span>+212 627169632</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i> <span>mehdi.bentoufile@hotmail.fr</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-fax"></i> <span>+212 507845128</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
             </div>
+            <!--Grid row-->
         </div>
-    </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="home.php">MBshop</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

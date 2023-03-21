@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['client'])) {
+    header("location:home.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,15 +23,35 @@
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
             <nav>
-                <ul>
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+                <ul style="width: 200px;">
 
-                    <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                    <li>
+                        <div class="dropdown">
 
-                    <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <button class="btn btn-outline-light dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $_SESSION['client']['Prenom'] ?>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
+                                <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+
+                                <hr>
+                                <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
+                                <style>
+                                    .dropdown-item:hover {
+                                        background-color: lightgray;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                    <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 </ul>
+
             </nav>
-        </div>
+
     </nav>
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
