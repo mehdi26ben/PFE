@@ -3,10 +3,17 @@ session_start();
 if (!isset($_POST['prod_cat'])) {
     header("location:home.php");
 }
-include "connection.php";
-$prod_cat=$_POST['prod_cat'];
-$search=$con->prepare("SELECT * FROM produit INNER JOIN categorie ON produit.Id_Produit=Categorie.Id_Cate and NomProduit like %?% or Nom_Cate LIKE %?%");
-$search->execute([$prod_cat,$prod_cat]);
+if(isset($_POST['prod_cat'])){
+    include "connection.php";
+$prod_cat = $_POST['prod_cat'];
+$search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? ");
+$bind1 = '%' . $prod_cat . '%';
+$bind2 = '%'. $prod_cat . '%';
+$search->bindParam(1, $bind1, PDO::PARAM_STR);
+$search->bindParam(2, $bind2, PDO::PARAM_STR);
+$search->execute();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,13 +136,48 @@ $search->execute([$prod_cat,$prod_cat]);
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="">
-                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form class="d-flex" role="search" method="post">
+                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+                    <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </nav>
     </div>
+    <div class="container bg-white">
+        <!--<nav class="navbar navbar-expand-md navbar-light bg-white">
+            <div class="container-fluid p-0"> <a class="navbar-brand text-uppercase fw-800" href="#"><span class="border-red pe-2">New</span>Product</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
+                <div class="collapse navbar-collapse" id="myNav">
+                    <div class="navbar-nav ms-auto"> <a class="nav-link active" aria-current="page" href="#">All</a> <a class="nav-link" href="#">Women's</a> <a class="nav-link" href="#">Men's</a> <a class="nav-link" href="#">Kid's</a> <a class="nav-link" href="#">Accessories</a> <a class="nav-link" href="#">Cosmetics</a> </div>
+                </div>
+            </div>
+        </nav>-->
+        <div class="row">
+            <?php if ($search->rowCount() > 0) {
+                $row = $search->fetchAll();
+                foreach ($row as $val) { 
+                 $id=$val['Id_Produit']?>
+                    <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+                        <div class="product"> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
+                            <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
+                                <li class="icon"><?php echo "<a href=product.php?idproduit=".$id."><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
+                                <li class="icon mx-3"><span class="far fa-heart"></span></li>
+                                <li class="icon"><span class="fas fa-shopping-bag"></span></li>
+                            </ul>
+                        </div>
+                        <div class="tag bg-red">sale</div>
+                        <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
+                        <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
+                        <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
+                    </div>
+                <?php   }
+            } else { ?>
+                <h1>Aucune Resultat</h1>
+            <?php }
+
+            ?>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="text-white text-center mt-2">
         <!-- Grid container -->

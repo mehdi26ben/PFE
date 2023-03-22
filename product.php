@@ -1,5 +1,12 @@
 <?php session_start(); 
-    echo $_GET['nomprod'];
+    if(!isset($_GET['idproduit'])){
+        header("location:home.php");
+    }
+$idproduit=$_GET['idproduit'];
+include "connection.php";
+$search=$con->prepare("SELECT * FROM produit where Id_Produit=?");
+$search->execute([$idproduit]);
+$reultat=$search->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,14 +113,14 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php">Gaming</a>
-                <a class="dropdown-item" href="#">Make-up & Santé</a>
-                <a class="dropdown-item" href="#">Maison & Fourniture</a>
-                <a class="dropdown-item" href="#">Cuisine</a>
-                <a class="dropdown-item" href="#">Télévision & Hi Tec</a>
-                <a class="dropdown-item" href="#">Informatique</a>
+            <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sports_Et_Loisirs">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Founitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
                 <hr>
                 <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
                     Login</a>
@@ -126,9 +133,9 @@
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="">
-                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form class="d-flex" role="search" method="post" action="search.php">
+                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+                    <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </nav>
@@ -139,26 +146,26 @@
             <div class="row g-0">
                 <div class="col-md-6 border-end">
                     <div class="d-flex flex-column justify-content-center">
-                        <div class="main_image"> <img src="https://i.imgur.com/TAzli1U.jpg" id="main_product_image" width="350"> </div>
-                        <div class="thumbnail_images">
+                        <div class="main_image"> <img src="<?php echo "pages_images/product_iamges/".$reultat['Image']?>" width="350"> </div>
+                        <!--<div class="thumbnail_images">
                             <ul id="thumbnail">
                                 <li><img onclick="changeImage(this)" src="https://i.imgur.com/TAzli1U.jpg" width="70"></li>
                                 <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70"></li>
                                 <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70"></li>
                                 <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70"></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="p-3 right-side">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3>IIlana</h3> <span class="heart"><i class='bx bx-heart'></i></span>
+                            <h3><?php echo $reultat['NomProduit']; ?></h3> <span class="heart"><i class='bx bx-heart'></i></span>
                         </div>
                         <div class="mt-2 pr-3 content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                            <p><?php echo $reultat['Description']; ?></p>
                         </div>
-                        <h3>$430.99</h3>
+                        <h3><?php echo $reultat['Prix'];?></h3>
                         <div class="ratings d-flex flex-row align-items-center">
                             <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
                         </div>

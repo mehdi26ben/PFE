@@ -1,8 +1,10 @@
 <?php session_start();
 include 'connection.php';
-if(!isset($_GET['nomcate'])){
+if (!isset($_GET['nomcate'])) {
     header("location:home.php");
 }
+
+//products display
 $nomcate = $_GET['nomcate'];
 $lister = $con->prepare("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=?");
 $lister->execute([$nomcate]);
@@ -26,7 +28,7 @@ $lister->execute([$nomcate]);
 
 <body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
-        <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>--> 
+        <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>-->
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
@@ -115,14 +117,14 @@ $lister->execute([$nomcate]);
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php">Gaming</a>
-                <a class="dropdown-item" href="#">Make-up & Santé</a>
-                <a class="dropdown-item" href="#">Maison & Fourniture</a>
-                <a class="dropdown-item" href="#">Cuisine</a>
-                <a class="dropdown-item" href="#">Télévision & Hi Tec</a>
-                <a class="dropdown-item" href="#">Informatique</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sports_Et_Loisirs">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Founitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
                 <hr>
                 <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
                     Login</a>
@@ -135,48 +137,44 @@ $lister->execute([$nomcate]);
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="">
-                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form class="d-flex" role="search" method="post" action="search.php">
+                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+                    <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </nav>
     </div>
 
-    <div class="container-fluid mt-2">
-        <form method="POST" action="">
-            <div class="row g-1">
-                <?php
-                if ($lister->rowCount() > 0) {
-                    $produit = $lister->fetchAll();
-                    foreach ($produit as $prod) {
-                        //$id = $val['Id_Produit']; ?>
-                        <div class="col-lg-3 col-md-4">
-                            <div class="card" id="card">
-                                <a href="#">
-                                    <div class='card-body'>
-                                        <img src="<?php echo "pages_images/product_iamges/".$prod['Image']?>" class=" img-fluid">
-                                        <input type=text value="<?php $prod['Id_Produit']?>"> 
-                                        <input name="nomproduit" type="text" value="<?php echo $prod['NomProduit']?>">
-                                        <input type="text" value="<?php echo$prod['Prix'] ?>">
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-around">
-                                        <button id="ajouter-panier" type="button" class="btn btn-warning btn-sm" name="ajpanier">consulter produit</button>
-                                    </div>
-                                </a>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <?php
+            if ($lister->rowCount() > 0) {
+                $produit = $lister->fetchAll();
+                foreach ($produit as $prod) {
+                    //$id = $val['Id_Produit']; 
+                    $id=$prod['Id_Produit']?>
+                    <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+                        <div class="product"> <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $prod['Image'] ?>" alt="">
+                            <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
+                                <li class="icon"><?php echo "<a href=product.php?idproduit=".$id."><span class='fas fa-expand-arrows-alt'></span></a>"?></li>
+                                <li class="icon mx-3"><span class="far fa-heart"></span></li>
+                                <li class="icon"><span class="fas fa-shopping-bag"></span></li>
+                            </ul>
                         </div>
-                <?php }
-                } else {
-                    echo "<h1>categorie vide!!</h1>";
-                }
+                        <div class="tag bg-red">sale</div>
+                        <div class="title pt-4 pb-1"><?php echo $prod['NomProduit'] ?></div>
+                        <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
+                        <div class="price"><?php echo $prod['Prix'] ?>.00DH</div>
+                    </div>
+            <?php }
+            } else {
+                echo "<h1>categorie vide!!</h1>";
+            }
 
-                ?>
-            
-            </div>
-        </form>
-
+            ?>
+        </div>
     </div>
+
 
 
 

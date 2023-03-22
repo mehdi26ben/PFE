@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="signup.css">
     <script src="jquery-3.6.3.js"></script>
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <script src="signup.js"></script>
     <title>Document</title>
 </head>
 
@@ -20,7 +21,7 @@
                     <div class="card-header text-center" style="font-size: 20px;color: white;">Register</div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="post" action="insert_client.php">
+                        <form id="form" class="form-horizontal" method="post" action="insert_client.php">
 
                             <div class="form-group ">
                                 <label for="name" class="cols-sm-2 control-label">Nom</label>
@@ -75,7 +76,7 @@
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="pwd" id="confirm"
-                                            placeholder="entrer un mot de passe" required/>
+                                            placeholder="entrer un mot de passe" minlength="5" required/>
                                     </div>
                                 </div>
                                 <input type="checkbox" id="showpwd"><span style="margin-left: 2%;">afficher mot de passe</span> 

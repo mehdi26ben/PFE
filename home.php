@@ -106,10 +106,10 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sports_Et_Loisirs">Sports Et Loisir</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Fournitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Founitures">Maison & Fourniture</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
@@ -123,7 +123,7 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <form class="d-flex" role="search" method="post" action="search.php">
-                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
                     <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
@@ -145,8 +145,8 @@
                     <div class="carousel-item active" data-bs-interval="10000">
                         <img src="pages_images/login/home_slide5.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>First slide label</h1>
-                            <h5>Some representative placeholder content for the first slide.</h5>
+                            <h1>Maison Et Fournitures</h1>
+                            <h5>Some representative placehold</h5>
                         </div>
                     </div>
                 </a>
@@ -155,7 +155,7 @@
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="pages_images/login/electro_devicesbg.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>Second slide label</h1>
+                            <h1>Make Up et Santé</h1>
                             <h5>Some representative placeholder content for the second slide.</h5>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                     <div class="carousel-item">
                         <img src="pages_images/login/make_up4.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>Third slide label</h1>
+                            <h1>Téléphones Et Accessoires</h1>
                             <h5>Some representative placeholder content for the third slide.</h5>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
 
             <div class="col-lg-3">
                 <div class="card pt-2">
-                    <a href="categories.php?nomcate=Sporst-_Et_Loisir" id="span-container">
+                    <a href="categories.php?nomcate=Sports_Et_Loisirs" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"> <span>Sport &</span><span>Loisirs</span></div>
                             <div> <img src="pages_images/categories_images/sport&loisir.jpg" height="100" width="100" />
@@ -331,11 +331,10 @@
                     $ResultatNouv = $Nouv->fetchAll();
                     foreach ($ResultatNouv as $val) {
                 ?>
-
                         <div class="col-md-4 mt-1">
                             <div class="card h-100">
                                 <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid w-75" src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>">
+                                    <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>">
                                 </div>
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2"><?php echo $val['Nom_Cate'] ?></h6>
@@ -484,23 +483,23 @@
         <div class="row">
             <div class="col-md-3 py-3 py-md-0">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <h3>Free Shipping</h3>
-                <p>On order over $1000</p>
+                <h3>Livraison gratuite</h3>
+                <p> pour toute commande de plus de 1000$</p>
             </div>
             <div class="col-md-3 py-3 py-md-0">
                 <i class="fa-solid fa-rotate-left"></i>
-                <h3>Free Returns</h3>
-                <p>Within 30 days</p>
+                <h3>Routourne et Gratuits</h3>
+                <p>dans 30 jours</p>
             </div>
             <div class="col-md-3 py-3 py-md-0">
                 <i class="fa-solid fa-truck"></i>
-                <h3>Fast Delivery</h3>
-                <p>World Wide</p>
+                <h3>Livraison Rapide</h3>
+                <p>vers touts les villes</p>
             </div>
             <div class="col-md-3 py-3 py-md-0">
                 <i class="fa-solid fa-thumbs-up"></i>
-                <h3>Big choice</h3>
-                <p>Of products</p>
+                <h3>Trés Bon Qualite</h3>
+                <p>Des Produits</p>
             </div>
         </div>
     </div>
