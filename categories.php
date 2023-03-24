@@ -152,19 +152,22 @@ $lister->execute([$nomcate]);
                 $produit = $lister->fetchAll();
                 foreach ($produit as $prod) {
                     //$id = $val['Id_Produit']; 
-                    $id=$prod['Id_Produit']?>
+                    $id = $prod['Id_Produit'] ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-                        <div class="product"> <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $prod['Image'] ?>" alt="">
-                            <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                                <li class="icon"><?php echo "<a href=product.php?idproduit=".$id."><span class='fas fa-expand-arrows-alt'></span></a>"?></li>
-                                <li class="icon mx-3"><span class="far fa-heart"></span></li>
-                                <li class="icon"><span class="fas fa-shopping-bag"></span></li>
-                            </ul>
-                        </div>
-                        <div class="tag bg-red">sale</div>
-                        <div class="title pt-4 pb-1"><?php echo $prod['NomProduit'] ?></div>
-                        <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
-                        <div class="price"><?php echo $prod['Prix'] ?>.00DH</div>
+                        <form action="addToCart.php" method="post">
+                            <div class="product"> <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $prod['Image'] ?>" alt="">
+                                <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
+                                    <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
+                                    <li class="icon mx-3"><span class="far fa-heart"></span></li>
+                                    <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="idproduit" value="<?php echo $prod['Id_Produit']?>">
+                            <div class="tag bg-red">sale</div>
+                            <div class="title pt-4 pb-1"><?php echo $prod['NomProduit'] ?></div>
+                            <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
+                            <div class="price"><?php echo $prod['Prix'] ?>.00DH</div>
+                        </form>
                     </div>
             <?php }
             } else {
