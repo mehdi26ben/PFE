@@ -3,15 +3,15 @@ session_start();
 if (!isset($_POST['prod_cat'])) {
     header("location:home.php");
 }
-if(isset($_POST['prod_cat'])){
+if (isset($_POST['prod_cat'])) {
     include "connection.php";
-$prod_cat = $_POST['prod_cat'];
-$search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? ");
-$bind1 = '%' . $prod_cat . '%';
-$bind2 = '%'. $prod_cat . '%';
-$search->bindParam(1, $bind1, PDO::PARAM_STR);
-$search->bindParam(2, $bind2, PDO::PARAM_STR);
-$search->execute();
+    $prod_cat = $_POST['prod_cat'];
+    $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? ");
+    $bind1 = '%' . $prod_cat . '%';
+    $bind2 = '%' . $prod_cat . '%';
+    $search->bindParam(1, $bind1, PDO::PARAM_STR);
+    $search->bindParam(2, $bind2, PDO::PARAM_STR);
+    $search->execute();
 }
 
 ?>
@@ -154,20 +154,23 @@ $search->execute();
         <div class="row">
             <?php if ($search->rowCount() > 0) {
                 $row = $search->fetchAll();
-                foreach ($row as $val) { 
-                 $id=$val['Id_Produit']?>
+                foreach ($row as $val) {
+                    $id = $val['Id_Produit'] ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-                        <div class="product"> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
-                            <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                                <li class="icon"><?php echo "<a href=product.php?idproduit=".$id."><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
-                                <li class="icon mx-3"><span class="far fa-heart"></span></li>
-                                <li class="icon"><span class="fas fa-shopping-bag"></span></li>
-                            </ul>
-                        </div>
-                        <div class="tag bg-red">sale</div>
-                        <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                        <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
-                        <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
+                        <form action="addToCart.php" method="post">
+                            <div class="product"> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
+                                <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
+                                    <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
+                                    <li class="icon mx-3"><span class="far fa-heart"></span></li>
+                                    < <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']?>">
+                            <div class="tag bg-red">sale</div>
+                            <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
+                            <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
+                            <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
+                        </form>
                     </div>
                 <?php   }
             } else { ?>

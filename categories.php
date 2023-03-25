@@ -150,23 +150,23 @@ $lister->execute([$nomcate]);
             <?php
             if ($lister->rowCount() > 0) {
                 $produit = $lister->fetchAll();
-                foreach ($produit as $prod) {
+                foreach ($produit as $val) {
                     //$id = $val['Id_Produit']; 
-                    $id = $prod['Id_Produit'] ?>
+                    $id = $val['Id_Produit'] ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                         <form action="addToCart.php" method="post">
-                            <div class="product"> <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $prod['Image'] ?>" alt="">
+                            <div class="product"> <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
                                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                                     <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
                                     <li class="icon mx-3"><span class="far fa-heart"></span></li>
                                     <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
                                 </ul>
                             </div>
-                            <input type="hidden" name="idproduit" value="<?php echo $prod['Id_Produit']?>">
+                            <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']?>">
                             <div class="tag bg-red">sale</div>
-                            <div class="title pt-4 pb-1"><?php echo $prod['NomProduit'] ?></div>
+                            <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
                             <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
-                            <div class="price"><?php echo $prod['Prix'] ?>.00DH</div>
+                            <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
                         </form>
                     </div>
             <?php }
