@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_POST['idproduit'])){
+if(isset($_POST['idproduit'])){
     header("location:home.php");
 }
 if(!isset($_SESSION['client'])){

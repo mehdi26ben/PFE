@@ -7,9 +7,6 @@
         $idproduit=$_GET['idproduit'];
         $del=$con->prepare("DELETE FROM panier WHERE Id_Produit=? AND Id_Client=?");
         $del->execute([$idproduit,$idclient]);
-        echo "supprimer avec success";
-    }
-    else{
-        header("location:home.php");
+        header("location:cart.php");
     }
 ?>

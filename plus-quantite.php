@@ -18,6 +18,6 @@
     if($Rproduit['Quantite']>=$Rpanier['Quantite']){
         $upd=$con->prepare("UPDATE panier set Quantite=Quantite+1 WHERE Id_Produit=? AND Id_Client=?");
         $upd->execute([$idproduit,$idclient]);
-        header("location:categories.php");
+        header("location:cart.php");
     }
 ?>

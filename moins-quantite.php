@@ -15,7 +15,7 @@
     $Qpanier->execute([$idproduit,$idclient]);
     $Rpanier=$Qpanier->fetch();
     
-    if($Rpanier['Quantite']>0){
+    if($Rpanier['Quantite']>1){
         $upd=$con->prepare("UPDATE panier set Quantite=Quantite-1 WHERE Id_Produit=? AND Id_Client=?");
         $upd->execute([$idproduit,$idclient]);
         header("location:categories.php");
