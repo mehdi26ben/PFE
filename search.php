@@ -3,7 +3,7 @@ session_start();
 if (!isset($_POST['prod_cat'])) {
     header("location:home.php");
 }
-if (isset($_POST['prod_cat'])) {
+if (isset($_POST['prod_cat']) || isset($_GET['prod_cat'])) {
     include "connection.php";
     $prod_cat = $_POST['prod_cat'];
     $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? ");
@@ -165,6 +165,7 @@ if (isset($_POST['prod_cat'])) {
                                     < <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
                                 </ul>
                             </div>
+                            <input type="hidden" name="prod_cat" value="<?php echo $prod_cat?>">
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>

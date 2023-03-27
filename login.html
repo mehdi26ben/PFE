@@ -23,7 +23,7 @@
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-2 text-black">
 
-                                    <form>
+                                    <form method="post" action="check_login.php">
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                     <i class="fa-solid fa-user" style="color: #0f0e21; font-size:30px;margin-right:2%;"></i>
@@ -33,21 +33,21 @@
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                                        <input type="email" id="form2Example17" class="form-control form-control-lg" name="email"/>
                                         <label class="form-label" for="form2Example17">Email address</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                                        <input type="password" id="form2Example27" class="form-control form-control-lg" name="pwd" />
                                         <label class="form-label" for="form2Example27">Password</label>
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit" name="login">Login</button>
                                     </div>
 
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="signup.html"
-                                        style="color: #393f81;">Register here</a></p>
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">vous-n'avez pas un compte? <a href="signup.html"
+                                        style="color: #393f81;">S'inscrire içi</a></p>
                                     <a href="#!" class="small text-muted">Terms of use.</a>
                                     <a href="#!" class="small text-muted">Privacy policy</a>
                                     </form>

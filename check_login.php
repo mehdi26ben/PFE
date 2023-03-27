@@ -9,8 +9,7 @@
             if ($log->rowCount() > 0) {
                 session_start();
                 $_SESSION['client'] = $log->fetch();
-                $direction=$_POST['page_name'];
-                header("location:".$direction);
+                header("location:home.php");
             } else {
                 
             }

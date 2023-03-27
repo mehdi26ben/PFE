@@ -19,6 +19,7 @@ $q->execute([$idclient]);
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="cart.css">
+    <script src="cart.js"></script>
     <title>Document</title>
 </head>
 
@@ -134,7 +135,7 @@ $q->execute([$idclient]);
                     $resultat = $q->fetchAll();
                     echo "<h5 class='mb-2'>Nombre Des Articles: " . $q->rowCount() . "</h5>";
                     foreach ($resultat as $val) { 
-                        $total_prix=$total_prix+$val['prix'];
+                        $total_prix=$total_prix+($val['prix']*$val['Quantite']);
                     ?>
                         <div class="col-md-8">
                             <form action="" method="post">
@@ -169,17 +170,17 @@ $q->execute([$idclient]);
 
                                             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                                 <!-- Quantity -->
-                                                <div class="d-flex mb-4" style="max-width: 300px">
-                                                    <a href="moins-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" class="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <div  class="d-flex mb-4" style="max-width: 300px">
+                                                    <a href="moins-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-moins" class="btn btn-primary px-3 me-2"  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                         <i class="fas fa-minus"></i>
                                                     </a>
 
                                                     <div class="form-outline">
-                                                        <input id="form1" min="0" name="quantity" value="<?php echo $val['Quantite'] ?>" type="number" class="form-control" />
+                                                        <input id="form1" min="0"  name="quantity" value="<?php echo $val['Quantite'] ?>" type="number" class="form-control" />
                                                         <label class="form-label" for="form1">Quantity</label>
                                                     </div>
 
-                                                    <a href="plus-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" class="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                    <a href="plus-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-plus" class="btn btn-primary px-3 ms-2"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                         <i class="fas fa-plus"></i>
                                                     </a>
                                                 </div>
@@ -226,7 +227,8 @@ $q->execute([$idclient]);
                                     <p class="mb-0">(including VAT)</p>
                                 </strong>
                             </div>
-                            <span><strong><?php echo $total_prix; ?>.00DH</strong></span>
+                            <span><strong> <?php echo $total_prix?>.00DH</strong></span>      
+                                                   
                         </li>
                     </ul>
 

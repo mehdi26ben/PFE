@@ -2,7 +2,7 @@
     if(!isset($_GET['idproduit'])){
         header("location:home.php");
     }
-    $idproduit=$_GET['idproduit'];
+   echo $idproduit=$_GET['idproduit'];
 
     session_start();
     include "connection.php";
@@ -18,6 +18,6 @@
     if($Rpanier['Quantite']>1){
         $upd=$con->prepare("UPDATE panier set Quantite=Quantite-1 WHERE Id_Produit=? AND Id_Client=?");
         $upd->execute([$idproduit,$idclient]);
-        header("location:categories.php");
+        header("location:cart.php");
     }
 ?>
