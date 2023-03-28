@@ -325,7 +325,7 @@
 
             <div class="row">
                 <?php include "connection.php";
-                $Nouv = $con->prepare("SELECT * FROM produit inner join Categorie on produit.Id_Cate=Categorie.Id_Cate and MONTH(Date_Arrivage)=month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) LIMIT 6");
+                $Nouv = $con->prepare("SELECT * FROM produit inner join Categorie on produit.Id_Cate=Categorie.Id_Cate and MONTH(Date_Arrivage)=month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) and Quantite>0 LIMIT 6");
                 $Nouv->execute();
                 ?>
                 <?php if ($Nouv->rowCount() > 0) {

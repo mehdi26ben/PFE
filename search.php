@@ -6,7 +6,7 @@ if (!isset($_POST['prod_cat'])) {
 if (isset($_POST['prod_cat']) || isset($_GET['prod_cat'])) {
     include "connection.php";
     $prod_cat = $_POST['prod_cat'];
-    $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? ");
+    $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? and produit.Quantite>0 ");
     $bind1 = '%' . $prod_cat . '%';
     $bind2 = '%' . $prod_cat . '%';
     $search->bindParam(1, $bind1, PDO::PARAM_STR);

@@ -6,7 +6,7 @@ if (!isset($_GET['nomcate'])) {
 
 //products display
 $nomcate = $_GET['nomcate'];
-$lister = $con->prepare("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=?");
+$lister = $con->prepare("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=? and produit.Quantite>0");
 $lister->execute([$nomcate]);
 
 //var_dump($produit);
