@@ -3,6 +3,10 @@ session_start();
 if (!isset($_SESSION['client'])) {
     header("location:home.php");
 }
+if (isset($_SESSION['alert'])) {
+    echo "<script>alert('" . $_SESSION['alert'] . "');</script>";
+    unset($_SESSION['alert']);
+  }
 include "connection.php";
 $idclient = $_SESSION['client']['Id_Client'];
 $q = $con->prepare("SELECT pr.Id_Produit,NomProduit,Image,pa.Quantite,prix FROM produit pr inner join panier pa on pr.Id_Produit=pa.Id_Produit  where pa.Id_Client=?");
@@ -27,41 +31,55 @@ $q->execute([$idclient]);
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
-            <nav>
-                <ul style="width: 200px;">
+            <?php if (isset($_SESSION['client'])) { ?>
+                <nav>
+                    <ul style="width: 200px;">
 
-                    <li>
-                        <div class="dropdown">
+                        <li>
+                            <div class="dropdown">
 
-                            <button class="btn btn-outline-light dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['client']['Prenom'] ?>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+                                <button class="btn btn-outline-light dropdown-toggle btn-sm " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $_SESSION['client']['Prenom'] ?>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
+                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
 
-                                <hr>
-                                <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
-                                <style>
-                                    .dropdown-item:hover {
-                                        background-color: lightgray;
-                                    }
-                                </style>
+                                    <hr>
+                                    <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
+                                    <style>
+                                        .dropdown-item:hover {
+                                            background-color: lightgray;
+                                        }
+                                    </style>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                        <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
 
-                    <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                </ul>
+                        <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    </ul>
 
-            </nav>
+                </nav>
 
+            <?php } else {
+            ?>
+                <nav>
+                    <ul>
+                        <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" style="color: rgb(11, 63, 207);" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i></a></li>
+
+                        <li><a class="text-light" type="button" target="_blank" data-toggle="modal" data-target="#modalLoginForm" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+
+                        <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    </ul>
+                </nav>
+            <?php } ?>
+        </div>
     </nav>
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="" method="post">
+            <form id="modalform" action="check_login.php" method="post">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
@@ -69,26 +87,26 @@ $q->execute([$idclient]);
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <input type="hidden" name="page_name" value="home.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="defaultForm-email" class="form-control validate" required>
+                            <input type="email" id="defaultForm-email" class="form-control validate" name="email" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
                         </div>
 
                         <div class="md-form mb-4">
                             <i class="fas fa-lock prefix grey-text"></i>
-                            <input type="password" id="defaultForm-pass" class="form-control validate" required>
+                            <input type="password" id="defaultForm-pass" class="form-control validate" name="pwd" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                         </div>
                         <a href="signup.html">create new account</a>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit">Login</button>
+                        <button class="btn btn-primary" type="submit" name="login">Login</button>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
     <!--/modal-->
@@ -99,17 +117,14 @@ $q->execute([$idclient]);
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="#">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php">Gaming</a>
-                <a class="dropdown-item" href="#">Make-up & Santé</a>
-                <a class="dropdown-item" href="#">Maison & Fourniture</a>
-                <a class="dropdown-item" href="#">Cuisine</a>
-                <a class="dropdown-item" href="#">Télévision & Hi Tec</a>
-                <a class="dropdown-item" href="#">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Fournitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
                 <style>
                     .dropdown-item:hover {
                         background-color: lightgray;
@@ -119,9 +134,9 @@ $q->execute([$idclient]);
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="">
-                    <input name="porduct" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form class="d-flex" role="search" method="post" action="search.php">
+                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+                    <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </nav>
@@ -130,13 +145,13 @@ $q->execute([$idclient]);
         <div class="container py-1">
             <div class="row d-flex justify-content-center my-2">
                 <?php
-                $total_prix=0;
+                $total_prix = 0;
                 if ($q->rowCount() > 0) {
                     $resultat = $q->fetchAll();
                     echo "<h5 class='mb-2'>Nombre Des Articles: " . $q->rowCount() . "</h5>";
-                    foreach ($resultat as $val) { 
-                        $total_prix=$total_prix+($val['prix']*$val['Quantite']);
-                    ?>
+                    foreach ($resultat as $val) {
+                        $total_prix = $total_prix + ($val['prix'] * $val['Quantite']);
+                ?>
                         <div class="col-md-8">
                             <form action="" method="post">
                                 <div class="card mb-4">
@@ -170,17 +185,17 @@ $q->execute([$idclient]);
 
                                             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                                 <!-- Quantity -->
-                                                <div  class="d-flex mb-4" style="max-width: 300px">
-                                                    <a href="moins-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-moins" class="btn btn-primary px-3 me-2"  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <div class="d-flex mb-4" style="max-width: 300px">
+                                                    <a href="moins-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-moins" class="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                         <i class="fas fa-minus"></i>
                                                     </a>
 
                                                     <div class="form-outline">
-                                                        <input id="form1" min="0"  name="quantity" value="<?php echo $val['Quantite'] ?>" type="number" class="form-control" />
+                                                        <input id="form1" min="0" name="quantity" value="<?php echo $val['Quantite'] ?>" type="number" class="form-control" />
                                                         <label class="form-label" for="form1">Quantity</label>
                                                     </div>
 
-                                                    <a href="plus-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-plus" class="btn btn-primary px-3 ms-2"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                    <a href="plus-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-plus" class="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                         <i class="fas fa-plus"></i>
                                                     </a>
                                                 </div>
@@ -188,7 +203,7 @@ $q->execute([$idclient]);
 
                                                 <!-- Price -->
                                                 <p class="text-start text-md-center">
-                                                    <strong><?php echo $val['prix']*$val['Quantite'] ?>.00DH</strong>
+                                                    <strong><?php echo $val['prix'] * $val['Quantite'] ?>.00DH</strong>
                                                 </p>
                                                 <!-- Price -->
                                             </div>
@@ -201,7 +216,10 @@ $q->execute([$idclient]);
                 <?php
                     }
                 }
-                ?>
+                else{?>
+                <center><h2><i class="fa-solid fa-cart-shopping"></i> panier vide</h2> </center>   
+                
+                <?php }?>
             </div>
         </div>
 
@@ -213,12 +231,12 @@ $q->execute([$idclient]);
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                            Products
-                            <span>$53.98</span>
+                            Nombre des Produits
+                            <span><?php echo $q->rowCount()?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                             Shipping
-                            <span>Gratis</span>
+                            <span>Gratuit</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                             <div>
@@ -227,14 +245,22 @@ $q->execute([$idclient]);
                                     <p class="mb-0">(including VAT)</p>
                                 </strong>
                             </div>
-                            <span><strong> <?php echo $total_prix?>.00DH</strong></span>      
-                                                   
+                            <span><strong> <?php echo $total_prix ?>.00DH</strong></span>
+
                         </li>
                     </ul>
-
-                    <button type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
+                    <?php  
+                        if($q->rowCount()>0){?>
+                    <a href="checkout.html" type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
                         Go to checkout
-                    </button>
+                    </a>
+                    <?php
+                    }
+                        else{?>
+                                <button disabled type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
+                                    Go to checkout
+                                 </button>
+                       <?php }?>
                 </div>
             </div>
         </div>

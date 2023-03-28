@@ -183,26 +183,28 @@ $reultat = $search->fetch();
                                 </div>
                             </div>
                             <div class="container">
-                                <h2>Bootstrap Counter Field</h2>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <div class="input-group">
+                                        <p>
+                                        </p>
+                                        <!--<div class="input-group">
                                             <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default btn-number btn-primary" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                    -
+                                                <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                    <i class="fa-solid fa-minus"></i>
                                                 </button>
                                             </span>
                                             <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
                                             <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default btn-number btn-primary" data-type="plus" data-field="quant[1]">
-                                                    +
+                                                <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                                                    <i class="fa-solid fa-plus"></i>
                                                 </button>
                                             </span>
-                                        </div>
+                                        </div>-->
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="buttons d-flex flex-row mt-5 gap-3" > <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button></div>
+                            <div class="buttons d-flex flex-row mt-5 gap-3"> <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button></div>
                         </div>
                     </div>
                 </div>

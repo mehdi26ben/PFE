@@ -20,4 +20,8 @@
         $upd->execute([$idproduit,$idclient]);
         header("location:cart.php");
     }
+    else{
+        $_SESSION['alert'] = "quantite en stock est insuffisant!";
+        header("location:cart.php");
+    }
 ?>

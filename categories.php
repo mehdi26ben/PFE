@@ -162,7 +162,7 @@ $lister->execute([$nomcate]);
                                     <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
                                 </ul>
                             </div>
-                            <input type="hidden" name="nomcate" value="<?php echo $nomcate ?>">
+                            <input type="hidden" name="nomcate" value="<?php echo $val['Id_Produit']?>">
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
@@ -174,7 +174,6 @@ $lister->execute([$nomcate]);
             } else {
                 echo "<h1>categorie vide!!</h1>";
             }
-
             ?>
         </div>
     </div>
