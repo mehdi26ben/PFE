@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['alert'])){
+        echo "<script>alert('" . $_SESSION['alert'] . "');</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +39,12 @@
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                                     <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example17" class="form-control form-control-lg" name="email"/>
+                                        <input type="email" id="form2Example17" class="form-control form-control-lg" name="email" required/>
                                         <label class="form-label" for="form2Example17">Email address</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example27" class="form-control form-control-lg" name="pwd" />
+                                        <input type="password" id="form2Example27" class="form-control form-control-lg" name="pwd" required/>
                                         <label class="form-label" for="form2Example27">Password</label>
                                     </div>
 

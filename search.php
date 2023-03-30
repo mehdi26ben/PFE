@@ -3,10 +3,16 @@ session_start();
 if (!isset($_POST['prod_cat'])) {
     header("location:home.php");
 }
-if (isset($_POST['prod_cat']) || isset($_GET['prod_cat'])) {
+/*if(isset($_GET['prod_cat'])){
+    $prod_cat=$_GET['prod_cat'];   
+}
+if(isset($_POST['prod_cat'])){
+    $prod_cat=$_POST['prod_cat'];  
+}*/
+if (isset($_POST['prod_cat'])) {
     include "connection.php";
     $prod_cat = $_POST['prod_cat'];
-    $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? and produit.Quantite>0 ");
+    $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? and produit.Quantite>0 LIMIT 10 ");
     $bind1 = '%' . $prod_cat . '%';
     $bind2 = '%' . $prod_cat . '%';
     $search->bindParam(1, $bind1, PDO::PARAM_STR);
@@ -44,7 +50,7 @@ if (isset($_POST['prod_cat']) || isset($_GET['prod_cat'])) {
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
@@ -155,14 +161,15 @@ if (isset($_POST['prod_cat']) || isset($_GET['prod_cat'])) {
             <?php if ($search->rowCount() > 0) {
                 $row = $search->fetchAll();
                 foreach ($row as $val) {
-                    $id = $val['Id_Produit'] ?>
+                    $id = $val['Id_Produit']
+                    ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                         <form action="addToCart.php" method="post">
                             <div class="product"> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
                                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                                     <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
                                     <li class="icon mx-3"><span class="far fa-heart"></span></li>
-                                    < <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
+                                    <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></<li>
                                 </ul>
                             </div>
                             <input type="hidden" name="prod_cat" value="<?php echo $prod_cat?>">

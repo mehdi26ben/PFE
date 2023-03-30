@@ -42,7 +42,7 @@ $q->execute([$idclient]);
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>

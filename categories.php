@@ -4,9 +4,10 @@ if (!isset($_GET['nomcate'])) {
     header("location:home.php");
 }
 
+
 //products display
 $nomcate = $_GET['nomcate'];
-$lister = $con->prepare("SELECT Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=? and produit.Quantite>0");
+$lister = $con->prepare("SELECT Nom_Cate,Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=? and produit.Quantite>0 LIMIT 10");
 $lister->execute([$nomcate]);
 
 //var_dump($produit);
@@ -42,7 +43,7 @@ $lister->execute([$nomcate]);
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
@@ -162,7 +163,7 @@ $lister->execute([$nomcate]);
                                     <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
                                 </ul>
                             </div>
-                            <input type="hidden" name="nomcate" value="<?php echo $val['Id_Produit']?>">
+                            <input type="hidden" name="nomcate" value="<?php echo $val['Nom_Cate']?>">
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>

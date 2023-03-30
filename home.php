@@ -31,7 +31,7 @@
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
@@ -304,7 +304,7 @@
             <p>Télévisions,machine-a-laver,micro-hande,guyg bhsy. et d'autres produit des marec internationalles
                 <br>ne manque pas cette opportunite
             </p>
-            <div class="btn"><button>Shop Now</button></div>
+            <div class="btn"><button><a href="categories.php?nomcate=Maison_Et_Founitures" style="color: white;text-decoration:none;border:0px">Shop Now</a></button></div>
 
         </div>
         <div class="img">
@@ -340,7 +340,8 @@
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2"><?php echo $val['Nom_Cate'] ?></h6>
                                     <h2>
-                                        <?php echo "<a href=product.php?nomprod=".$val['NomProduit'].">";echo$val['NomProduit']."</a>"; ?>
+                                        <?php echo "<a href=product.php?nomprod=" . $val['NomProduit'] . ">";
+                                        echo $val['NomProduit'] . "</a>"; ?>
                                     </h2>
                                 </div>
                             </div>
@@ -354,7 +355,6 @@
             </div>
         </div>
     </div>
-
 
     <section class="banner" id="banner2" style="background-color: #221EF9 ;">
         <div class="img">
@@ -380,101 +380,37 @@
             </div>
         </section>
         <section class="carousel slide py-2" data-ride="carousel" id="postsCarousel">
-            <div class="container pt-0 mt-1 carousel-inner">
-                <div class="row ">
-                    <div class="col-12 py-1 text-md-right lead d-flex justify-content-end">
-                        <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
-                        <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
-                    </div>
-                </div>
+            <div class="container-fluid pt-0 mt-1 carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/smart-watch.png" alt="Carousel 1">
+                        <?php
+                        $tend = $con->prepare("SELECT p.Id_Produit,p.NomProduit,p.Image,p.nomproduit ,dm.Quantite, COUNT((dm.Id_Produit)*(dm.Quantite)) as total_orders
+                        FROM produit p
+                        inner JOIN detail_commande dm ON p.Id_Produit = dm.Id_Produit
+                        GROUP BY p.Id_Produit,dm.Quantite
+                        ORDER BY total_orders,dm.Quantite DESC limit 6");
+                        $tend->execute();
+                        if ($tend->rowCount() > 0) {
+                            $res = $tend->fetchAll();
+                            foreach ($res as $val) { ?>
+                                <div class="col-md-4 mt-1">
+                                    <div class="card h-100">
+                                        <div class="card-img-top card-img-top-200">
+                                            <img class="img-fluid" src="<?php echo "pages_images/product_iamges/".$val['Image']; ?>" alt="Carousel 1">
+                                        </div>
+                                        <div class="card-body p-t-2">
+                                            <h6 class="small text-wide p-b-2">Insight</h6>
+                                            <h2>
+                                                <a href="product.php?idproduit=<?php echo $val['Id_Produit'] ?>"><?php echo $val['NomProduit']; ?></a>
+                                            </h2>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Insight</h6>
-                                    <h2>
-                                        <a href>Why Stuff Happens Every Year.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/airpuds.png" alt="Carousel 2">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Development</h6>
-                                    <h2>
-                                        <a href>How to Make Every Line Count.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/h1.png" alt="Carousel 3">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Design</h6>
-                                    <h2>
-                                        <a href>Responsive is Essential.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/pr3.png" alt="Carousel 4">
-                                </div>
-                                <div class="card-body pt-2">
-                                    <h6 class="small text-wide pb-2">Another</h6>
-                                    <h2>
-                                        <a href>Tagline or Call-to-action.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/pr4.png" alt="Carousel 5">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2"><span class="pull-xs-right">12.04</span> Category
-                                        1
-                                    </h6>
-                                    <h2>
-                                        <a href>This is a Blog Title.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-img-top card-img-top-200">
-                                    <img class="img-fluid" src="pages_images/product_iamges/pr5.png" alt="Carousel 6">
-                                </div>
-                                <div class="card-body p-t-2">
-                                    <h6 class="small text-wide p-b-2">Category 3</h6>
-                                    <h2>
-                                        <a href>Catchy Title of a Blog Post.</a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php }
+                        } ?>
 
+
+                    </div>
                 </div>
             </div>
         </section>

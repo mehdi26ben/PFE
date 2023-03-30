@@ -11,7 +11,9 @@
                 $_SESSION['client'] = $log->fetch();
                 header("location:home.php");
             } else {
-                
+                session_start();
+                $_SESSION['alert']="Informations incorrecte";
+                header("location:login.php");
             }
         }
     }

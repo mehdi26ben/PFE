@@ -1,12 +1,9 @@
-<?php session_start();
-if (!isset($_GET['idproduit'])) {
-    header("location:home.php");
-}
-$idproduit = $_GET['idproduit'];
+<?php
 include "connection.php";
-$search = $con->prepare("SELECT * FROM produit where Id_Produit=?");
-$search->execute([$idproduit]);
-$reultat = $search->fetch();
+session_start();
+$idclient = $_SESSION['client']['Id_Client'];
+$q = $con->prepare("SELECT * FROM commande where Id_Client=?");
+$q->execute([$idclient]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,17 +11,17 @@ $reultat = $search->fetch();
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="jquery-3.6.3.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="product.css">
-    <script src="product.js"></script>
+    <script src="jquery-3.6.3.js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="client_commande.css">
     <title>Document</title>
 </head>
 
-<body style=" background-color:#DDDDDD;">
+<body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
+        <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>-->
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
@@ -38,7 +35,7 @@ $reultat = $search->fetch();
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
@@ -75,7 +72,7 @@ $reultat = $search->fetch();
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form id="modalform" action="check_login.php" method="post">
+            <form action="check_login.php" method="post">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
@@ -83,7 +80,7 @@ $reultat = $search->fetch();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="hidden" name="page_name" value="product.php">
+                    <input type="hidden" name="page_name" value="categories.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
@@ -141,75 +138,36 @@ $reultat = $search->fetch();
         </nav>
     </div>
 
-    <div class="container-fluid mt-1 mb-1">
-        <div class="card">
-            <form action="addToCart.php" method="post">
-                <div class="row g-0">
-                    <div class="col-md-6 border-end">
-                        <div class="d-flex flex-column justify-content-center">
-                            <div class="main_image"> <img src="<?php echo "pages_images/product_iamges/" . $reultat['Image'] ?>" width="350"> </div>
-                            <!--<div class="thumbnail_images">
-                            <ul id="thumbnail">
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/TAzli1U.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70"></li>
-                            </ul>
-                        </div>-->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-3 right-side">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <input type="hidden" value="<?php echo $idproduit ?>" name="idproduit">
-                                <h3><?php echo $reultat['NomProduit']; ?></h3> <span class="heart"><i class='bx bx-heart'></i></span>
-                            </div>
-                            <div class="mt-2 pr-3 content">
-                                <p><?php echo $reultat['Description']; ?></p>
-                            </div>
-                            <h3><?php echo $reultat['Prix']; ?></h3>
-                            <div class="ratings d-flex flex-row align-items-center">
-                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
-                            </div>
-                            <div class="mt-5"> <span class="fw-bold">Color</span>
-                                <div class="colors">
-                                    <ul id="marker">
-                                        <li id="marker-1"></li>
-                                        <li id="marker-2"></li>
-                                        <li id="marker-3"></li>
-                                        <li id="marker-4"></li>
-                                        <li id="marker-5"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p>
-                                        </p>
-                                        <!--<div class="input-group">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                    <i class="fa-solid fa-minus"></i>
-                                                </button>
-                                            </span>
-                                            <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </button>
-                                            </span>
-                                        </div>-->
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="buttons d-flex flex-row mt-5 gap-3"> <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button></div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div class="contaier-fluid mt-2">
+        <?php
+        if ($q->rowCount() > 0) {
+            $com = $q->fetchAll(); ?>
+            <table class="table table-dark table-striped">
+                <tr>
+                    <th>date commande </th>
+                    <th>Adresse </th>
+                    <th>Nom recepteur</th>
+                    <th>Prenom Recepteur </th>
+                    <th>Téléphone</th>
+                    <th>plus details</th>
+                </tr>
+                <?php foreach ($com as $val) { ?>
+                    <tr>
+                        <td><?php echo $val["Date_Commande"] ?></td>
+                        <td><?php echo $val["Adresse_Liv"] ?></td>
+                        <td><?php echo $val["Nom_Rec"] ?></td>
+                        <td><?php echo $val["Prenom_Rec"] ?></td>
+                        <td><?php echo $val["Tel"] ?></td>
+                        <td><a href="commande_details.php?idcom=<?php echo $val["Id_Com"] ?>">afiicher plus</a></td>
+                    </tr>
+
+                <?php }
+            } else { ?>
+                <h1>aucune commande effectuer </h1>
+            <?php
+            }
+            ?>
+            </table>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -221,6 +179,7 @@ $reultat = $search->fetch();
 
     <script src="propper.min.js"></script>
     <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
+
 </body>
 
 </html>

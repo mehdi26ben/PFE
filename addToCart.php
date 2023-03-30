@@ -9,9 +9,12 @@ if(isset($_POST["nomcate"])){
     $disti="categories.php?nomcate=$page";
 }
 else{
+    $disti="home.php";
+}
+/*else{
     $page=$_POST["prod_cat"];
     $disti="search.php?prod_cat=$page";
-}
+}*/
 
 include "connection.php";
 $idclient=$_SESSION['client']['Id_Client'];
@@ -29,6 +32,4 @@ else{
     $q->execute([$idclient,$idproduit,1]);
     header("location:$disti");
 }
-
-
 ?>
