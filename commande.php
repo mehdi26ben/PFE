@@ -27,12 +27,11 @@ foreach($pan as $val){
     $prix=$val['prix'];
     $ajDcom=$con->prepare("INSERT INTO detail_commande (Id_Com,Id_Produit,Quantite,Prix) VALUES (?,?,?,?)");
     $ajDcom->execute([$idcommande,$idpro,$quantite,$prix]);
-    echo $idpro;
+    $updpro=$con->prepare("UPDATE produit SET Quantite=Quantite-? Where Id_Produit=?");
+    $updpro->execute([$quantite,$idpro]);
 }
-/* $delp="DELETE FROM panier WHERE Id_Client=$idclient";
-    $con->exec($delp);*/ //suprimer le panier du client;
-
-//update quatity of each product in the product table;
+$delp="DELETE FROM panier WHERE Id_Client=$idclient";
+$con->exec($delp); //suprimer le panier du client;
 
 $con->commit();
 ?>

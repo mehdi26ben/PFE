@@ -19,7 +19,6 @@ if (isset($_POST['prod_cat'])) {
     $search->bindParam(2, $bind2, PDO::PARAM_STR);
     $search->execute();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

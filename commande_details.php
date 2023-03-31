@@ -1,8 +1,12 @@
 <?php
-$idcom=$_GET['idcom'];
-include "connection.php";
 session_start();
-$q=$con->prepare("SELECT p.Image,dc.Quantite,dc.Prix from commande cm inner join detail_commande dc on  cm.Id_Com=? inner join produit p on p.Id_Produit=dc.Id_Produit");
+if(!isset($_SESSION['client'])){
+    header("location:home.php");
+}
+$idcom = $_GET['idcom'];
+include "connection.php";
+
+$q = $con->prepare("SELECT p.Image,dc.Quantite,dc.Prix from detail_commande dc inner JOIN produit p on dc.Id_Produit=p.Id_Produit and dc.Id_Com=?");
 $q->execute([$idcom]);
 ?>
 <!DOCTYPE html>
@@ -22,25 +26,24 @@ $q->execute([$idcom]);
 <body>
     <div class="container-fluid">
         <table class="table table-secondary table-striped">
-            <?php 
-                if($q->rowCount()>0){
-                    $resultat=$q->fetchAll();?>
+            <?php
+            if ($q->rowCount() > 0) {
+                $resultat = $q->fetchAll(); ?>
+                <tr>
+                    <th>produit</th>
+                    <th>quantite</th>
+                    <th>prix</th>
+                </tr>
+                <?php
+                foreach ($resultat as $val) { ?>
                     <tr>
-                        <th>produit</th>
-                        <th>quantite</th>
-                        <th>prix</th>
+                        <td><img width="90px" src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>"></td>
+                        <td><?php echo $val["Quantite"] ?></td>
+                        <td><?php echo $val["Prix"] * $val["Quantite"] ?>.00DH</td>
                     </tr>
-                    <?php 
-                        foreach($resultat as $val){?>
-                        <tr>
-                        <td><img width="90px" src="<?php echo "pages_images/product_iamges/".$val['Image']?>"></td>    
-                        <td><?php echo $val["Quantite"]?></td>
-                        <td><?php echo $val["Prix"]*$val["Quantite"]?>.00DH</td>
-                    </tr>
-                    <?php
-                 }
+            <?php
                 }
-                else{}
+            }
             ?>
         </table>
     </div>

@@ -1,6 +1,9 @@
 <?php
 include "connection.php";
 session_start();
+if(!isset($_SESSION['client'])){
+    header("location:home.php");
+}
 $idclient = $_SESSION['client']['Id_Client'];
 $q = $con->prepare("SELECT * FROM commande where Id_Client=?");
 $q->execute([$idclient]);
@@ -158,9 +161,8 @@ $q->execute([$idclient]);
                         <td><?php echo $val["Nom_Rec"] ?></td>
                         <td><?php echo $val["Prenom_Rec"] ?></td>
                         <td><?php echo $val["Tel"] ?></td>
-                        <td><a href="commande_details.php?idcom=<?php echo $val["Id_Com"] ?>">afiicher plus</a></td>
+                        <td><a href="commande_details.php?idcom=<?php echo $val["Id_Com"] ?>">afficher plus</a></td>
                     </tr>
-
                 <?php }
             } else { ?>
                 <h1>aucune commande effectuer </h1>

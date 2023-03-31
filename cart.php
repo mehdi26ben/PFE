@@ -217,7 +217,7 @@ $q->execute([$idclient]);
                     }
                 }
                 else{?>
-                <center><h2><i class="fa-solid fa-cart-shopping"></i> panier vide</h2> </center>   
+                <center><h2><i class="fa-solid fa-cart-shopping"></i> pannier vide</h2> </center>   
                 
                 <?php }?>
             </div>

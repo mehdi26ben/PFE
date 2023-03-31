@@ -340,7 +340,7 @@
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2"><?php echo $val['Nom_Cate'] ?></h6>
                                     <h2>
-                                        <?php echo "<a href=product.php?nomprod=" . $val['NomProduit'] . ">";
+                                        <?php echo "<a href=product.php?idproduit=".$val['Id_Produit'].">";
                                         echo $val['NomProduit'] . "</a>"; ?>
                                     </h2>
                                 </div>
@@ -408,8 +408,6 @@
                                 </div>
                         <?php }
                         } ?>
-
-
                     </div>
                 </div>
             </div>
