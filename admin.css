@@ -1,0 +1,8 @@
+#dropdown{
+    display: none;
+}
+@media screen and (max-width:576px) {
+    #dropdown{
+        display: block;
+    }
+}
