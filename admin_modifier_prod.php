@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION["admin"])){
+    header("location:admin.php");
+}
 if (!isset($_GET['idpro'])) {
     header("location:admin_sup_mod_pro.php");
 }

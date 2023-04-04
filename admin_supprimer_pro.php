@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if(!isset($_SESSION["admin"])){
+        header("location:admin.php");
+    }
     if(isset($_GET["idpro"])){
         include "connection.php";
         $idpro=$_GET["idpro"];
