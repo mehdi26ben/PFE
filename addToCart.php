@@ -1,8 +1,7 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['client'])){
-    header("location:login.html");
+if (!isset($_SESSION['client'])) {
+    header("location:login.php");
 }
 if(isset($_POST["nomcate"])){
     $page=$_POST["nomcate"];

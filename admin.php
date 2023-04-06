@@ -84,13 +84,14 @@
                             <span class="d-none d-sm-inline mx-1">loser</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="home.php">home</a></li>
+                            <li><a class="dropdown-item" href="admin_products.php">ajouter produit</a></li>
+                            <li><a class="dropdown-item" href="admin_sup_mod_pro.php">gerer produits</a></li>
+                            <li><a class="dropdown-item" href="gerer_categories.php">categorie</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <!--<li><a class="dropdown-item" href="admin_logout.php">Sign out</a></li>-->
                         </ul>
                     </div>
                 </div>

@@ -1,4 +1,9 @@
 <?php
+ session_start();
+ if(!isset($_SESSION["admin"])){
+     header("location:admin_login.php");
+ }
+
     if(isset($_POST['ajouter'])){
         include "connection.php";
         $nomp=$_POST['nompro'];
@@ -15,4 +20,3 @@
         $aj->execute([$nomp,$nomcate,$image,$desc,$quant,$datearr,$prix]);
         header("location:admin_products.php");
     }
-?>

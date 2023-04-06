@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION["admin"])){
-        header("location:admin.php");
-    }
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("location:admin.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,20 +14,42 @@
     <script src="jquery-3.6.3.js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="admin_style.css">
     <title>Document</title>
 </head>
 
-<body>
-
+<body style="background-color: lightgray;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #263238;" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="admin.php" id="logo" style="color: white;"><span id="span1">home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="admin_products.php" style="color: white;">ajouter produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="admin_sup_mod_pro.php" style="color: white;">gerer produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="gerer_categories.php" style="color: white;">categorie</a>
+                    </li>
+                </ul>
+                <a href="#" style="text-decoration:none;color: white;">deconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </nav>
     <div class="container-fluid mt-2">
         <div class="row d-flex justify-content-between">
             <div class="col-lg-6">
-                <p class="display-5">chercher par nom produit</p>
+                <p class="display-5 text-center">chercher par nom produit</p>
                 <form action="" method="post">
                     <table class="table table-dark">
                         <tr>
                             <th colspan="7"><input class="form-control" type="search" name="nompro" required>
-                            <th><button type="submit" name="cherpro" class="btn btn-primary">chercher</button></th>
+                            <th><button type="submit" name="cherpro" class="btn btn-primary btn-sm">chercher</button></th>
                             </th>
                         </tr>
                         <?php
@@ -58,7 +80,7 @@
                                         <td><?php echo $val["Quantite"] ?></td>
                                         <td><?php echo $val["Date_Arrivage"] ?></td>
                                         <td><?php echo $val["Prix"] ?></td>
-                                        <td><a  href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-pen-nib"></i></a></td>
+                                        <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-pen-nib"></i></a></td>
                                         <td><a href="admin_supprimer_pro.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 <?php  }
@@ -71,7 +93,7 @@
                 </form>
             </div>
             <div class="col-lg-6">
-                <p class="display-6">chercher par nom categorie</p>
+                <p class="display-5 text-center">chercher par nom categorie</p>
                 <form action="" method="post">
                     <table class="table table-light">
                         <tr>
@@ -97,7 +119,7 @@
                                         }
                                     } ?>
                                 </select>
-                            <th><button type="submit" name="chercate">chercher</button></th>
+                            <th><button type="submit" name="chercate" class="btn btn-primary btn-sm">chercher</button></th>
 
                             <?php
 
@@ -143,7 +165,14 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="propper.min.js"></script>
+    <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
 </body>
 
 </html>

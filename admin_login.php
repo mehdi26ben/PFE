@@ -17,7 +17,7 @@
         <form action="" method="post">
             <div id="formContent">
                 <!-- Tabs Titles -->
-
+                
                 <!-- Icon -->
                 <div class="fadeIn first">
                     <p class="display-4">Admin</p>
@@ -48,8 +48,6 @@
                     <script> alert("informations inncorect")</script>
                 <?php }
             }
-        
-        
         ?>
 
     </div>
