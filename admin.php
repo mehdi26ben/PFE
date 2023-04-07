@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION["admin"])){
-        header("location:admin_login.php");
-    }
+session_start();
+if (!isset($_SESSION["admin"])) {
+    header("location:admin_login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +35,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin_products.php"  class="nav-link px-0 align-middle">
+                            <a href="admin_products.php" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Ajouter produits</span> </a>
                         </li>
                         <li>
@@ -74,13 +74,13 @@
                         </li>-->
                         <li>
                             <a href="admin_logout.php" class="nav-link px-0 align-middle">
-                            <i class="fa-solid fa-right-from-bracket"></i> <span class="ms-1 d-none d-sm-inline">logout</span> </a>
+                                <i class="fa-solid fa-right-from-bracket"></i> <span class="ms-1 d-none d-sm-inline">logout</span> </a>
                         </li>
                     </ul>
                     <hr>
                     <div class="dropdown pb-4" id="dropdown">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-bars"></i>
+                            <i class="fa-solid fa-bars"></i>
                             <span class="d-none d-sm-inline mx-1">loser</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -126,7 +126,7 @@
                         <h4>somme du commandes effectuer</h4>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-around mt-2">
+                <div class="row d-flex justify-content-around mt-4">
                     <div class="col-md-4 col-lg-5 d-flex flex-column align-items-center bg-light">
                         <h3>produits presque fini</h3>
                         <table class="table">
@@ -147,7 +147,27 @@
                             ?>
                         </table>
                     </div>
-                    <div class="col-md-4 col-lg-5"></div>
+                    <div class="col-md-4 col-lg-5 bg-light">
+                        <?php
+                        $q = $con->prepare("SELECT * from produit Where Month(Date_Arrivage)>=Month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) LIMIT 6");
+                        $q->execute(); ?>
+                        <h3>dernier produits ajouter</h3>
+                        <table class="table">
+                            <?php
+                            if ($q->rowCount() > 0) {
+                                $res = $q->fetchAll();
+                                foreach ($res as $val) { ?>
+                                    <tr>
+                                        <td> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></td>
+                                        <td><?php echo $val['NomProduit'] ?></td>
+                                        <td style="background-color: #F45959 ;"><?php echo $val['Quantite'] ?></td>
+                                        <td><?php echo $val['Prix'] ?></td>
+                                    </tr>
+                            <?php }
+                            }
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

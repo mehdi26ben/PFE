@@ -25,8 +25,8 @@
 
                 <!-- Login Form -->
                 <form>
-                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
-                    <input type="password" id="password" class="fadeIn third" style="width: 84%;height:8vh;border:1px;background-color:lightwhite;text-align:center " name="pwd"  placeholder="password">
+                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="login" required>
+                    <input type="password" id="password" class="fadeIn third" style="width: 84%;height:8vh;border:1px;background-color:lightwhite;text-align:center " name="pwd"  placeholder="password" required>
                     <input type="submit" class="fadeIn fourth" value="Log In" name="login">
                 </form>
 

@@ -132,7 +132,7 @@ if (!isset($_SESSION["admin"])) {
                                 <th>Ajouter</th>
                             </tr>
                             <tr>
-                                <th><input type="text" name="nomcate" style="width:70%" required></th>
+                                <th><input type="text" name="nomcate" style="width:75%" required></th>
                                 <td><button class="btn btn-primary" type="submit">Ajouter</button></td>
                             </tr>
                         </table>
