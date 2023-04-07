@@ -14,94 +14,144 @@ if (!isset($_SESSION["admin"])) {
     <script src="jquery-3.6.3.js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body style="background-color: gray;">
-<nav class="navbar navbar-expand-lg" style="background-color: #263238;" id="navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="admin.php" id="logo" style="color: white;"><span id="span1">home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="admin_products.php" style="color: white;">ajouter produit</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="admin_sup_mod_pro.php" style="color: white;">gerer produit</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="gerer_categories.php" style="color: white;">categorie</a>
-                    </li>
-                </ul>
-                <a href="#" style="text-decoration:none;color: white;">deconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="admin.php" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="admin.php" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin_products.php" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Ajouter produits</span> </a>
+                        </li>
+                        <li>
+                            <a href="admin_sup_mod_pro.php" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">modifier produits</span></a>
+                        </li>
+                        <li>
+                            <a href="gerer_categories.php" class="nav-link px-0 align-middle ">
+                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">categories</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="admin_logout.php" class="nav-link px-0 align-middle">
+                                <i class="fa-solid fa-right-from-bracket"></i> <span class="ms-1 d-none d-sm-inline">logout</span> </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4" id="dropdown">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bars"></i>
+                            <span class="d-none d-sm-inline mx-1">loser</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="home.php">home</a></li>
+                            <li><a class="dropdown-item" href="admin_products.php">ajouter produit</a></li>
+                            <li><a class="dropdown-item" href="admin_sup_mod_pro.php">gerer produits</a></li>
+                            <li><a class="dropdown-item" href="gerer_categories.php">categorie</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <!--<li><a class="dropdown-item" href="admin_logout.php">Sign out</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-4">
+
+                <div class="container-fluid">
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-lg-5">
+                            <p class="display-6 text-center">Ajouter Produit</p>
+                            <form class="form w-100" action="ajouter_produit.php" method="post">
+                                <div class="form-group">
+                                    <label>Nom Produit</label>
+                                    <input type="text" class="form-control" name="nompro" required>
+
+                                </div>
+                                <div class="form-group d-flex flex-column">
+                                    <label>Categorie</label>
+                                    <select name="cate">
+                                        <?php
+                                        include "connection.php";
+                                        $q = $con->prepare("SELECT Nom_Cate from categorie");
+                                        if (!$q) {
+                                            echo "Error preparing query: " . $con->errorInfo()[2];
+                                        } else {
+                                            if (!$q->execute()) {
+                                                echo "Error executing query: " . $q->errorInfo()[2];
+                                            } else {
+                                                $resultat = $q->fetchAll();
+                                                if (empty($resultat)) {
+                                                    echo "No rows returned.";
+                                                } else {
+                                                    foreach ($resultat as $val) {
+                                                        echo '<option value="' . $val["Nom_Cate"] . '">' . $val["Nom_Cate"] . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        } ?>
+                                    </select>
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file" class="form-control" name="image" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" name="desc" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantite</label>
+                                    <input type="number" class="form-control" name="quant" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Arrivage</label>
+                                    <input type="date" class="form-control" name="datearr" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Prix</label>
+                                    <input type="number" class="form-control" name="prix" required>
+                                </div>
+                                <div class="container-fluid align-self-center mt-2 d-flex justify-content-around">
+                                    <button type="submit" name="ajouter" class="btn btn-primary">Ajouter</button>
+                                    <button type="reset" class="btn btn-warning">effacer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </nav>
-    <div class="container-fluid pt-5">
-        <div class="row d-flex justify-content-around">
-            <div class="col-lg-5">
-                <p class="display-6 text-center">Ajouter Produit</p>
-                <form class="form w-100" action="ajouter_produit.php" method="post">
-                    <div class="form-group">
-                        <label>Nom Produit</label>
-                        <input type="text" class="form-control" name="nompro" required>
-
-                    </div>
-                    <div class="form-group d-flex flex-column">
-                        <label>Categorie</label>
-                        <select name="cate">
-                            <?php
-                            include "connection.php";
-                            $q = $con->prepare("SELECT Nom_Cate from categorie");
-                            if (!$q) {
-                                echo "Error preparing query: " . $con->errorInfo()[2];
-                            } else {
-                                if (!$q->execute()) {
-                                    echo "Error executing query: " . $q->errorInfo()[2];
-                                } else {
-                                    $resultat = $q->fetchAll();
-                                    if (empty($resultat)) {
-                                        echo "No rows returned.";
-                                    } else {
-                                        foreach ($resultat as $val) {
-                                            echo '<option value="' . $val["Nom_Cate"] . '">' . $val["Nom_Cate"] . '</option>';
-                                        }
-                                    }
-                                }
-                            } ?>
-                        </select>
-                        <div class="form-group">
-                            <label>Image</label>
-                            <input type="file" class="form-control" name="image" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" class="form-control" name="desc" required>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Quantite</label>
-                        <input type="number" class="form-control" name="quant" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Date Arrivage</label>
-                        <input type="date" class="form-control" name="datearr" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Prix</label>
-                        <input type="number" class="form-control" name="prix" required>
-                    </div>
-                    <div class="container-fluid align-self-center mt-2 d-flex justify-content-around">
-                        <button type="submit" name="ajouter" class="btn btn-primary">Ajouter</button>
-                        <button type="reset" class="btn btn-warning">effacer</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+        <script src="propper.min.js"></script>
+        <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
 </body>
 
 </html>

@@ -39,37 +39,88 @@ if (isset($_POST["modifier"])) {
     <script src="jquery-3.6.3.js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="admin.css">
     <title>Document</title>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color: #263238;" id="navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="admin.php" id="logo" style="color: white;"><span id="span1">home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="admin_products.php" style="color: white;">ajouter produit</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="admin_sup_mod_pro.php" style="color: white;">gerer produit</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="gerer_categories.php" style="color: white;">categorie</a>
-                    </li>
-                </ul>
-                <a href="#" style="text-decoration:none;color: white;">deconnecter <i class="fa-solid fa-right-from-bracket"></i></a>
-
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="admin.php" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="admin.php" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin_products.php" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Ajouter produits</span> </a>
+                        </li>
+                        <li>
+                            <a href="admin_sup_mod_pro.php" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">modifier produits</span></a>
+                        </li>
+                        <li>
+                            <a href="gerer_categories.php" class="nav-link px-0 align-middle ">
+                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">categories</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--<li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                                </li>
+                            </ul>
+                        </li>-->
+                        <li>
+                            <a href="admin_logout.php" class="nav-link px-0 align-middle">
+                                <i class="fa-solid fa-right-from-bracket"></i> <span class="ms-1 d-none d-sm-inline">logout</span> </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4" id="dropdown">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bars"></i>
+                            <span class="d-none d-sm-inline mx-1">loser</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="home.php">home</a></li>
+                            <li><a class="dropdown-item" href="admin_products.php">ajouter produit</a></li>
+                            <li><a class="dropdown-item" href="admin_sup_mod_pro.php">gerer produits</a></li>
+                            <li><a class="dropdown-item" href="gerer_categories.php">categorie</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <!--<li><a class="dropdown-item" href="admin_logout.php">Sign out</a></li>-->
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
-    <div class="container-fluid pt-5">
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <form action="" method="post" class="form d-flex justify-content-center">
+            <div class="col-8 mt-2">
+                <form action="" method="post" class="">
                     <table class="table table-dark  table-responsive">
                         <?php
                         include "connection.php";
@@ -136,9 +187,6 @@ if (isset($_POST["modifier"])) {
                 </form>
             </div>
         </div>
-
-
     </div>
 </body>
-
 </html>
