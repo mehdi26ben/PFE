@@ -304,8 +304,7 @@
             <p>Télévisions,machine-a-laver,micro-hande,guyg bhsy. et d'autres produit des marec internationalles
                 <br>ne manque pas cette opportunite
             </p>
-            <div class="btn"><button><a href="categories.php?nomcate=Maison_Et_Founitures" style="color: white;text-decoration:none;border:0px">Shop Now</a></button></div>
-
+            <div class="btn btn-primary"><a href="categories.php?nomcate=Maison_Et_Founitures" style="color: white;text-decoration:none;border:0px">acheter maintenant</a></div>
         </div>
         <div class="img">
             <img src="pages_images/login/image1.png" alt="">

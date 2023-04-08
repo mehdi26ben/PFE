@@ -27,3 +27,11 @@ body{
 footer{
     background-color:#302d2e;
 }
+@media screen and (max-width:624px) {
+    #navbar{
+        width: 194%;
+    }
+    #searchbar{
+        width: 194%;
+    }
+}

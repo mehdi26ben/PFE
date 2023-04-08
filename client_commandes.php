@@ -23,7 +23,7 @@ $q->execute([$idclient]);
 </head>
 
 <body>
-    <nav class="navbar sticky-top" style="background-color:#263238;">
+    <nav class="navbar sticky-top" id="navbar" style="background-color:#263238;">
         <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>-->
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
@@ -107,7 +107,7 @@ $q->execute([$idclient]);
     </div>
     <!--/modal-->
 
-    <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
+    <div id="searchbar" class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
@@ -145,7 +145,7 @@ $q->execute([$idclient]);
         <?php
         if ($q->rowCount() > 0) {
             $com = $q->fetchAll(); ?>
-            <table class="table table-dark table-striped">
+            <table class="table table-dark table-striped table-responsive">
                 <tr>
                     <th>date commande </th>
                     <th>Adresse </th>
