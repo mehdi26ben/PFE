@@ -5,7 +5,7 @@ if (!isset($_SESSION['client'])) {
 }
 if(isset($_POST["nomcate"])){
     $page=$_POST["nomcate"];
-    $disti="categories.php?nomcate=$page";
+    $disti="categories.php?nomcate=$page";//partie de destination apres l'ajoute au panier
 }
 else{
     $disti="home.php";

@@ -98,7 +98,7 @@ if (!isset($_SESSION["admin"])) {
             </div>
             <div class="col mt-4">
                 <div class="row d-flex justify-content-around">
-                    <div class="col-md-4 col-lg-5 d-flex flex-column align-items-center bg-light mt-2">
+                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-2">
                         <?php
                         include "connection.php";
                         $q = $con->prepare("SELECT count(*) from commande where Date_Commande>=month(CURDATE())");
@@ -110,7 +110,7 @@ if (!isset($_SESSION["admin"])) {
                         ?>
                         <h4>nombre des commandes</h4>
                     </div>
-                    <div class="col-md-4 col-lg-5 d-flex flex-column align-items-center bg-light mt-1">
+                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-1">
                         <?php
                         $q = $con->prepare("SELECT * FROM detail_commande");
                         $q->execute();
@@ -127,7 +127,7 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div>
                 <div class="row d-flex justify-content-around mt-4">
-                    <div class="col-md-4 col-lg-5 d-flex flex-column align-items-center bg-light">
+                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light">
                         <h3>produits presque fini</h3>
                         <table class="table">
                             <?php
@@ -147,11 +147,11 @@ if (!isset($_SESSION["admin"])) {
                             ?>
                         </table>
                     </div>
-                    <div class="col-md-4 col-lg-5 bg-light">
+                    <div class="col-md-5 col-lg-5 bg-light">
                         <?php
-                        $q = $con->prepare("SELECT * from produit Where Month(Date_Arrivage)>=Month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) LIMIT 6");
+                        $q = $con->prepare("SELECT * from produit Where Month(Date_Arrivage)>=Month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) order by Date_Arrivage desc LIMIT 6");
                         $q->execute(); ?>
-                        <h3>dernier produits ajouter</h3>
+                        <h3 class="text-center">dernier produits ajouter</h3>
                         <table class="table">
                             <?php
                             if ($q->rowCount() > 0) {

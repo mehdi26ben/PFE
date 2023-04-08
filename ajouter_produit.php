@@ -18,5 +18,7 @@
         $nomcate=$q->fetchColumn();
         $aj=$con->prepare("INSERT INTO produit (NomProduit,Id_Cate,Image,Description,Quantite,Date_Arrivage,Prix) values (?,?,?,?,?,?,?)");
         $aj->execute([$nomp,$nomcate,$image,$desc,$quant,$datearr,$prix]);
+        session_start();
+        $_SESSION['ajouter']="produit ajouter avec success";
         header("location:admin_products.php");
     }

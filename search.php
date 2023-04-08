@@ -62,7 +62,7 @@ if (isset($_POST['prod_cat'])) {
                             </div>
                         </li>
 
-                        <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                        <li><a href="favorites.php" class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
 
                         <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     </ul>
@@ -161,18 +161,18 @@ if (isset($_POST['prod_cat'])) {
                 $row = $search->fetchAll();
                 foreach ($row as $val) {
                     $id = $val['Id_Produit']
-                    ?>
+            ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                         <form action="addToCart.php" method="post">
                             <div class="product"> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
                                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                                     <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
-                                    <li class="icon mx-3"><span class="far fa-heart"></span></li>
+                                    <li class="icon mx-3"><a href="ajouter_favorites.php?idproduit=<?php echo $id ?>"><span class="far fa-heart"></span></a></li>
                                     <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></<li>
                                 </ul>
                             </div>
-                            <input type="hidden" name="prod_cat" value="<?php echo $prod_cat?>">
-                            <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']?>">
+                            <input type="hidden" name="prod_cat" value="<?php echo $prod_cat ?>">
+                            <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
                             <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
@@ -182,8 +182,7 @@ if (isset($_POST['prod_cat'])) {
                 <?php   }
             } else { ?>
                 <h1>Aucune Resultat</h1>
-            <?php }
-
+            <?php }   
             ?>
         </div>
     </div>

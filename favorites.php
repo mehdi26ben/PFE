@@ -1,16 +1,9 @@
-<?php session_start();
-include 'connection.php';
-if (!isset($_GET['nomcate'])) {
+<?php
+session_start();
+if(!isset($_SESSION["client"])){
     header("location:home.php");
 }
-
-
-//products display
-$nomcate = $_GET['nomcate'];
-$lister = $con->prepare("SELECT Nom_Cate,Id_Produit,NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_cate=categorie.Id_Cate AND Nom_cate=? and produit.Quantite>0 LIMIT 10");
-$lister->execute([$nomcate]);
-
-//var_dump($produit);
+$idclient = $_SESSION["client"]["Id_Client"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +13,13 @@ $lister->execute([$nomcate]);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="jquery-3.6.3.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="categories.css">
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
-    <script src="categories.js"></script>
+    <link rel="stylesheet" href="favorite.css">
     <title>Document</title>
 </head>
 
-<body style=" background-color:#DDDDDD;">
+<body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
@@ -77,112 +69,44 @@ $lister->execute([$nomcate]);
         </div>
     </nav>
 
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form action="check_login.php" method="post">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <input type="hidden" name="page_name" value="categories.php">
-                    <div class="modal-body mx-3">
-                        <div class="md-form mb-5">
-                            <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="defaultForm-email" class="form-control validate" name="email" required>
-                            <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-                        </div>
-
-                        <div class="md-form mb-4">
-                            <i class="fas fa-lock prefix grey-text"></i>
-                            <input type="password" id="defaultForm-pass" class="form-control validate" name="pwd" required>
-                            <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-                        </div>
-                        <a href="signup.html">create new account</a>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit" name="login">Login</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!--/modal-->
-
-    <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
-        <div class="dropdown">
-            <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Sports_Et_Loisirs">Sports Et Loisir</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Founitures">Maison & Fourniture</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
-                <style>
-                    .dropdown-item:hover {
-                        background-color: lightgray;
-                    }
-                </style>
+    <div class="container-fluid">
+        <div class="row px-5 mt-3">
+            <div class="col-lg-3" style="height:30vh;background-color:lightgray">
+                <a href="client_commandes.php"><i class="fa-solid fa-box-open"></i> mes commandes</a>
+                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> mon panier</a>
+                <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> se deconnecter</a>
             </div>
-        </div>
-        <nav class="navbar">
-            <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="search.php">
-                    <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
-                    <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div class="col-lg-7 mx-4" style="background-color:lightgray">
+                <form action="addToCart.php" method="post">
+                    <table class="table">
+                        <?php
+                        include "connection.php";
+                        $q = $con->prepare("SELECT * FROM favorites f inner join produit p on f.Id_Produit=p.Id_Produit WHERE Id_client=?");
+                        $q->execute([$idclient]); ?>
+                        <h3 style="text-decoration: underline;text-transform:capitalize">nombre des produits: <?php echo $q->rowCount(); ?></h3>
+                        <?php if ($q->rowCount() > 0) {
+                            $resultat = $q->fetchAll();
+                            foreach ($resultat as $val) { ?>
+                                <tr>
+                                    <?php $idpro = $val['Id_Produit']; ?>
+                                    <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']; ?>">
+                                    <td><img src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" width="100px"></td>
+                                    <td><?php echo $val['NomProduit'] ?></td>
+                                    <td><button type="submit" style="background-color: transparent;border:1px"><i class="fa-solid fa-cart-shopping"></i></button></td>
+                                    <td><a style="color: black;" href="supprmer_favorites.php?idproduit=<?php echo $idpro ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                </tr>
+                        <?php }
+                        }
+                        ?>
+                    </table>
                 </form>
-            </div>
-        </nav>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <?php
-            if ($lister->rowCount() > 0) {
-                $produit = $lister->fetchAll();
-                foreach ($produit as $val) {
-                    //$id = $val['Id_Produit']; 
-                    $id = $val['Id_Produit'] ?>
-                    <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-                        <form action="addToCart.php" method="post">
-                            <div class="product"> <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" alt="">
-                                <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                                    <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
-                                    <li class="icon mx-3"><a href="ajouter_favorites.php?idproduit=<?php echo $id ?>"><span class="far fa-heart"></span></a></li>
-                                    <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
-                                </ul>
-                            </div>
-                            <input type="hidden" name="nomcate" value="<?php echo $val['Nom_Cate'] ?>">
-                            <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
-                            <div class="tag bg-red">sale</div>
-                            <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                            <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
-                            <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
-                        </form>
-                    </div>
-            <?php }
-            } else {
-                echo "<h1>categorie vide!!</h1>";
-            }
-            ?>
+            </div>
         </div>
     </div>
-
-
-
 
     <!-- Footer -->
-    <footer class="text-white text-center mt-5">
+    <footer class="text-white text-center mt-2">
         <!-- Grid container -->
         <div class="container p-4">
             <!--Grid row-->
@@ -255,6 +179,7 @@ $lister->execute([$nomcate]);
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
