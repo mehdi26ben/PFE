@@ -76,30 +76,32 @@ $idclient = $_SESSION["client"]["Id_Client"];
                 <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> mon panier</a>
                 <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> se deconnecter</a>
             </div>
-            <div class="col-lg-7 mx-4" style="background-color:lightgray">
-                <form action="addToCart.php" method="post">
+            <div class="col-lg-7 mx-2 mt-2" style="background-color:lightgray">
+                
                     <table class="table">
                         <?php
                         include "connection.php";
                         $q = $con->prepare("SELECT * FROM favorites f inner join produit p on f.Id_Produit=p.Id_Produit WHERE Id_client=?");
                         $q->execute([$idclient]); ?>
                         <h3 style="text-decoration: underline;text-transform:capitalize">nombre des produits: <?php echo $q->rowCount(); ?></h3>
-                        <?php if ($q->rowCount() > 0) {
-                            $resultat = $q->fetchAll();
+                        <?php if ($q->rowCount() > 0) {?>
+                            
+                           <?php $resultat = $q->fetchAll();
                             foreach ($resultat as $val) { ?>
+                            <form action="addToCart.php" method="post">
                                 <tr>
                                     <?php $idpro = $val['Id_Produit']; ?>
-                                    <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit']; ?>">
+                                    <input type="hidden" name="idproduit" value="<?php echo $idpro; ?>">
                                     <td><img src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" width="100px"></td>
                                     <td><?php echo $val['NomProduit'] ?></td>
                                     <td><button type="submit" style="background-color: transparent;border:1px"><i class="fa-solid fa-cart-shopping"></i></button></td>
                                     <td><a style="color: black;" href="supprmer_favorites.php?idproduit=<?php echo $idpro ?>"><i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
+                                </tr></form>
                         <?php }
                         }
                         ?>
                     </table>
-                </form>
+              
 
             </div>
         </div>

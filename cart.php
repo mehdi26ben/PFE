@@ -6,7 +6,7 @@ if (!isset($_SESSION['client'])) {
 if (isset($_SESSION['alert'])) {
     echo "<script>alert('" . $_SESSION['alert'] . "');</script>";
     unset($_SESSION['alert']);
-  }
+}
 include "connection.php";
 $idclient = $_SESSION['client']['Id_Client'];
 $q = $con->prepare("SELECT pr.Id_Produit,NomProduit,Image,pa.Quantite,prix FROM produit pr inner join panier pa on pr.Id_Produit=pa.Id_Produit  where pa.Id_Client=?");
@@ -55,7 +55,7 @@ $q->execute([$idclient]);
                             </div>
                         </li>
 
-                        <li><a class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
+                        <li><a href="favorites.php" class="text-light" type="button" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="fa-solid fa-heart"></i></a></li>
 
                         <li><a href="cart.php" class="text-light" data-toggle="tooltip" data-placement="top" title="Add To Cart" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     </ul>
@@ -213,13 +213,14 @@ $q->execute([$idclient]);
                                 </div>
                             </form>
                         </div>
-                <?php
+                    <?php
                     }
-                }
-                else{?>
-                <center><h2><i class="fa-solid fa-cart-shopping"></i> pannier vide</h2> </center>   
-                
-                <?php }?>
+                } else { ?>
+                    <center>
+                        <h2><i class="fa-solid fa-cart-shopping"></i> pannier vide</h2>
+                    </center>
+
+                <?php } ?>
             </div>
         </div>
 
@@ -232,7 +233,7 @@ $q->execute([$idclient]);
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                             Nombre des Produits
-                            <span><?php echo $q->rowCount()?></span>
+                            <span><?php echo $q->rowCount() ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                             Shipping
@@ -249,18 +250,17 @@ $q->execute([$idclient]);
 
                         </li>
                     </ul>
-                    <?php  
-                        if($q->rowCount()>0){?>
-                    <a href="checkout.html" type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
-                        Go to checkout
-                    </a>
                     <?php
-                    }
-                        else{?>
-                                <button disabled type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
-                                    Go to checkout
-                                 </button>
-                       <?php }?>
+                    if ($q->rowCount() > 0) { ?>
+                        <a href="checkout.html" type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
+                            Go to checkout
+                        </a>
+                    <?php
+                    } else { ?>
+                        <button disabled type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
+                            Go to checkout
+                        </button>
+                    <?php } ?>
                 </div>
             </div>
         </div>
