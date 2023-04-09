@@ -14,7 +14,6 @@ else{
     $page=$_POST["prod_cat"];
     $disti="search.php?prod_cat=$page";
 }*/
-
 include "connection.php";
 $idclient=$_SESSION['client']['Id_Client'];
 $idproduit=$_POST['idproduit'];

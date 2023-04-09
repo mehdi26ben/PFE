@@ -26,7 +26,7 @@ $reultat = $search->fetch();
 <body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px" ></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">
@@ -167,7 +167,7 @@ $reultat = $search->fetch();
                             <div class="mt-2 pr-3 content">
                                 <p><?php echo $reultat['Description']; ?></p>
                             </div>
-                            <h3><?php echo $reultat['Prix']; ?></h3>
+                            <h3><?php echo $reultat['Prix']; ?>.00DH</h3>
                             <div class="ratings d-flex flex-row align-items-center">
                                 <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
                             </div>

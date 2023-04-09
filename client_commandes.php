@@ -26,7 +26,7 @@ $q->execute([$idclient]);
     <nav class="navbar sticky-top" id="navbar" style="background-color:#263238;">
         <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>-->
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">

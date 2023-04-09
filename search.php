@@ -37,7 +37,7 @@ if (isset($_POST['prod_cat'])) {
 <body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img class="img-fluid" src="pages_images/logo1.png" class="img-fluid" width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">

@@ -16,7 +16,6 @@ $ajcom->bindParam(5, $tel);
 $ajcom->execute();
 
 $idcommande=$con->lastInsertId();
-echo $idcommande;
 $qp=$con->prepare("SELECT panier.Id_Produit,panier.Quantite,prix from panier inner join produit where panier.Id_Produit=produit.Id_Produit AND panier.Id_Client =?");
 
 $qp->execute([$idclient]);
@@ -32,6 +31,6 @@ foreach($pan as $val){
 }
 $delp="DELETE FROM panier WHERE Id_Client=$idclient";
 $con->exec($delp); //suprimer le panier du client;
-
 $con->commit();
+header("location:cart.php");    
 ?>
