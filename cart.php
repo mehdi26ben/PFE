@@ -178,7 +178,7 @@ $q->execute([$idclient]);
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                                    <i class="fas fa-heart"></i>
+                                                    <a href="ajouter_favorites.php?idproduit=<?php echo $val['Id_Produit']?>"><i class="fas fa-heart"></i></a>
                                                 </button>
                                                 <!-- Data -->
                                             </div>

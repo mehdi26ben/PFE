@@ -141,7 +141,7 @@ $reultat = $search->fetch();
         </nav>
     </div>
 
-    <div class="container-fluid mt-1 mb-1">
+    <div class="container-fluid mt-1 mb-2">
         <div class="card">
             <form action="addToCart.php" method="post">
                 <div class="row g-0">
@@ -211,6 +211,81 @@ $reultat = $search->fetch();
             </form>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="text-white text-center mt-2">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Footer Content</h5>
+
+                    <p>
+                        Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous
+                        efforçons de vous offrir une expérience de shopping fluide en proposant une large gamme de
+                        produits de haute qualité, des prix compétitifs et un service client exceptionnel. Nous
+                        apprécions votre confiance en nous et sommes engagés à assurer votre satisfaction à chaque
+                        achat. Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Nous
+                        apprécions votre entreprise et sommes impatients de vous servir à nouveau à l'avenir.
+                    </p>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">social media</h5>
+
+                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2" id="socials">
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook" id="facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram" id="instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white" id="twitter"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-discord" id="discord"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">contacter-nous</h5>
+
+                    <ul class="list-unstyled  h-75 d-flex flex-column justify-content-around pt-2">
+                        <li>
+                            <i class="fa-solid fa-phone"></i> <span>+212 627169632</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i> <span>mehdi.bentoufile@hotmail.fr</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-fax"></i> <span>+212 507845128</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="home.php">MBshop</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

@@ -69,9 +69,9 @@ $idclient = $_SESSION["client"]["Id_Client"];
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row px-5 mt-3">
-            <div class="col-lg-3" style="height:30vh;background-color:lightgray">
+    <div class="container-fluid mb-5">
+        <div class="row px-1 mt-2">
+            <div class="col-lg-3 m-2" style="height:30vh;background-color:lightgray">
                 <a href="client_commandes.php"><i class="fa-solid fa-box-open"></i> mes commandes</a>
                 <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> mon panier</a>
                 <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> se deconnecter</a>
@@ -92,8 +92,8 @@ $idclient = $_SESSION["client"]["Id_Client"];
                                 <tr>
                                     <?php $idpro = $val['Id_Produit']; ?>
                                     <input type="hidden" name="idproduit" value="<?php echo $idpro; ?>">
-                                    <td><img src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" width="100px"></td>
-                                    <td><?php echo $val['NomProduit'] ?></td>
+                                    <td><a href="product.php?idproduit=<?php echo $idpro;?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" width="100px"></a></td>
+                                    <td><a href="product.php?idproduit=<?php echo $val['NomProduit'];?>" style="text-decoration:none;color:black;font-size:19px;"><?php echo $val['NomProduit'] ?></a></td>
                                     <td><button type="submit" style="background-color: transparent;border:1px"><i class="fa-solid fa-cart-shopping"></i></button></td>
                                     <td><a style="color: black;" href="supprmer_favorites.php?idproduit=<?php echo $idpro ?>"><i class="fa-solid fa-trash"></i></a></td>
                                 </tr></form>

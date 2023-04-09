@@ -142,7 +142,7 @@
             </div>
             <div id="carousel-link" class="carousel-inner">
 
-                <a class="carousel-link" href="#">
+                <a class="carousel-link" href="categories.php?nomcate=Maison_Et_Founitures">
                     <div class="carousel-item active" data-bs-interval="10000">
                         <img src="pages_images/login/home_slide5.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
@@ -152,22 +152,22 @@
                     </div>
                 </a>
 
-                <a class="carousel-link" href="#">
+                <a class="carousel-link" href="categories.php?nomcate=Telephones_Et_Accessoires">
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="pages_images/login/electro_devicesbg.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>Make Up et Santé</h1>
-                            <h5>Some representative placeholder content for the second slide.</h5>
+                            <h1>Téléphones Et Accessoires</h1>
+                            <h5>Some representative placeholder content for the third slide.</h5>
                         </div>
                     </div>
                 </a>
 
-                <a class="carousel-link" href="#">
+                <a class="carousel-link" href="categories.php?nomcate=Makeup_Et_Sante">
                     <div class="carousel-item">
                         <img src="pages_images/login/make_up4.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1>Téléphones Et Accessoires</h1>
-                            <h5>Some representative placeholder content for the third slide.</h5>
+                            <h1>Make Up et Santé</h1>
+                            <h5>Some representative placeholder content for the second slide.</h5>
                         </div>
                     </div>
                 </a>
@@ -248,7 +248,7 @@
             <div class="col-lg-3">
 
                 <div class="card pt-2">
-                    <a href="categories.php?nomcate=Maison_Et_Fournitures" id="span-container">
+                    <a href="categories.php?nomcate=Maison_Et_Founitures" id="span-container">
                         <div class="d-flex justify-content-between align-items-center p-2">
                             <div class="flex-column lh-1 imagename"><span>maison et </span><span>fourniture</span>
                             </div>
@@ -339,7 +339,7 @@
                                 <div class="card-body p-t-2">
                                     <h6 class="small text-wide p-b-2"><?php echo $val['Nom_Cate'] ?></h6>
                                     <h2>
-                                        <?php echo "<a href=product.php?idproduit=".$val['Id_Produit'].">";
+                                        <?php echo "<a href=product.php?idproduit=" . $val['Id_Produit'] . ">";
                                         echo $val['NomProduit'] . "</a>"; ?>
                                     </h2>
                                 </div>
@@ -357,7 +357,7 @@
 
     <section class="banner" id="banner2" style="background-color: #221EF9 ;">
         <div class="img">
-            <img src="pages_images/product_iamges/image1.png" class="img-fluid" alt="">
+            <img src="pages_images/categories_images/informatiquebg.png" class="img-fluid" alt="">
         </div>
         <div class="content">
             <h1> <span>Profiter Des Soldes</span>
@@ -367,7 +367,7 @@
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, saepe.
                 <br>Lorem ipsum dolor sit amet consectetur.
             </p>
-            <div class="btn"><button>Shop Now</button></div>
+            <div class="btn btn-primary"><a href="categories.php?nomcate=informatique" style="color: white;text-decoration:none;border:0px">acheter maintenant</a></div>
         </div>
     </section>
     <div class="container-fluid">
@@ -395,7 +395,7 @@
                                 <div class="col-md-4 mt-1">
                                     <div class="card h-100">
                                         <div class="card-img-top card-img-top-200">
-                                            <img class="img-fluid" src="<?php echo "pages_images/product_iamges/".$val['Image']; ?>" alt="Carousel 1">
+                                            <img class="img-fluid" src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" alt="Carousel 1">
                                         </div>
                                         <div class="card-body p-t-2">
                                             <h6 class="small text-wide p-b-2">Insight</h6>
