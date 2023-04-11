@@ -177,10 +177,7 @@ $lister->execute([$nomcate]);
             ?>
         </div>
     </div>
-
-
-
-
+    
     <!-- Footer -->
     <footer class="text-white text-center mt-5">
         <!-- Grid container -->

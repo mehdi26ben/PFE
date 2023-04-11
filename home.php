@@ -300,7 +300,7 @@
 
     <section class="banner">
         <div class="content">
-            <h1>profiter des meilleur fournture des haute qualiter avec des bonne prix</h1>
+            <h1>profiter des meilleurs fournitures des hautes qualiter avec des bonnes prix</h1>
             <p>Télévisions,machine-a-laver,micro-hande,guyg bhsy. et d'autres produit des marec internationalles
                 <br>ne manque pas cette opportunite
             </p>
@@ -440,7 +440,7 @@
             <div class="row">
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Footer Content</h5>
+                    <h5 class="text-uppercase">Cher Client</h5>
 
                     <p>
                         Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous
@@ -501,7 +501,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2023 Copyright:
-            <a class="text-white" href="home.php">MBshop</a>
+            <a class="text-white" href="home.php">QuickShop</a>
         </div>
         <!-- Copyright -->
     </footer>

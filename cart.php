@@ -252,7 +252,7 @@ $q->execute([$idclient]);
                     </ul>
                     <?php
                     if ($q->rowCount() > 0) { ?>
-                        <a href="checkout.html" type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
+                        <a href="checkout.php" type="button" class="btn btn-primary btn-lg btn-block" style="align-self:center;">
                             Go to checkout
                         </a>
                     <?php

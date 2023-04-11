@@ -4,7 +4,7 @@ if (!isset($_GET['idproduit'])) {
 }
 $idproduit = $_GET['idproduit'];
 include "connection.php";
-$search = $con->prepare("SELECT * FROM produit where Id_Produit=?");
+$search = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,NomProduit,Image,Description,produit.Prix from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit where produit.Id_Produit=?  GROUP by produit.Id_Produit,NomProduit,Image,Description,produit.Prix");
 $search->execute([$idproduit]);
 $reultat = $search->fetch();
 ?>
@@ -169,9 +169,9 @@ $reultat = $search->fetch();
                             </div>
                             <h3><?php echo $reultat['Prix']; ?>.00DH</h3>
                             <div class="ratings d-flex flex-row align-items-center">
-                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
+                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i><i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span><?php echo $reultat["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?> commandes</span>
                             </div>
-                            <div class="mt-5"> <span class="fw-bold">Color</span>
+                            <!--<div class="mt-5"> <span class="fw-bold">Color</span>
                                 <div class="colors">
                                     <ul id="marker">
                                         <li id="marker-1"></li>
@@ -181,7 +181,7 @@ $reultat = $search->fetch();
                                         <li id="marker-5"></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -204,7 +204,8 @@ $reultat = $search->fetch();
                                     </div>
                                 </div>
                             </div>
-                            <div class="buttons d-flex flex-row mt-5 gap-3"> <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button></div>
+                            <div style="width: 20%;" class="container-fluid d-flex justify-content-between"><button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button><button class="btn btn-outline-danger"><a href="ajouter_favorites.php?idproduit=<?php echo $idproduit ?>"><i class="fa-solid fa-heart"></i></a></button></div>
+
                         </div>
                     </div>
                 </div>
