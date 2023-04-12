@@ -256,7 +256,7 @@ if (isset($_POST['prod_cat'])) {
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2023 Copyright:
-            <a class="text-white" href="home.php">MBshop</a>
+            <a class="text-white" href="home.php">QuickShop</a>
         </div>
         <!-- Copyright -->
     </footer>

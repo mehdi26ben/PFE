@@ -23,17 +23,12 @@ if (!isset($_SESSION["admin"])) {
 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 py-4 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="admin.php" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                        <span class="fs-5 d-none d-sm-inline">Acceuille</span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
-                            <a href="admin.php" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="admin_products.php" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Ajouter produits</span> </a>
@@ -45,14 +40,14 @@ if (!isset($_SESSION["admin"])) {
                         <li>
                             <a href="gerer_categories.php" class="nav-link px-0 align-middle ">
                                 <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">categories</span></a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <!--<ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </li>
                         <!--<li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -96,9 +91,9 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div>
             </div>
-            <div class="col mt-4">
+            <div class="col mt-4" style="border-radius: 8px;">
                 <div class="row d-flex justify-content-around">
-                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-2">
+                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-2" style="border-radius: 8px;">
                         <?php
                         include "connection.php";
                         $q = $con->prepare("SELECT count(*) from commande where Date_Commande>=month(CURDATE())");
@@ -110,7 +105,7 @@ if (!isset($_SESSION["admin"])) {
                         ?>
                         <h4>nombre des commandes</h4>
                     </div>
-                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-1">
+                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-1" style="border-radius: 8px;">
                         <?php
                         $q = $con->prepare("SELECT * FROM detail_commande");
                         $q->execute();
@@ -127,9 +122,15 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div>
                 <div class="row d-flex justify-content-around mt-4">
-                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light">
+                    <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light" style="border-radius: 8px;">
                         <h3>produits presque fini</h3>
                         <table class="table">
+                            <tr>
+                                <th>Produit</th>
+                                <th>Nom Produit</th>
+                                <th>Quantite</th>
+                                <th>Prix</th>
+                            </tr>
                             <?php
                             $q = $con->prepare("SELECT * FROM produit order by Quantite asc limit 6");
                             $q->execute();
@@ -139,20 +140,26 @@ if (!isset($_SESSION["admin"])) {
                                     <tr>
                                         <td> <a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></a></td>
                                         <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><?php echo $val['NomProduit'] ?></a></td>
-                                        <td style="background-color: #F45959 ;"><?php echo $val['Quantite'] ?></td>
-                                        <td><?php echo $val['Prix'] ?></td>
+                                        <td id="td_val" style="background-color: #F45959 ;"><?php echo $val['Quantite'] ?></td>
+                                        <td><?php echo $val['Prix'] ?>.00DH</td>
                                     </tr>
                             <?php  }
                             }
                             ?>
                         </table>
                     </div>
-                    <div class="col-md-5 col-lg-5 bg-light">
+                    <div class="col-md-5 col-lg-5 bg-light" style="border-radius: 8px;">
                         <?php
                         $q = $con->prepare("SELECT * from produit Where Month(Date_Arrivage)>=Month(CURDATE()) AND year(Date_Arrivage)=year(CURDATE()) order by Date_Arrivage desc LIMIT 6");
                         $q->execute(); ?>
                         <h3 class="text-center">dernier produits ajouter</h3>
                         <table class="table">
+                            <tr>
+                                <th>Produit</th>
+                                <th>Nom Produit</th>
+                                <th>Quantite</th>
+                                <th>Prix</th>
+                            </tr>
                             <?php
                             if ($q->rowCount() > 0) {
                                 $res = $q->fetchAll();
@@ -160,8 +167,8 @@ if (!isset($_SESSION["admin"])) {
                                     <tr>
                                         <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></a></td>
                                         <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><?php echo $val['NomProduit'] ?></a></td>
-                                        <td style="background-color: #F45959 ;"><?php echo $val['Quantite'] ?></td>
-                                        <td><?php echo $val['Prix'] ?></td>
+                                        <td><?php echo $val['Quantite'] ?></td>
+                                        <td><?php echo $val['Prix'] ?>.00DH</td>
                                     </tr>
                             <?php }
                             }

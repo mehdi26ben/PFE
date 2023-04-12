@@ -30,7 +30,7 @@ $q->execute([$idclient]);
 <body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img src="pages_images/logo1.png" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">
@@ -171,14 +171,16 @@ $q->execute([$idclient]);
 
                                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                                 <!-- Data -->
-                                                <a href="product.php?idproduit=<?php echo $val['Id_Produit'] ?>" style="text-decoration: none;color:black"><p><strong><?php echo $val['NomProduit'] ?></strong></p></a>
+                                                <a href="product.php?idproduit=<?php echo $val['Id_Produit'] ?>" style="text-decoration: none;color:black">
+                                                    <p><strong><?php echo $val['NomProduit'] ?></strong></p>
+                                                </a>
                                                 <p><?php echo $val['prix'] ?>.00DH</p>
                                                 <!--<p>Size: M</p>-->
                                                 <a href="supprimer-cart.php?idproduit=<?php echo $val['Id_Produit'] ?>" type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                                    <a href="ajouter_favorites.php?idproduit=<?php echo $val['Id_Produit']?>"><i class="fas fa-heart"></i></a>
+                                                    <a href="ajouter_favorites.php?idproduit=<?php echo $val['Id_Produit'] ?>"><i class="fas fa-heart"></i></a>
                                                 </button>
                                                 <!-- Data -->
                                             </div>
@@ -265,6 +267,80 @@ $q->execute([$idclient]);
             </div>
         </div>
     </section>
+    <!-- Footer -->
+    <footer class="text-white text-center mt-2">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Footer Content</h5>
+
+                    <p>
+                        Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous
+                        efforçons de vous offrir une expérience de shopping fluide en proposant une large gamme de
+                        produits de haute qualité, des prix compétitifs et un service client exceptionnel. Nous
+                        apprécions votre confiance en nous et sommes engagés à assurer votre satisfaction à chaque
+                        achat. Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Nous
+                        apprécions votre entreprise et sommes impatients de vous servir à nouveau à l'avenir.
+                    </p>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">social media</h5>
+
+                    <ul class="list-unstyled mb-0  h-75 d-flex flex-column justify-content-around pt-2" id="socials">
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-facebook" id="facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-instagram" id="instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white" id="twitter"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white"><i class="fa-brands fa-discord" id="discord"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">contacter-nous</h5>
+
+                    <ul class="list-unstyled  h-75 d-flex flex-column justify-content-around pt-2">
+                        <li>
+                            <i class="fa-solid fa-phone"></i> <span>+212 627169632</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i> <span>mehdi.bentoufile@hotmail.fr</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-fax"></i> <span>+212 507845128</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="home.php">QuickShop</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">

@@ -10,3 +10,8 @@ table tr td a{
     text-decoration: none;
     color: black;
 }
+#td_val{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+}

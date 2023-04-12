@@ -70,7 +70,7 @@ session_start();
         <form action="commande.php" method="post">
             <div class="row">
                 <div class="col-lg-5">
-                    <h3>information de livraison</h3>
+                    <h3 class="text-center" style="text-transform: capitalize;">informations de livraison</h3>
                     <div class="form-group ">
                         <label for="name" class="cols-sm-2 control-label">Nom</label>
                         <div class="cols-sm-10">
@@ -109,7 +109,7 @@ session_start();
 
 
                 <div class="col-lg-7 mx-auto">
-                    <h3>information de paiment</h3>
+                    <h3 class="text-center" style="text-transform: capitalize;">Informations de Paiement</h3>
                     <div class="card ">
                         <div class="card-header">
                             <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
@@ -282,7 +282,7 @@ session_start();
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2023 Copyright:
-            <a class="text-white" href="home.php">MBshop</a>
+            <a class="text-white" href="home.php">QuickShop</a>
         </div>
         <!-- Copyright -->
     </footer>
