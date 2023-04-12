@@ -378,11 +378,11 @@
                 <div class="carousel-item active">
                     <div class="row">
                         <?php
-                        $tend = $con->prepare("SELECT p.Id_Produit,p.NomProduit,p.Image,p.nomproduit ,dm.Quantite, COUNT((dm.Id_Produit)*(dm.Quantite)) as total_orders
+                        $tend = $con->prepare("SELECT p.Id_Produit,p.NomProduit,p.Image,dm.Quantite, sum((dm.Quantite)) as total_orders
                         FROM produit p
                         inner JOIN detail_commande dm ON p.Id_Produit = dm.Id_Produit
-                        GROUP BY p.Id_Produit,dm.Quantite
-                        ORDER BY total_orders,dm.Quantite DESC limit 6");
+                        GROUP BY p.Id_Produit,p.NomProduit,p.Image
+                        ORDER BY total_orders Desc limit 6");
                         $tend->execute();
                         if ($tend->rowCount() > 0) {
                             $res = $tend->fetchAll();
@@ -417,7 +417,7 @@
             </div>
             <div class="col-md-3 py-3 py-md-0">
                 <i class="fa-solid fa-rotate-left"></i>
-                <h3>Routourne et Gratuits</h3>
+                <h3>Routourne est Gratuit</h3>
                 <p>dans 30 jours</p>
             </div>
             <div class="col-md-3 py-3 py-md-0">

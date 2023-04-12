@@ -92,7 +92,7 @@ $idclient = $_SESSION["client"]["Id_Client"];
                                     <?php $idpro = $val['Id_Produit']; ?>
                                     <input type="hidden" name="idproduit" value="<?php echo $idpro; ?>">
                                     <td><a href="product.php?idproduit=<?php echo $idpro;?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" width="100px"></a></td>
-                                    <td><a href="product.php?idproduit=<?php echo $val['NomProduit'];?>" style="text-decoration:none;color:black;font-size:19px;"><?php echo $val['NomProduit'] ?></a></td>
+                                    <td><a href="product.php?idproduit=<?php echo $val['Id_Produit'];?>" style="text-decoration:none;color:black;font-size:19px;"><?php echo $val['NomProduit'] ?></a></td>
                                     <td><button type="submit" style="background-color: transparent;border:1px"><i class="fa-solid fa-cart-shopping"></i></button></td>
                                     <td><a style="color: red;" href="supprmer_favorites.php?idproduit=<?php echo $idpro ?>"><i class="fa-solid fa-trash"></i></a></td>
                                 </tr></form>
