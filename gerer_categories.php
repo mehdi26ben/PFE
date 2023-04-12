@@ -116,8 +116,8 @@ if (!isset($_SESSION["admin"])) {
                                     <input type="hidden" value="<?php echo $val["Nom_Cate"] ?>" name="nomcate">
                                     <td><input type="text" value="<?php echo $val["Nom_Cate"] ?>" style="width: 100%;" name="nvnom"></td>
                                     <td><?php echo $val["count(produit.Id_Produit)"] ?></td>
-                                    <td><a href="modifier_categorie.php?nomcate=<?php echo $val["Nom_Cate"] ?>"><i class="fa-solid fa-pen-nib"></i></a></button></td>
-                                    <td><a href="supprimer_categorie.php?nomcate=<?php echo $val["Nom_Cate"] ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                    <td><a style="color: yellow;" href="modifier_categorie.php?nomcate=<?php echo $val["Nom_Cate"] ?>"><i class="fa-solid fa-pen-nib"></i></a></button></td>
+                                    <td><a style="color: red;" href="supprimer_categorie.php?nomcate=<?php echo $val["Nom_Cate"] ?>"><i class="fa-solid fa-trash"></i></a></td>
                                 </tr>
                         <?php }
                         }

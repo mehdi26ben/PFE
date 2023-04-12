@@ -131,14 +131,14 @@ if (!isset($_SESSION["admin"])) {
                         <h3>produits presque fini</h3>
                         <table class="table">
                             <?php
-                            $q = $con->prepare("SELECT * FROM produit order by Quantite asc limit 4");
+                            $q = $con->prepare("SELECT * FROM produit order by Quantite asc limit 6");
                             $q->execute();
                             if ($q->rowCount() > 0) {
                                 $resultat = $q->fetchAll();
                                 foreach ($resultat as $val) { ?>
                                     <tr>
-                                        <td> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></td>
-                                        <td><?php echo $val['NomProduit'] ?></td>
+                                        <td> <a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></a></td>
+                                        <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><?php echo $val['NomProduit'] ?></a></td>
                                         <td style="background-color: #F45959 ;"><?php echo $val['Quantite'] ?></td>
                                         <td><?php echo $val['Prix'] ?></td>
                                     </tr>
@@ -158,8 +158,8 @@ if (!isset($_SESSION["admin"])) {
                                 $res = $q->fetchAll();
                                 foreach ($res as $val) { ?>
                                     <tr>
-                                        <td> <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></td>
-                                        <td><?php echo $val['NomProduit'] ?></td>
+                                        <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" width="50px"></a></td>
+                                        <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><?php echo $val['NomProduit'] ?></a></td>
                                         <td style="background-color: #F45959 ;"><?php echo $val['Quantite'] ?></td>
                                         <td><?php echo $val['Prix'] ?></td>
                                     </tr>

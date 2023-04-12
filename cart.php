@@ -161,7 +161,7 @@ $q->execute([$idclient]);
                                             <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                                 <!-- Image -->
                                                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                                    <img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" class="w-100" alt="Blue Jeans Jacket" />
+                                                    <a href="product.php?idproduit=<?php echo $val['Id_Produit'] ?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" class="w-100" alt="Blue Jeans Jacket" /></a>
                                                     <a href="#!">
                                                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                                     </a>
@@ -171,9 +171,9 @@ $q->execute([$idclient]);
 
                                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                                 <!-- Data -->
-                                                <p><strong><?php echo $val['NomProduit'] ?></strong></p>
-                                                <p>Color: blue</p>
-                                                <p>Size: M</p>
+                                                <a href="product.php?idproduit=<?php echo $val['Id_Produit'] ?>" style="text-decoration: none;color:black"><p><strong><?php echo $val['NomProduit'] ?></strong></p></a>
+                                                <p><?php echo $val['prix'] ?>.00DH</p>
+                                                <!--<p>Size: M</p>-->
                                                 <a href="supprimer-cart.php?idproduit=<?php echo $val['Id_Produit'] ?>" type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
                                                     <i class="fas fa-trash"></i>
                                                 </a>

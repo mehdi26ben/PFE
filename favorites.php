@@ -71,12 +71,12 @@ $idclient = $_SESSION["client"]["Id_Client"];
 
     <div class="container-fluid mb-5">
         <div class="row px-1 mt-2">
-            <div class="col-lg-3 m-2" style="height:30vh;background-color:lightgray">
+            <div class="col-lg-3 m-2 bg-light" style="height:30vh;background-color:lightgray">
                 <a href="client_commandes.php"><i class="fa-solid fa-box-open"></i> mes commandes</a>
                 <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> mon panier</a>
                 <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> se deconnecter</a>
             </div>
-            <div class="col-lg-7 mx-2 mt-2" style="background-color:lightgray">
+            <div class="col-lg-7 mx-2 mt-2 bg-light" style="background-color:lightgray">
                 
                     <table class="table">
                         <?php
@@ -84,8 +84,7 @@ $idclient = $_SESSION["client"]["Id_Client"];
                         $q = $con->prepare("SELECT * FROM favorites f inner join produit p on f.Id_Produit=p.Id_Produit WHERE Id_client=?");
                         $q->execute([$idclient]); ?>
                         <h3 style="text-decoration: underline;text-transform:capitalize">nombre des produits: <?php echo $q->rowCount(); ?></h3>
-                        <?php if ($q->rowCount() > 0) {?>
-                            
+                        <?php if ($q->rowCount() > 0) {?>   
                            <?php $resultat = $q->fetchAll();
                             foreach ($resultat as $val) { ?>
                             <form action="addToCart.php" method="post">
@@ -95,7 +94,7 @@ $idclient = $_SESSION["client"]["Id_Client"];
                                     <td><a href="product.php?idproduit=<?php echo $idpro;?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image']; ?>" width="100px"></a></td>
                                     <td><a href="product.php?idproduit=<?php echo $val['NomProduit'];?>" style="text-decoration:none;color:black;font-size:19px;"><?php echo $val['NomProduit'] ?></a></td>
                                     <td><button type="submit" style="background-color: transparent;border:1px"><i class="fa-solid fa-cart-shopping"></i></button></td>
-                                    <td><a style="color: black;" href="supprmer_favorites.php?idproduit=<?php echo $idpro ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                    <td><a style="color: red;" href="supprmer_favorites.php?idproduit=<?php echo $idpro ?>"><i class="fa-solid fa-trash"></i></a></td>
                                 </tr></form>
                         <?php }
                         }
