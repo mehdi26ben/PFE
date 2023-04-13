@@ -336,7 +336,7 @@ $q->execute([$idclient]);
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2023 Copyright:
-            <a class="text-white" href="home.php">QuickShop</a>
+            <a class="text-white" href="home.php">Quickshop</a>
         </div>
         <!-- Copyright -->
     </footer>

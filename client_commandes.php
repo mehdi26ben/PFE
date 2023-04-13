@@ -173,7 +173,7 @@ $q->execute([$idclient]);
     </div>
 
     <!-- Footer -->
-    <footer class="text-white text-center mt-2">
+    <footer class="text-white text-center" style="margin-top: 8%;">
         <!-- Grid container -->
         <div class="container p-4">
             <!--Grid row-->

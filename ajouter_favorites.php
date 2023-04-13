@@ -14,7 +14,7 @@
     $exist=false;
     if($cher->rowCount()>0){
         $exist=true;
-        header("location:categories.php");
+        header("location:categories.php?nomcate=");
     }
     if($exist==false){
         $q=$con->prepare("INSERT INTO favorites(Id_Client,Id_Produit) VALUES (?,?)");

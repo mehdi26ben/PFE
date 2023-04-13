@@ -206,7 +206,7 @@ $reultat = $search->fetch();
                             </div>
                             <div style="width: 20%;" class="container-fluid d-flex justify-content-between">
                             <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button>
-                             <a class="btn btn-outline-danger" href="ajouter_favorites.php?idproduit=<?php echo $idproduit?>"><span class="far fa-heart"></span></a></div>
+                             <a class="btn btn-outline-danger" href="ajouter_favorites.php?idproduit=<?php echo $idproduit?>" style="color: red;"><span class="far fa-heart"></span></a></div>
                         </div>
                     </div>
                 </div>

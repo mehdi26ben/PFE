@@ -300,9 +300,9 @@
 
     <section class="banner">
         <div class="content">
-            <h1>profiter des meilleurs fournitures des hautes qualiter avec des bonnes prix</h1>
-            <p>Télévisions,machine-a-laver,micro-hande,guyg bhsy. et d'autres produit des marec internationalles
-                <br>ne manque pas cette opportunite
+            <h1>profiter des meilleures fournitures des hautes qualités avec des bons prix</h1>
+            <p>Télévisions, machine-a-laver,micro-Hande, et d'autres produits des marques internationales
+                <br>ne manque pas cette opportunité
             </p>
             <div class="btn btn-primary"><a href="categories.php?nomcate=Maison_Et_Founitures" style="color: white;text-decoration:none;border:0px">acheter maintenant</a></div>
         </div>
