@@ -133,7 +133,7 @@ $reultat = $search->fetch();
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="search.php">
+                <form class="d-flex" role="search" method="get" action="search.php">
                     <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
                     <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>

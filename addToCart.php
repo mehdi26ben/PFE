@@ -3,17 +3,22 @@ session_start();
 if (!isset($_SESSION['client'])) {
     header("location:login.php");
 }
+
+if(isset($_POST["idproduit"])){
+    $idpro=$_POST["idproduit"];
+    $disti="product.php?idproduit=$idpro";
+}
+if((isset($_POST["prod_cat"]))){
+    $prod_cat=$_POST["prod_cat"];
+    $disti="search.php?prod_cat=$prod_cat";
+}
+if((isset($_POST["fav-submit"]))){
+    $disti="favorites.php";
+}
 if(isset($_POST["nomcate"])){
-    $page=$_POST["nomcate"];
-    $disti="categories.php?nomcate=$page";//partie de destination apres l'ajoute au panier
+    $nomcate=$_POST["nomcate"];
+    $disti="categories.php?nomcate=$nomcate";
 }
-else{
-    $disti="home.php";
-}
-/*else{
-    $page=$_POST["prod_cat"];
-    $disti="search.php?prod_cat=$page";
-}*/
 include "connection.php";
 $idclient=$_SESSION['client']['Id_Client'];
 $idproduit=$_POST['idproduit'];

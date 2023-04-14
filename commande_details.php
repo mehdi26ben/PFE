@@ -6,7 +6,7 @@ if (!isset($_SESSION['client'])) {
 $idcom = $_GET['idcom'];
 include "connection.php";
 
-$q = $con->prepare("SELECT p.Image,dc.Quantite,dc.Prix from detail_commande dc inner JOIN produit p on dc.Id_Produit=p.Id_Produit and dc.Id_Com=?");
+$q = $con->prepare("SELECT p.Image,dc.Quantite,p.Prix from detail_commande dc inner JOIN produit p on dc.Id_Produit=p.Id_Produit and dc.Id_Com=?");
 $q->execute([$idcom]);
 ?>
 <!DOCTYPE html>
@@ -129,7 +129,7 @@ $q->execute([$idcom]);
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="search.php">
+                <form class="d-flex" role="search" method="get" action="search.php">
                     <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
                     <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>

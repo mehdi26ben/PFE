@@ -24,8 +24,8 @@ foreach($pan as $val){
     $idpro=$val['Id_Produit'];
     $quantite=$val['Quantite'];
     $prix=$val['prix'];
-    $ajDcom=$con->prepare("INSERT INTO detail_commande (Id_Com,Id_Produit,Quantite,Prix) VALUES (?,?,?,?)");
-    $ajDcom->execute([$idcommande,$idpro,$quantite,$prix]);
+    $ajDcom=$con->prepare("INSERT INTO detail_commande (Id_Com,Id_Produit,Quantite) VALUES (?,?,?)");
+    $ajDcom->execute([$idcommande,$idpro,$quantite]);
     $updpro=$con->prepare("UPDATE produit SET Quantite=Quantite-? Where Id_Produit=?");
     $updpro->execute([$quantite,$idpro]);
 }

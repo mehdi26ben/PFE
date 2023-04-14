@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_POST['prod_cat'])) {
+if (!isset($_GET['prod_cat'])) {
     header("location:home.php");
 }
 /*if(isset($_GET['prod_cat'])){
@@ -9,9 +9,9 @@ if (!isset($_POST['prod_cat'])) {
 if(isset($_POST['prod_cat'])){
     $prod_cat=$_POST['prod_cat'];  
 }*/
-if (isset($_POST['prod_cat'])) {
+if (isset($_GET['prod_cat'])) {
     include "connection.php";
-    $prod_cat = $_POST['prod_cat'];
+    $prod_cat = $_GET['prod_cat'];
     $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? and produit.Quantite>0 LIMIT 10 ");
     $bind1 = '%' . $prod_cat . '%';
     $bind2 = '%' . $prod_cat . '%';
@@ -141,7 +141,7 @@ if (isset($_POST['prod_cat'])) {
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post">
+                <form class="d-flex" role="search" method="get">
                     <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
                     <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -160,7 +160,8 @@ if (isset($_POST['prod_cat'])) {
             <?php if ($search->rowCount() > 0) {
                 $row = $search->fetchAll();
                 foreach ($row as $val) {
-                    $id = $val['Id_Produit']
+                    $id = $val['Id_Produit'];
+                   
             ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                         <form action="addToCart.php" method="post">
@@ -168,7 +169,7 @@ if (isset($_POST['prod_cat'])) {
                                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                                     <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
                                     <li class="icon mx-3"><a href="ajouter_favorites.php?idproduit=<?php echo $id ?>"><span class="far fa-heart"></span></a></li>
-                                    <li class="icon"><button type="submit" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></<li>
+                                    <li class="icon"><button type="submit" name="search-sub" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></<li>
                                 </ul>
                             </div>
                             <input type="hidden" name="prod_cat" value="<?php echo $prod_cat ?>">

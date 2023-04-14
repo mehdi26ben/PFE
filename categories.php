@@ -3,7 +3,6 @@ include 'connection.php';
 if (!isset($_GET['nomcate'])) {
     header("location:home.php");
 }
-
 //products display
 $nomcate = $_GET['nomcate'];
 $lister = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,NomProduit,Image,Nom_Cate,Description,produit.Prix from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit left join categorie on categorie.Id_Cate=produit.Id_Cate where categorie.Nom_Cate=?  GROUP by produit.Id_Produit,NomProduit,Image,Description,produit.Prix and produit.Quantite>0 LIMIT 10");
@@ -28,7 +27,7 @@ $lister->execute([$nomcate]);
 <body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png" width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img src="pages_images/logo1.png" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">
@@ -77,7 +76,7 @@ $lister->execute([$nomcate]);
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="check_login.php" method="post">
+            <form id="modalform" action="check_login.php" method="post">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
@@ -85,7 +84,7 @@ $lister->execute([$nomcate]);
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="hidden" name="page_name" value="categories.php">
+                    <input type="hidden" name="page_name" value="home.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
@@ -123,9 +122,6 @@ $lister->execute([$nomcate]);
                 <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
                 <style>
                     .dropdown-item:hover {
                         background-color: lightgray;
@@ -135,7 +131,7 @@ $lister->execute([$nomcate]);
         </div>
         <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search" method="post" action="search.php">
+                <form class="d-flex" role="search" method="get" action="search.php">
                     <input name="prod_cat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
                     <button type="submit" class="btn btn-outline-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -164,7 +160,8 @@ $lister->execute([$nomcate]);
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                            <!--commandes<div class="d-flex align-content-center justify-content-center"><strong<?php //echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?> commandes </strong></div>-->
+                            <!--commandes<div class="d-flex align-content-center justify-content-center"><strong<?php //echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] 
+                                                                                                                ?> commandes </strong></div>-->
                             <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
                         </form>
                     </div>
@@ -175,7 +172,7 @@ $lister->execute([$nomcate]);
             ?>
         </div>
     </div>
-    
+
     <!-- Footer -->
     <footer class="text-white text-center mt-5">
         <!-- Grid container -->
