@@ -14,11 +14,11 @@
     $exist=false;
     if($cher->rowCount()>0){
         $exist=true;
-        header("location:categories.php");
+        header("location:favorites.php");
     }
     if($exist==false){
         $q=$con->prepare("INSERT INTO favorites(Id_Client,Id_Produit) VALUES (?,?)");
         $q->execute([$idclient,$idprod]);
-        header("location:categories.php");
+        header("location:favorites.php");
     }
 ?>

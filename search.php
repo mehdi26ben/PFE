@@ -34,7 +34,7 @@ if (isset($_GET['prod_cat'])) {
     <title>Document</title>
 </head>
 
-<body>
+<body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
             <a href="home.php" style="width: 50px;"><img src="pages_images/logo1.png" width="100px"></a>
@@ -148,7 +148,7 @@ if (isset($_GET['prod_cat'])) {
             </div>
         </nav>
     </div>
-    <div class="container bg-white">
+    <div class="container">
         <!--<nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container-fluid p-0"> <a class="navbar-brand text-uppercase fw-800" href="#"><span class="border-red pe-2">New</span>Product</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
                 <div class="collapse navbar-collapse" id="myNav">
@@ -168,7 +168,7 @@ if (isset($_GET['prod_cat'])) {
                                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                                     <li class="icon"><?php echo "<a href=product.php?idproduit=" . $id . "><span class='fas fa-expand-arrows-alt'></span></a>" ?></li>
                                     <li class="icon mx-3"><a href="ajouter_favorites.php?idproduit=<?php echo $id ?>"><span class="far fa-heart"></span></a></li>
-                                    <li class="icon"><button type="submit" name="search-sub" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></<li>
+                                    <li class="icon"><button type="submit" name="search-sub" style="background-color: transparent; border:0px"><i class="fa-solid fa-cart-shopping"></i></button></li>
                                 </ul>
                             </div>
                             <input type="hidden" name="prod_cat" value="<?php echo $prod_cat ?>">

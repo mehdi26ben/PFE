@@ -26,7 +26,7 @@ $reultat = $search->fetch();
 <body style=" background-color:#DDDDDD;">
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px" ></a>
+            <a href="home.php" style="width: 50px;"><img src="pages_images/logo1.png" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">
@@ -83,7 +83,7 @@ $reultat = $search->fetch();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="hidden" name="page_name" value="product.php">
+                    <input type="hidden" name="page_name" value="home.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
@@ -121,9 +121,6 @@ $reultat = $search->fetch();
                 <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
                 <style>
                     .dropdown-item:hover {
                         background-color: lightgray;
@@ -206,8 +203,9 @@ $reultat = $search->fetch();
                                 </div>
                             </div>
                             <div style="width: 20%;" class="container-fluid d-flex justify-content-between">
-                            <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button>
-                             <a class="btn btn-outline-danger" href="ajouter_favorites.php?idproduit=<?php echo $idproduit?>" style="color: red;"><span class="far fa-heart"></span></a></div>
+                                <button type="submit" class="btn btn-outline-dark"><i class="fa-solid fa-cart-shopping"></i></button>
+                                <a class="btn btn-outline-danger" href="ajouter_favorites.php?idproduit=<?php echo $idproduit ?>" style="color: red;"><span class="far fa-heart"></span></a>
+                            </div>
                         </div>
                     </div>
                 </div>

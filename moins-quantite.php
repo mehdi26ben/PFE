@@ -20,4 +20,7 @@
         $upd->execute([$idproduit,$idclient]);
         header("location:cart.php");
     }
+    else{
+        header("location:cart.php");
+    }
 ?>
