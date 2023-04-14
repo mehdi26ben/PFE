@@ -17,7 +17,6 @@ $ajcom->execute();
 
 $idcommande=$con->lastInsertId();
 $qp=$con->prepare("SELECT panier.Id_Produit,panier.Quantite,prix from panier inner join produit where panier.Id_Produit=produit.Id_Produit AND panier.Id_Client =?");
-
 $qp->execute([$idclient]);
 $pan=$qp->fetchAll();
 foreach($pan as $val){

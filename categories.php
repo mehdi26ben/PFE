@@ -5,9 +5,8 @@ if (!isset($_GET['nomcate'])) {
 }
 //products display
 $nomcate = $_GET['nomcate'];
-$lister = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,NomProduit,Image,Nom_Cate,Description,produit.Prix from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit left join categorie on categorie.Id_Cate=produit.Id_Cate where categorie.Nom_Cate=?  GROUP by produit.Id_Produit,NomProduit,Image,Description,produit.Prix and produit.Quantite>0 LIMIT 10");
+$lister = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,produit.Quantite,NomProduit,Image,Nom_Cate,Description,produit.Prix from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit left join categorie on categorie.Id_Cate=produit.Id_Cate where categorie.Nom_Cate=? and produit.Quantite>0 GROUP by produit.Id_Produit,NomProduit,Image,Description,produit.Prix  LIMIT 10");
 $lister->execute([$nomcate]);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,8 +159,8 @@ $lister->execute([$nomcate]);
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                            <!--commandes<div class="d-flex align-content-center justify-content-center"><strong<?php //echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] 
-                                                                                                                ?> commandes </strong></div>-->
+                            <div><strong>commandes: <?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"]?> </strong></div>
+                            <div><strong>qauntite: </strong><?php echo $val['Quantite'] ?></div>
                             <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
                         </form>
                     </div>

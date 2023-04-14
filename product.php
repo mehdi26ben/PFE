@@ -4,7 +4,7 @@ if (!isset($_GET['idproduit'])) {
 }
 $idproduit = $_GET['idproduit'];
 include "connection.php";
-$search = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,NomProduit,Image,Description,produit.Prix from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit where produit.Id_Produit=?  GROUP by produit.Id_Produit,NomProduit,Image,Description,produit.Prix");
+$search = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,NomProduit,Image,Description,produit.Prix,produit.Quantite from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit where produit.Id_Produit=?  GROUP by produit.Id_Produit,NomProduit,Image,Description,produit.Prix");
 $search->execute([$idproduit]);
 $reultat = $search->fetch();
 ?>
@@ -169,8 +169,9 @@ $reultat = $search->fetch();
                             </div>
                             <h3><?php echo $reultat['Prix']; ?>.00DH</h3>
                             <div class="ratings d-flex flex-row align-items-center">
-                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i><i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span><?php echo $reultat["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?> commandes</span>
+                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i><i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span><strong>commandes:</strong> <?php echo $reultat["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?></span>
                             </div>
+                            <div class="container-fluid mt-1"><strong>quantite en stock: </strong><?php echo $reultat["Quantite"] ?></div>
                             <!--<div class="mt-5"> <span class="fw-bold">Color</span>
                                 <div class="colors">
                                     <ul id="marker">

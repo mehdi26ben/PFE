@@ -12,7 +12,7 @@ if(isset($_POST['prod_cat'])){
 if (isset($_GET['prod_cat'])) {
     include "connection.php";
     $prod_cat = $_GET['prod_cat'];
-    $search = $con->prepare("SELECT distinct(Id_Produit),NomProduit,Image,Prix FROM produit INNER JOIN categorie ON produit.Id_Cate=Categorie.Id_Cate and Nom_Cate LIKE ? OR NomProduit like ? and produit.Quantite>0 LIMIT 10 ");
+    $search = $con->prepare("SELECT COALESCE(COUNT(detail_commande.Id_Produit), 0),produit.Id_Produit,produit.Quantite,NomProduit,Image,Nom_Cate,Description,produit.Prix from produit left JOIN detail_commande on produit.Id_Produit=detail_commande.Id_Produit left join categorie on categorie.Id_Cate=produit.Id_Cate where  Nom_Cate LIKE ? OR NomProduit like ? and produit.Quantite>0 group by produit.Id_Produit,NomProduit,Image,Description,produit.Prix LIMIT 10 ");
     $bind1 = '%' . $prod_cat . '%';
     $bind2 = '%' . $prod_cat . '%';
     $search->bindParam(1, $bind1, PDO::PARAM_STR);
@@ -37,7 +37,7 @@ if (isset($_GET['prod_cat'])) {
 <body>
     <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img src="pages_images/logo1.png" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">
@@ -161,7 +161,6 @@ if (isset($_GET['prod_cat'])) {
                 $row = $search->fetchAll();
                 foreach ($row as $val) {
                     $id = $val['Id_Produit'];
-                   
             ?>
                     <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                         <form action="addToCart.php" method="post">
@@ -176,14 +175,15 @@ if (isset($_GET['prod_cat'])) {
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                            <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>
+                            <div><strong>commandes: <?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?> </strong></div>
+                            <div><strong>qauntite: </strong><?php echo $val['Quantite'] ?></div>
                             <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
                         </form>
                     </div>
                 <?php   }
             } else { ?>
                 <h1>Aucune Resultat</h1>
-            <?php }   
+            <?php }
             ?>
         </div>
     </div>

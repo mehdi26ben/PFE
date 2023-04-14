@@ -107,7 +107,7 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                     <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-1" style="border-radius: 8px;">
                         <?php
-                        $q = $con->prepare("SELECT * FROM detail_commande");
+                        $q = $con->prepare("SELECT dc.Quantite,p.Prix FROM detail_commande dc inner join produit p on p.Id_Produit=dc.Id_Produit");
                         $q->execute();
                         if ($q->rowCount() > 0) {
                             $total = 0;
