@@ -44,11 +44,11 @@ if (isset($_POST['modifier'])) {
                         </li>
                         <li>
                             <a href="admin_sup_mod_pro.php" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">modifier produits</span></a>
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Gérer produits</span></a>
                         </li>
                         <li>
                             <a href="gerer_categories.php" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">categories</span></a>
+                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
@@ -89,9 +89,9 @@ if (isset($_POST['modifier'])) {
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                             <li><a class="dropdown-item" href="home.php">home</a></li>
-                            <li><a class="dropdown-item" href="admin_products.php">ajouter produit</a></li>
-                            <li><a class="dropdown-item" href="admin_sup_mod_pro.php">gerer produits</a></li>
-                            <li><a class="dropdown-item" href="gerer_categories.php">categorie</a></li>
+                            <li><a class="dropdown-item" href="admin_products.php">Ajouter produit</a></li>
+                            <li><a class="dropdown-item" href="admin_sup_mod_pro.php">Gérer produits</a></li>
+                            <li><a class="dropdown-item" href="gerer_categories.php">Categorie</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -105,9 +105,9 @@ if (isset($_POST['modifier'])) {
                     <form action="" method="post">
                         <table class="table table-dark w-100">
                             <tr>
-                                <th>nom categorie</th>
-                                <th>nouvau nom</th>
-                                <th>modifier</th>
+                                <th>Nom Categorie</th>
+                                <th>Nouveau Nom</th>
+                                <th>Modifier</th>
                             </tr>
                             <tr>
                                 <td><?php echo $nomcate ?></td>

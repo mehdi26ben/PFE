@@ -159,9 +159,9 @@ $lister->execute([$nomcate]);
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                            <div><strong>commandes: <?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"]?> </strong></div>
-                            <div><strong>qauntite: </strong><?php echo $val['Quantite'] ?></div>
-                            <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
+                            <div><strong>Commandes: </strong><?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"]?> </div>
+                            <div><strong>Qauntite: </strong><?php echo $val['Quantite'] ?></div>
+                            <div class="price">Prix: <?php echo $val['Prix'] ?>.00DH</div>
                         </form>
                     </div>
             <?php }

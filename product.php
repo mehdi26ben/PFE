@@ -166,9 +166,9 @@ $reultat = $search->fetch();
                             </div>
                             <h3><?php echo $reultat['Prix']; ?>.00DH</h3>
                             <div class="ratings d-flex flex-row align-items-center">
-                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i><i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span><strong>commandes:</strong> <?php echo $reultat["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?></span>
+                                <div class="d-flex flex-row"> <i class='bx bxs-star'></i><i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span><strong>Commandes:</strong> <?php echo $reultat["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?></span>
                             </div>
-                            <div class="container-fluid mt-1"><strong>quantite en stock: </strong><?php echo $reultat["Quantite"] ?></div>
+                            <div class="container-fluid mt-1"><strong>Quantite En Stock: </strong><?php echo $reultat["Quantite"] ?></div>
                             <!--<div class="mt-5"> <span class="fw-bold">Color</span>
                                 <div class="colors">
                                     <ul id="marker">

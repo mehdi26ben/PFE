@@ -380,7 +380,7 @@
                         <?php
                         $tend = $con->prepare("SELECT p.Id_Produit,p.NomProduit,p.Image,dm.Quantite, sum((dm.Quantite)) as total_orders
                         FROM produit p
-                        inner JOIN detail_commande dm ON p.Id_Produit = dm.Id_Produit where p.Quantite>1 
+                        inner JOIN detail_commande dm ON p.Id_Produit = dm.Id_Produit where p.Quantite>1
                         GROUP BY p.Id_Produit,p.NomProduit,p.Image
                         ORDER BY total_orders Desc limit 6");
                         $tend->execute();

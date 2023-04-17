@@ -1,7 +1,8 @@
 <?php
     session_start();
     if(!isset($_SESSION["client"])){
-        header("location:home.php");
+        header("location:login.php");
+        die();
     }
     if(!isset($_GET["idproduit"])){
         header("location:home.php");

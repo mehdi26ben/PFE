@@ -177,7 +177,7 @@ if (isset($_GET['prod_cat'])) {
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
                             <div><strong>commandes: <?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?> </strong></div>
                             <div><strong>qauntite: </strong><?php echo $val['Quantite'] ?></div>
-                            <div class="price"><?php echo $val['Prix'] ?>.00DH</div>
+                            <div class="price">Prix: <?php echo $val['Prix'] ?>.00DH</div>
                         </form>
                     </div>
                 <?php   }

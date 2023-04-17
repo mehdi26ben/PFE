@@ -69,7 +69,7 @@ session_start();
     <div class="container-fluid pt-4">
         <form action="commande.php" method="post">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-5 d-flex flex-column justify-content-around">
                     <h3 class="text-center" style="text-transform: capitalize;">informations de livraison</h3>
                     <div class="form-group ">
                         <label for="name" class="cols-sm-2 control-label">Nom</label>
@@ -98,21 +98,20 @@ session_start();
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label for="password" class="cols-sm-2 control-label">telephone</label>
+                        <label  class="cols-sm-2 control-label">telephone</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="tel" placeholder="num tel du recepteur" required />
+                                <input type="number" class="form-control" name="tel" placeholder="num tel du recepteur" required />
                             </div>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="col-lg-7 mx-auto">
-                    <h3 class="text-center" style="text-transform: capitalize;">Informations de Paiement</h3>
-                    <div class="card ">
+                    <h3 class="text-center mt-2" style="text-transform: capitalize;">Informations de Paiement</h3>
+                    <div class="card mt-4">
                         <div class="card-header">
-                            <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                            <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2 ">
                                 <!-- Credit card form tabs -->
                                 <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
                                     <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit
@@ -214,7 +213,7 @@ session_start();
         </form>
     </div>
     <!-- Footer -->
-    <footer class="text-white text-center mt-5">
+    <footer class="text-white text-center mt-2">
         <!-- Grid container -->
         <div class="container p-4">
             <!--Grid row-->

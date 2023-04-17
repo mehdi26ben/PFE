@@ -2,8 +2,8 @@
 session_start();
 if (!isset($_SESSION['client'])) {
     header("location:login.php");
+    die();
 }
-
 if(isset($_POST["idproduit"])){
     $idpro=$_POST["idproduit"];
     $disti="product.php?idproduit=$idpro";

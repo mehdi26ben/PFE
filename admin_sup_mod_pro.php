@@ -33,11 +33,11 @@ if (!isset($_SESSION["admin"])) {
                         </li>
                         <li>
                             <a href="admin_sup_mod_pro.php" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">modifier produits</span></a>
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Gérer produits</span></a>
                         </li>
                         <li>
                             <a href="gerer_categories.php" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">categories</span></a>
+                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
@@ -115,8 +115,8 @@ if (!isset($_SESSION["admin"])) {
                                                     <td><?php echo $val["Quantite"] ?></td>
                                                     <td><?php echo $val["Date_Arrivage"] ?></td>
                                                     <td><?php echo $val["Prix"] ?></td>
-                                                    <td><a href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-pen-nib"></i></a></td>
-                                                    <td><a href="admin_supprimer_pro.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                                    <td><a style="color: blue;" href="admin_modifier_prod.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-pen-nib"></i></a></td>
+                                                    <td><a style="color: red;" href="admin_supprimer_pro.php?idpro=<?php echo $val['Id_Produit'] ?>"><i class="fa-solid fa-trash"></i></a></td>
                                                 </tr>
                                             <?php  }
                                         } else { ?>
