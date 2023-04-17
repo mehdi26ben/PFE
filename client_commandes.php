@@ -23,10 +23,9 @@ $q->execute([$idclient]);
 </head>
 
 <body>
-    <nav class="navbar sticky-top" id="navbar" style="background-color:#263238;">
-        <!--alert <div class="alert alert-success" id="alert-panier"> produit ajouter avec success</div>-->
+    <nav class="navbar sticky-top" style="background-color:#263238;">
         <div class="container-fluid" id="header">
-            <a href="home.php" style="width: 50px;"><img  src="pages_images/logo1.png"  width="100px"></a>
+            <a href="home.php" style="width: 50px;"><img src="pages_images/logo1.png" width="100px"></a>
             <?php if (isset($_SESSION['client'])) { ?>
                 <nav>
                     <ul style="width: 200px;">
@@ -38,7 +37,8 @@ $q->execute([$idclient]);
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="#">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes
+                                        commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
@@ -75,7 +75,7 @@ $q->execute([$idclient]);
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="check_login.php" method="post">
+            <form id="modalform" action="check_login.php" method="post">
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
@@ -83,7 +83,7 @@ $q->execute([$idclient]);
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <input type="hidden" name="page_name" value="categories.php">
+                    <input type="hidden" name="page_name" value="home.php">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
@@ -107,23 +107,21 @@ $q->execute([$idclient]);
     </div>
     <!--/modal-->
 
-    <div id="searchbar" class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
+    <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Sports_Et_Loisirs">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et
+                    Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Founitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Fournitures">Maison & Fourniture</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
-                <hr>
-                <a class="dropdown-item" type="button" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Login" data-target="#modalLoginForm"><i class="fa-solid fa-user"></i>
-                    Login</a>
                 <style>
                     .dropdown-item:hover {
                         background-color: lightgray;

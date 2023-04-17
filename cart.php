@@ -42,7 +42,8 @@ $q->execute([$idclient]);
                                     <?php echo $_SESSION['client']['Prenom'] ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 3%;">
-                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes commandes</a>
+                                    <a class="dropdown-item" style="color: black;" href="client_commandes.php">Mes
+                                        commandes</a>
 
                                     <hr>
                                     <a class="dropdown-item" style="color: black;" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>logout</a>
@@ -117,7 +118,8 @@ $q->execute([$idclient]);
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et
+                    Accessoir</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
@@ -163,7 +165,8 @@ $q->execute([$idclient]);
                                                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                                                     <a href="product.php?idproduit=<?php echo $val['Id_Produit'] ?>"><img src="<?php echo "pages_images/product_iamges/" . $val['Image'] ?>" class="w-100" alt="Blue Jeans Jacket" /></a>
                                                     <a href="#!">
-                                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)">
+                                                        </div>
                                                     </a>
                                                 </div>
                                                 <!-- Image -->
@@ -180,7 +183,7 @@ $q->execute([$idclient]);
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                                    <a href="ajouter_favorites.php?idproduit=<?php echo $val['Id_Produit'] ?>"><i class="fas fa-heart"></i></a>
+                                                    <a href="ajouter_favorites.php?idproduit=<?php echo $val['Id_Produit'] ?>" style="color: white;"><i class="fas fa-heart"></i></a>
                                                 </button>
                                                 <!-- Data -->
                                             </div>
@@ -194,10 +197,10 @@ $q->execute([$idclient]);
 
                                                     <div class="form-outline">
                                                         <input id="form1" min="0" name="quantity" value="<?php echo $val['Quantite'] ?>" type="number" class="form-control" />
-                                                        <label class="form-label" for="form1">Quantity</label>
+                                                        <label class="form-label" id="form-label" for="form1">Quantity</label>
                                                     </div>
 
-                                                    <a href="plus-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="btn-plus" class="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                    <a href="plus-quantite.php?idproduit=<?php echo $val['Id_Produit'] ?>" id="plus" class="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                         <i class="fas fa-plus"></i>
                                                     </a>
                                                 </div>
