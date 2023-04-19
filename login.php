@@ -53,7 +53,7 @@
                                         <button class="btn btn-dark btn-lg btn-block" type="submit" name="login">Login</button>
                                     </div>
 
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">vous-n'avez pas un compte? <a href="signup.html"
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">vous-n'avez pas un compte? <a href="signup.php"
                                         style="color: #393f81;">S'inscrire içi</a></p>
                                     <a href="#!" class="small text-muted">Terms of use.</a>
                                     <a href="#!" class="small text-muted">Privacy policy</a>

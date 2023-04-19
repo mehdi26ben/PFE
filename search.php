@@ -107,7 +107,7 @@ if (isset($_GET['prod_cat'])) {
                             <input type="password" id="defaultForm-pass" class="form-control validate" name="pwd" required>
                             <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                         </div>
-                        <a href="signup.html">create new account</a>
+                        <a href="signup.php">create new account</a>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button class="btn btn-primary" type="submit" name="login">Login</button>

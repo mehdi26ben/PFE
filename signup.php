@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION['alert-signup'])){
+        echo "<script>alert('" . $_SESSION['alert-signup'] . "');</script>";
+        unset($_SESSION['alert-signup']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
