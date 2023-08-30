@@ -19,7 +19,7 @@ $q->execute([$idclient]);
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="client_commande.css">
-    <title>Document</title>
+    <title>client commandes</title>
 </head>
 
 <body>
@@ -110,15 +110,16 @@ $q->execute([$idclient]);
     <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i>
+                Categories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et
                     Accessoir</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Sporst-_Et_Loisir">Sports Et Loisir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Sports_Et_Loisirs">Sports Et Loisir</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Gaming">Gaming</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Makeup_Et_Sante">Make-up & Santé</a>
-                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Fournitures">Maison & Fourniture</a>
+                <a class="dropdown-item" href="categories.php?nomcate=Maison_Et_Founitures">Maison & Fourniture</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Cuisine">Cuisine</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Television_Et_Hitec">Télévision & Hi Tec</a>
                 <a class="dropdown-item" href="categories.php?nomcate=Informatique">Informatique</a>
@@ -178,7 +179,7 @@ $q->execute([$idclient]);
             <div class="row">
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Footer Content</h5>
+                    <h5 class="text-uppercase">CHER CLIENT</h5>
                     <p>
                         Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous
                         efforçons de vous offrir une expérience de shopping fluide en proposant une large gamme de

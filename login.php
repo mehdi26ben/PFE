@@ -37,11 +37,11 @@
                                         <span class="h1 fw-bold mb-0">Login</span>
                                     </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">S'inscrire à votre compte</h5>
 
                                     <div class="form-outline mb-4">
                                         <input type="email" id="form2Example17" class="form-control form-control-lg" name="email" required/>
-                                        <label class="form-label" for="form2Example17">Email address</label>
+                                        <label class="form-label" for="form2Example17">Email</label>
                                     </div>
 
                                     <div class="form-outline mb-4">

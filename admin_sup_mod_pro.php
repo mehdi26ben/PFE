@@ -59,7 +59,7 @@ if (!isset($_SESSION["admin"])) {
                             <span class="d-none d-sm-inline mx-1">loser</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="home.php">home</a></li>
+                            <li><a class="dropdown-item" href="admin.php">Acceuille</a></li>
                             <li><a class="dropdown-item" href="admin_products.php">ajouter produit</a></li>
                             <li><a class="dropdown-item" href="admin_sup_mod_pro.php">gerer produits</a></li>
                             <li><a class="dropdown-item" href="gerer_categories.php">categorie</a></li>

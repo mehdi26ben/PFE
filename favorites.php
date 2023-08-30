@@ -16,7 +16,7 @@ $idclient = $_SESSION["client"]["Id_Client"];
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="favorite.css">
-    <title>Document</title>
+    <title>favorites</title>
 </head>
 
 <body>
@@ -114,7 +114,7 @@ $idclient = $_SESSION["client"]["Id_Client"];
             <div class="row">
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Footer Content</h5>
+                    <h5 class="text-uppercase">CHER CLIENT</h5>
 
                     <p>
                         Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous

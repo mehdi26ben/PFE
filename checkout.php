@@ -129,10 +129,10 @@ session_start();
                                 <div id="credit-card" class="tab-pane fade show active pt-3">
 
                                     <div class="form-group"> <label for="username">
-                                            <h6>Card Owner</h6>
+                                            <h6>Porteur du carte</h6>
                                         </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
                                     <div class="form-group"> <label for="cardNumber">
-                                            <h6>Card number</h6>
+                                            <h6>Numéro De La Carte</h6>
                                         </label>
                                         <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
                                             <div class="input-group-append"> <span class="input-group-text text-muted">
@@ -142,11 +142,11 @@ session_start();
                                     <div class="row">
                                         <div class="col-sm-8">
                                             <div class="form-group"> <label><span class="hidden-xs">
-                                                        <h6>Expiration Date</h6>
+                                                        <h6>Date D'éxpiration</h6>
                                                     </span></label>
                                                 <div class="input-group">
-                                                    <input type="number" placeholder="MM" name="" class="form-control" required>
-                                                    <input type="number" placeholder="YY" name="" class="form-control" required>
+                                                    <input type="text" placeholder="MM" name="" class="form-control" minlength="2" maxlength="2" required>
+                                                    <input type="text" placeholder="YY" name="" class="form-control" minlength="4" maxlength="4" required>
 
                                                 </div>
                                             </div>
@@ -155,7 +155,7 @@ session_start();
                                             <div class="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
                                                     <h6>CVV <i class="fa fa-question-circle d-inline"></i>
                                                     </h6>
-                                                </label> <input type="text" required max="3" min="3" class="form-control">
+                                                </label> <input type="text" required minlength="3"  maxlength="3" class="form-control">
                                             </div>
                                         </div>
                                     </div>

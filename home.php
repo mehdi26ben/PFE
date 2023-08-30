@@ -1,5 +1,5 @@
-<?php session_start();
-
+<?php 
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
     <script src="home.js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
-    <title>Document</title>
+    <title>home</title>
 </head>
 
 <body style=" background-color:#DDDDDD;">
@@ -62,7 +62,7 @@
                         <li><a class="text-light" target="_blank" data-toggle="modal" data-toggle="tooltip" data-placement="top" title="Add To Cart" data-target="#modalLoginForm" type="button"><i class="fa-solid fa-cart-shopping"></i></a></li>
                     </ul>
                 </nav>
-            <?php } ?>
+            <?php } ?>  
         </div>
     </nav>
 
@@ -103,7 +103,7 @@
     <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i>
+                Categories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
@@ -147,7 +147,7 @@
                         <img src="pages_images/login/home_slide5.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Maison Et Fournitures</h1>
-                            <h5>Some representative placehold</h5>
+                            
                         </div>
                     </div>
                 </a>
@@ -157,7 +157,7 @@
                         <img src="pages_images/login/electro_devicesbg.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Téléphones Et Accessoires</h1>
-                            <h5>Some representative placeholder content for the third slide.</h5>
+                           
                         </div>
                     </div>
                 </a>
@@ -167,7 +167,7 @@
                         <img src="pages_images/login/make_up4.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h1>Make Up et Santé</h1>
-                            <h5>Some representative placeholder content for the second slide.</h5>
+                           
                         </div>
                     </div>
                 </a>
@@ -348,7 +348,7 @@
 
                 <?php }
                 } else {
-                    echo "vide";
+                    echo "<h3>Aucun Produit </h3>";
                 }
                 ?>
             </div>

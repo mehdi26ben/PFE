@@ -17,7 +17,7 @@
     <script src="jquery-3.6.3.js"></script>
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <script src="signup.js"></script>
-    <title>Document</title>
+    <title>signup</title>
 </head>
 
 <body style="background-color: gray;">

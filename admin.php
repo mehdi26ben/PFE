@@ -16,7 +16,7 @@ if (!isset($_SESSION["admin"])) {
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="admin.css">
     <script src="admin.js"></script>
-    <title>Document</title>
+    <title>admin</title>
 </head>
 
 <body style="background-color: lightgray;">
@@ -79,7 +79,7 @@ if (!isset($_SESSION["admin"])) {
                             <span class="d-none d-sm-inline mx-1">loser</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="home.php">home</a></li>
+                            <li><a class="dropdown-item" href="admin.php">Acceuille</a></li>
                             <li><a class="dropdown-item" href="admin_products.php">ajouter produit</a></li>
                             <li><a class="dropdown-item" href="admin_sup_mod_pro.php">gerer produits</a></li>
                             <li><a class="dropdown-item" href="gerer_categories.php">categorie</a></li>
@@ -96,7 +96,7 @@ if (!isset($_SESSION["admin"])) {
                     <div class="col-md-5 col-lg-5 d-flex flex-column align-items-center bg-light mt-2" style="border-radius: 8px;">
                         <?php
                         include "connection.php";
-                        $q = $con->prepare("SELECT count(*) from commande where Date_Commande>=month(CURDATE())");
+                        $q = $con->prepare("SELECT count(*) from commande where month(Date_Commande)>=month(CURDATE())");
                         $q->execute();
                         if ($q->rowCount() > 0) {
                             $com = $q->fetch(); ?>

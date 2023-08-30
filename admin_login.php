@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="admin_login.css">
-    <title>Document</title>
+    <title>login</title>
 </head>
 
 <body>

@@ -20,7 +20,7 @@ $lister->execute([$nomcate]);
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
     <script src="categories.js"></script>
-    <title>Document</title>
+    <title>categories</title>
 </head>
 
 <body style=" background-color:#DDDDDD;">
@@ -110,7 +110,7 @@ $lister->execute([$nomcate]);
     <div class="container-fluid d-flex justify-content-between align-items-lg-center" style="background-color:#455A64;align-items:center;">
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i>
+                Categories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="categories.php?nomcate=Telephones_Et_Accessoires">Téléphones Et Accessoir</a>
@@ -159,7 +159,7 @@ $lister->execute([$nomcate]);
                             <input type="hidden" name="idproduit" value="<?php echo $val['Id_Produit'] ?>">
                             <div class="tag bg-red">sale</div>
                             <div class="title pt-4 pb-1"><?php echo $val['NomProduit'] ?></div>
-                            <div><strong>Commandes: </strong><?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"]?> </div>
+                            <div><strong>Commandes: </strong><?php echo $val["COALESCE(COUNT(detail_commande.Id_Produit), 0)"] ?> </div>
                             <div><strong>Qauntite: </strong><?php echo $val['Quantite'] ?></div>
                             <div class="price">Prix: <?php echo $val['Prix'] ?>.00DH</div>
                         </form>
@@ -180,7 +180,7 @@ $lister->execute([$nomcate]);
             <div class="row">
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Footer Content</h5>
+                    <h5 class="text-uppercase">CHER CLIENT</h5>
 
                     <p>
                         Merci d'avoir choisi notre site ecommerce pour vos besoins de shopping en ligne. Nous nous
